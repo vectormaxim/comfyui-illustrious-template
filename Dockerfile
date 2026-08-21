@@ -15,29 +15,33 @@
 # from pins.json's "base_image"; the default below mirrors that pin so a
 # plain build stays coherent.
 #
-# Node-type gate (11 non-core types across the 1 shipped workflow, verified
+# Node-type gate (17 non-core types across the 1 shipped workflow, verified
 # by cloning each pack at HEAD and grepping its actual node registration,
-# 2026-08-21): ltdrdata/ComfyUI-Impact-Pack registers BboxDetectorSEGS,
-# SegmDetectorSEGS, DetailerForEachDebugPipe and ToBasicPipe (branch "Main",
-# capital M); ltdrdata/ComfyUI-Impact-Subpack registers
-# UltralyticsDetectorProvider — a separate companion repo, NOT part of
-# Impact-Pack itself, assumed present alongside it; Fannovel16/comfyui_controlnet_aux
+# 2026-08-21, updated 2026-08-22 for the XY-plot base-gen rework): ltdrdata/ComfyUI-Impact-Pack
+# registers BboxDetectorSEGS, SegmDetectorSEGS, DetailerForEachDebugPipe and
+# ToBasicPipe (branch "Main", capital M); ltdrdata/ComfyUI-Impact-Subpack
+# registers UltralyticsDetectorProvider — a separate companion repo, NOT part
+# of Impact-Pack itself, assumed present alongside it; Fannovel16/comfyui_controlnet_aux
 # registers CannyEdgePreprocessor and DepthAnythingPreprocessor (branch main;
 # DepthAnythingPreprocessor no longer needs a models_registry entry — current
 # HEAD routes depth_anything_vitl14.pth through a HF `transformers`
 # AutoModelForDepthEstimation call, cached in the normal HF cache, so that
 # basename is only in template.json's auto_download list, to suppress the
 # boot report's missing-model warning); rgthree/rgthree-comfy registers
-# "Power Lora Loader (rgthree)" (py/power_lora_loader.py) and
-# "Bookmark (rgthree)" (frontend-only JS, no Python class); ssitu/ComfyUI_UltimateSDUpscale
+# "Power Lora Loader (rgthree)", "Bookmark (rgthree)" (frontend-only JS, no
+# Python class) and "Fast Groups Bypasser (rgthree)"; ssitu/ComfyUI_UltimateSDUpscale
 # registers UltimateSDUpscaleCustomSample alongside the stock
 # UltimateSDUpscale/UltimateSDUpscaleNoUpscale/UltimateSDUpscaleGuider (in
 # usdu_nodes.py — same repo, not a fork); cubiq/ComfyUI_essentials registers
-# "GetImageSize+". Everything else the workflow uses (CLIPTextEncode,
-# CLIPSetLastLayer, CheckpointLoaderSimple, ControlNetLoader,
-# ControlNetApplyAdvanced, EmptyLatentImage, KSamplerAdvanced, LoadImage,
-# PreviewImage, SaveImage, VAEDecode, VAEEncode, UpscaleModelLoader, Note) is
-# ComfyUI core.
+# "GetImageSize+"; geroldmeisinger/ComfyUI-outputlists-combiner (branch main)
+# registers XyzGridPlot, CombineOutputLists, FormattedString, JSONOutputList,
+# NumberOutputList and StringOutputList — the XY-plot grid (LoRA strength x
+# expression prompt) added to the base-gen stage; pythongosssss/ComfyUI-Custom-Scripts
+# (branch main, no requirements.txt) registers "ShowText|pysssss". Everything
+# else the workflow uses (CLIPTextEncode, CLIPSetLastLayer,
+# CheckpointLoaderSimple, ControlNetLoader, ControlNetApplyAdvanced,
+# EmptyLatentImage, KSamplerAdvanced, LoadImage, LoraLoader, PreviewImage,
+# SaveImage, VAEDecode, VAEEncode, UpscaleModelLoader, Note) is ComfyUI core.
 # Cache-busters, one per pack (CLAUDE.md section 8): docker_layer_caching
 # serves the cached clone layer forever otherwise, so a rebuild silently
 # reships whatever HEAD the FIRST build happened to resolve. Each ADD
@@ -53,6 +57,8 @@ ADD https://api.github.com/repos/Fannovel16/comfyui_controlnet_aux/git/refs/head
 ADD https://api.github.com/repos/rgthree/rgthree-comfy/git/refs/heads/main /pack-refs/rgthree-comfy.json
 ADD https://api.github.com/repos/ssitu/ComfyUI_UltimateSDUpscale/git/refs/heads/main /pack-refs/ComfyUI_UltimateSDUpscale.json
 ADD https://api.github.com/repos/cubiq/ComfyUI_essentials/git/refs/heads/main /pack-refs/ComfyUI_essentials.json
+ADD https://api.github.com/repos/geroldmeisinger/ComfyUI-outputlists-combiner/git/refs/heads/main /pack-refs/ComfyUI-outputlists-combiner.json
+ADD https://api.github.com/repos/pythongosssss/ComfyUI-Custom-Scripts/git/refs/heads/main /pack-refs/ComfyUI-Custom-Scripts.json
 # PIP_CONSTRAINT (base-owned) applies to every requirements install below.
 # --no-build-isolation is required here: ComfyUI-Impact-Pack's requirements.txt
 # pulls `git+https://github.com/facebookresearch/sam2`, whose pyproject.toml
@@ -73,7 +79,9 @@ RUN for repo in \
     https://github.com/Fannovel16/comfyui_controlnet_aux.git \
     https://github.com/rgthree/rgthree-comfy.git \
     https://github.com/ssitu/ComfyUI_UltimateSDUpscale.git \
-    https://github.com/cubiq/ComfyUI_essentials.git; \
+    https://github.com/cubiq/ComfyUI_essentials.git \
+    https://github.com/geroldmeisinger/ComfyUI-outputlists-combiner.git \
+    https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git; \
     do \
         cd /ComfyUI/custom_nodes; \
         repo_dir=$(basename "$repo" .git); \
