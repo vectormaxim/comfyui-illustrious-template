@@ -20,7 +20,7 @@
 # shared start.sh; it is not duplicated here.
 
 TEMPLATE_DIR=/comfyui-illustrious-template
-TEMPLATE_URL=https://github.com/Hearmeman24/comfyui-illustrious-template.git
+TEMPLATE_URL=https://github.com/vectormaxim/comfyui-illustrious-template.git
 TEMPLATE_BRANCH=master
 RUNTIME_DIR=/comfyui-runtime
 RUNTIME_URL=https://github.com/Hearmeman24/comfyui-runtime.git

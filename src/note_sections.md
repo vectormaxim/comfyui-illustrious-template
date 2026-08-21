@@ -12,7 +12,7 @@ models) and copy the workflow.
 
 ## Bring your own checkpoint and LoRAs
 
-Unlike my other templates, this one ships no checkpoint and no character
+This template ships no checkpoint and no character
 LoRAs of its own: the base model, every LoRA slot, the final upscale
 model, and one NSFW body detector all carry the same placeholder,
 `Your_Character_LoRA_Here.safetensors` (or `bbox/Your_Character_LoRA_Here.safetensors`

@@ -1,9 +1,5 @@
 # Illustrious SDXL Detailer Pipeline, ComfyUI on RunPod
 
-Created by HearmemanAI. Something not working, or a question about the workflow? Ask in
-help-and-support on [my Discord](https://discord.gg/ZVWVhT43GW). That is the only place I do
-support, and it is also where new releases are announced.
-
 One SDXL/Illustrious img2img pipeline: dual-ControlNet (canny + depth) base generation, then a
 cascade of Impact-Pack detailer passes (face, eyes, mouth, hands, body), an Ultimate SD Upscale
 pass, and a final detailer pass on the upscaled image.
@@ -42,5 +38,3 @@ Click Connect, then open port 8188 for ComfyUI or port 8888 for JupyterLab. The 
 Open the Workflows tab in ComfyUI. The workflow carries notes in the graph telling you what each
 group of nodes does. The pod also writes three notes into the top of that same list on first boot:
 Welcome, Adding Models, and Troubleshooting.
-
-[My other templates](https://docs.google.com/spreadsheets/d/1NfbfZLzE9GIAD5B_y6xjK1IdW95c14oS1JuIG9QihL8/edit)

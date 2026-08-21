@@ -1,5 +1,5 @@
 {
-  "template_repo": "https://github.com/Hearmeman24/comfyui-illustrious-template.git",
+  "template_repo": "https://github.com/vectormaxim/comfyui-illustrious-template.git",
   "branch": "master",
   "provisioning_mode": "walk",
   "flags": {
