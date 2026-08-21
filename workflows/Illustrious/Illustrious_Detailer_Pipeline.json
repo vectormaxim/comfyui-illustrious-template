@@ -1,8 +1,8 @@
 {
   "id": "9ae6082b-c7f4-433c-9971-7a8f65a3ea65",
   "revision": 0,
-  "last_node_id": 308,
-  "last_link_id": 498,
+  "last_node_id": 313,
+  "last_link_id": 509,
   "nodes": [
     {
       "id": 117,
@@ -2618,8 +2618,7 @@
           "name": "basic_pipe",
           "type": "BASIC_PIPE",
           "links": [
-            310,
-            494
+            310
           ]
         }
       ],
@@ -6938,7 +6937,8 @@
           "links": [
             264,
             286,
-            348
+            348,
+            499
           ]
         },
         {
@@ -6947,7 +6947,8 @@
           "links": [
             265,
             287,
-            349
+            349,
+            500
           ]
         },
         {
@@ -6956,7 +6957,8 @@
           "links": [
             257,
             270,
-            315
+            315,
+            502
           ]
         }
       ],
@@ -6977,7 +6979,7 @@
       "type": "CheckpointLoaderSimple",
       "pos": [
         6194.992503514611,
-        -821.0781062240065
+        -1300
       ],
       "size": [
         315,
@@ -9398,7 +9400,7 @@
         {
           "name": "basic_pipe",
           "type": "BASIC_PIPE",
-          "link": 494
+          "link": 507
         },
         {
           "name": "detailer_hook",
@@ -9647,6 +9649,273 @@
       ],
       "color": "#223",
       "bgcolor": "#335",
+      "shape": 1
+    },
+    {
+      "id": 309,
+      "type": "Power Lora Loader (rgthree)",
+      "pos": [
+        12237.28,
+        1700
+      ],
+      "size": [
+        340.5,
+        190
+      ],
+      "flags": {},
+      "order": 42,
+      "mode": 4,
+      "inputs": [
+        {
+          "dir": 3,
+          "name": "model",
+          "type": "MODEL",
+          "link": 499
+        },
+        {
+          "dir": 3,
+          "name": "clip",
+          "type": "CLIP",
+          "link": 500
+        }
+      ],
+      "outputs": [
+        {
+          "dir": 4,
+          "name": "MODEL",
+          "shape": 3,
+          "type": "MODEL",
+          "links": [
+            508
+          ]
+        },
+        {
+          "dir": 4,
+          "name": "CLIP",
+          "shape": 3,
+          "type": "CLIP",
+          "links": [
+            501,
+            509
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "rgthree-comfy",
+        "Show Strengths": "Single Strength",
+        "Match": "",
+        "aux_id": "rgthree/rgthree-comfy"
+      },
+      "widgets_values": [
+        {},
+        {
+          "type": "PowerLoraLoaderHeaderWidget"
+        },
+        {
+          "on": false,
+          "lora": "Your_Character_LoRA_Here.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        {
+          "on": false,
+          "lora": "Your_Character_LoRA_Here.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        {},
+        ""
+      ]
+    },
+    {
+      "id": 310,
+      "type": "CLIPSetLastLayer",
+      "pos": [
+        12637.28,
+        1720
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 59,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 501
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            503,
+            504
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "CLIPSetLastLayer"
+      },
+      "widgets_values": [
+        -2
+      ],
+      "color": "#432",
+      "bgcolor": "#653",
+      "shape": 1
+    },
+    {
+      "id": 311,
+      "type": "CLIPTextEncode",
+      "pos": [
+        12887.28,
+        1620
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 83,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 503
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            505
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "smiling, happy"
+      ],
+      "color": "#232",
+      "bgcolor": "#353",
+      "shape": 1
+    },
+    {
+      "id": 312,
+      "type": "CLIPTextEncode",
+      "pos": [
+        12887.28,
+        1900
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 82,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 504
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            506
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "sad, frowning"
+      ],
+      "color": "#322",
+      "bgcolor": "#533",
+      "shape": 1
+    },
+    {
+      "id": 313,
+      "type": "ToBasicPipe",
+      "pos": [
+        13337.28,
+        1700
+      ],
+      "size": [
+        241.8,
+        106
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 92,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 508
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 509
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 502
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 505
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 506
+        }
+      ],
+      "outputs": [
+        {
+          "name": "basic_pipe",
+          "type": "BASIC_PIPE",
+          "links": [
+            507
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-pack",
+        "Node name for S&R": "ToBasicPipe",
+        "aux_id": "ltdrdata/ComfyUI-Impact-Pack"
+      },
+      "widgets_values": [],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159",
       "shape": 1
     }
   ],
@@ -11756,14 +12025,6 @@
       "IMAGE"
     ],
     [
-      494,
-      185,
-      0,
-      304,
-      2,
-      "BASIC_PIPE"
-    ],
-    [
       495,
       304,
       3,
@@ -11794,6 +12055,94 @@
       308,
       0,
       "IMAGE"
+    ],
+    [
+      499,
+      244,
+      0,
+      309,
+      0,
+      "MODEL"
+    ],
+    [
+      500,
+      244,
+      1,
+      309,
+      1,
+      "CLIP"
+    ],
+    [
+      502,
+      244,
+      2,
+      313,
+      2,
+      "VAE"
+    ],
+    [
+      508,
+      309,
+      0,
+      313,
+      0,
+      "MODEL"
+    ],
+    [
+      509,
+      309,
+      1,
+      313,
+      1,
+      "CLIP"
+    ],
+    [
+      501,
+      309,
+      1,
+      310,
+      0,
+      "CLIP"
+    ],
+    [
+      503,
+      310,
+      0,
+      311,
+      0,
+      "CLIP"
+    ],
+    [
+      504,
+      310,
+      0,
+      312,
+      0,
+      "CLIP"
+    ],
+    [
+      505,
+      311,
+      0,
+      313,
+      3,
+      "CONDITIONING"
+    ],
+    [
+      506,
+      312,
+      0,
+      313,
+      4,
+      "CONDITIONING"
+    ],
+    [
+      507,
+      313,
+      0,
+      304,
+      2,
+      "BASIC_PIPE"
     ]
   ],
   "groups": [
@@ -11920,10 +12269,10 @@
     {
       "title": "HIPS/GROIN Detailer (SEGM Only, off by default)",
       "bounding": [
-        12197.278524137195,
-        471.60246485357766,
-        2400,
-        900
+        12157.278524137195,
+        491.60246485357766,
+        2395.0,
+        1688.3975351464223
       ],
       "color": "#3f789e",
       "font_size": 24,
