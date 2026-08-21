@@ -9298,7 +9298,9 @@
         {
           "name": "SEGM_DETECTOR",
           "type": "SEGM_DETECTOR",
-          "links": []
+          "links": [
+            491
+          ]
         }
       ],
       "properties": {
