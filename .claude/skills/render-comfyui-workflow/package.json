@@ -1,0 +1,8 @@
+{
+  "name": "render-comfyui-workflow",
+  "private": true,
+  "description": "Headless-browser renderer for verifying ComfyUI workflow JSON structure against a real ComfyUI frontend.",
+  "dependencies": {
+    "playwright": "^1.62.1"
+  }
+}
