@@ -1,0 +1,22 @@
+{
+  "template_repo": "https://github.com/Hearmeman24/comfyui-illustrious-template.git",
+  "branch": "master",
+  "provisioning_mode": "walk",
+  "flags": {
+    "download_illustrious": {
+      "default": false,
+      "folders": [
+        "Illustrious"
+      ]
+    }
+  },
+  "auto_download": [
+    "depth_anything_vitl14.pth"
+  ],
+  "models_symlink": true,
+  "custom_nodes": {
+    "target": "image",
+    "repos": []
+  },
+  "sage": true
+}

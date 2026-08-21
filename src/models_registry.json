@@ -1,0 +1,36 @@
+{
+  "t2i-adapter-canny-sdxl-1.0.safetensors": {
+    "url": "https://huggingface.co/TencentARC/t2i-adapter-canny-sdxl-1.0/resolve/main/diffusion_pytorch_model.safetensors",
+    "subdir": "controlnet/SDXL"
+  },
+  "t2i-adapter-depth-zoe-sdxl-1.0.safetensors": {
+    "url": "https://huggingface.co/TencentARC/t2i-adapter-depth-zoe-sdxl-1.0/resolve/main/diffusion_pytorch_model.safetensors",
+    "subdir": "controlnet/SDXL"
+  },
+  "face_yolov8m.pt": {
+    "url": "https://huggingface.co/Bingsu/adetailer/resolve/main/face_yolov8m.pt",
+    "subdir": "ultralytics/bbox"
+  },
+  "99coins_anime_girl_face_m_seg.pt": {
+    "url": "https://huggingface.co/iahhnim/adetailer_collection/resolve/main/99coins_anime_girl_face_m_seg.pt",
+    "subdir": "ultralytics/segm"
+  },
+  "PitHandDetailer-v2-Test-v9c.pt": {
+    "url": "https://huggingface.co/iahhnim/adetailer_collection/resolve/main/PitHandDetailer-v2-Test-v9c.pt",
+    "subdir": "ultralytics/segm"
+  },
+  "PitEyeDetailer-v2-seg.pt": {
+    "url": "https://huggingface.co/iahhnim/adetailer_collection/resolve/main/PitEyeDetailer-v2-seg.pt",
+    "subdir": "ultralytics/segm"
+  },
+  "adetailer2dMouth_v10.pt": {
+    "url": "https://huggingface.co/iahhnim/adetailer_collection/resolve/main/adetailer2dMouth_v10.pt",
+    "subdir": "ultralytics/segm",
+    "min_size_mb": 5
+  },
+  "breasts_seg.pt": {
+    "url": "https://huggingface.co/iahhnim/adetailer_collection/resolve/main/breasts_seg.pt",
+    "subdir": "ultralytics/segm/NSFWDetection",
+    "min_size_mb": 6
+  }
+}
