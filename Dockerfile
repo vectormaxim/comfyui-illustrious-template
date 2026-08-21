@@ -54,6 +54,19 @@ ADD https://api.github.com/repos/rgthree/rgthree-comfy/git/refs/heads/main /pack
 ADD https://api.github.com/repos/ssitu/ComfyUI_UltimateSDUpscale/git/refs/heads/main /pack-refs/ComfyUI_UltimateSDUpscale.json
 ADD https://api.github.com/repos/cubiq/ComfyUI_essentials/git/refs/heads/main /pack-refs/ComfyUI_essentials.json
 # PIP_CONSTRAINT (base-owned) applies to every requirements install below.
+# --no-build-isolation is required here: ComfyUI-Impact-Pack's requirements.txt
+# pulls `git+https://github.com/facebookresearch/sam2`, whose pyproject.toml
+# build-system declares `torch>=2.5.1`. In an isolated build env pip tries to
+# install a FRESH torch to satisfy that, which collides with PIP_CONSTRAINT's
+# pinned torch==2.11.0+cu130 (ResolutionImpossible) and silently fails the
+# entire `pip install -r requirements.txt` line for that pack -- not just the
+# sam2 line, all of it, including piexif, which Impact-Pack's __init__.py
+# imports unconditionally, so the whole pack fails to load at runtime with no
+# build-time error (the outer `for` loop has no `set -e`, by design, so one
+# pack's dependency failure doesn't abort every other pack's install).
+# --no-build-isolation makes sam2's build use the already-installed,
+# constraint-pinned torch instead of resolving its own; harmless for the other
+# packs' requirements, which install from prebuilt wheels.
 RUN for repo in \
     https://github.com/ltdrdata/ComfyUI-Impact-Pack.git \
     https://github.com/ltdrdata/ComfyUI-Impact-Subpack.git \
@@ -70,7 +83,7 @@ RUN for repo in \
             git clone "$repo"; \
         fi; \
         if [ -f "/ComfyUI/custom_nodes/$repo_dir/requirements.txt" ]; then \
-            pip install -r "/ComfyUI/custom_nodes/$repo_dir/requirements.txt"; \
+            pip install --no-build-isolation -r "/ComfyUI/custom_nodes/$repo_dir/requirements.txt"; \
         fi; \
         if [ -f "/ComfyUI/custom_nodes/$repo_dir/install.py" ]; then \
             python "/ComfyUI/custom_nodes/$repo_dir/install.py"; \
