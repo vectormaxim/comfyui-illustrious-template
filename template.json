@@ -16,7 +16,9 @@
   "models_symlink": true,
   "custom_nodes": {
     "target": "image",
-    "repos": []
+    "repos": [
+      "https://github.com/vectormaxim/ComfyUI-HipRegionMask.git"
+    ]
   },
   "sage": true
 }

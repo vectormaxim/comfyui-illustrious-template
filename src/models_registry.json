@@ -36,5 +36,10 @@
   "ntd11_anime_nsfw_segm_v4_pussy.pt": {
     "url": "https://huggingface.co/iahhnim/adetailer_collection/resolve/main/animeNSFWDetection_v40/ntd11_anime_nsfw_segm_v4_pussy.pt",
     "subdir": "ultralytics/segm/NSFWDetection"
+  },
+  "AnimePussyCameltoePenis-best2.pt": {
+    "url": "https://huggingface.co/iahhnim/adetailer_collection/resolve/main/animePussyYOLO_v4/AnimePussyCameltoePenis-best2.pt",
+    "subdir": "ultralytics/bbox/NSFWDetection",
+    "min_size_mb": 5
   }
 }
