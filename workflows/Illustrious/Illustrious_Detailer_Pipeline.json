@@ -1,8 +1,8 @@
 {
   "id": "9ae6082b-c7f4-433c-9971-7a8f65a3ea65",
   "revision": 0,
-  "last_node_id": 335,
-  "last_link_id": 537,
+  "last_node_id": 337,
+  "last_link_id": 539,
   "nodes": [
     {
       "id": 117,
@@ -7659,7 +7659,8 @@
           "links": [
             458,
             482,
-            483
+            483,
+            538
           ]
         }
       ],
@@ -11113,6 +11114,98 @@
       "color": "#223",
       "bgcolor": "#335",
       "shape": 1
+    },
+    {
+      "id": 336,
+      "type": "DWPreprocessor",
+      "title": "OpenPose Estimator (preview only, first KSampler output)",
+      "pos": [
+        2872.219862735363,
+        -180.0
+      ],
+      "size": [
+        315,
+        290
+      ],
+      "flags": {},
+      "order": 62,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 538
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            539
+          ]
+        },
+        {
+          "name": "POSE_KEYPOINT",
+          "type": "POSE_KEYPOINT",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_controlnet_aux",
+        "Node name for S&R": "DWPreprocessor",
+        "aux_id": "Fannovel16/comfyui_controlnet_aux"
+      },
+      "widgets_values": [
+        "disable",
+        "enable",
+        "disable",
+        512,
+        "yolox_l.onnx",
+        "dw-ll_ucoco_384_bs5.torchscript.pt",
+        "disable"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159",
+      "shape": 1
+    },
+    {
+      "id": 337,
+      "type": "PreviewImage",
+      "title": "OpenPose Preview",
+      "pos": [
+        3227.219862735363,
+        -180.0
+      ],
+      "size": [
+        294,
+        446.2
+      ],
+      "flags": {},
+      "order": 63,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 539
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": [],
+      "color": "#223",
+      "bgcolor": "#335",
+      "shape": 1
     }
   ],
   "links": [
@@ -13561,6 +13654,22 @@
       331,
       5,
       332,
+      0,
+      "IMAGE"
+    ],
+    [
+      538,
+      290,
+      0,
+      336,
+      0,
+      "IMAGE"
+    ],
+    [
+      539,
+      336,
+      0,
+      337,
       0,
       "IMAGE"
     ]
