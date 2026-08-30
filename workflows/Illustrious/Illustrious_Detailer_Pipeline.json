@@ -9945,7 +9945,7 @@
       ],
       "flags": {},
       "order": 173,
-      "mode": 4,
+      "mode": 0,
       "inputs": [],
       "outputs": [
         {
@@ -9988,7 +9988,7 @@
         "collapsed": true
       },
       "order": 174,
-      "mode": 4,
+      "mode": 0,
       "inputs": [
         {
           "name": "bbox_detector",
@@ -10045,7 +10045,7 @@
       ],
       "flags": {},
       "order": 175,
-      "mode": 4,
+      "mode": 0,
       "inputs": [
         {
           "name": "image",
@@ -10174,7 +10174,7 @@
       ],
       "flags": {},
       "order": 179,
-      "mode": 4,
+      "mode": 0,
       "inputs": [
         {
           "name": "images",
@@ -10211,7 +10211,7 @@
       ],
       "flags": {},
       "order": 178,
-      "mode": 4,
+      "mode": 0,
       "inputs": [
         {
           "name": "images",
@@ -10248,7 +10248,7 @@
       ],
       "flags": {},
       "order": 177,
-      "mode": 4,
+      "mode": 0,
       "inputs": [
         {
           "name": "images",
@@ -10285,7 +10285,7 @@
       ],
       "flags": {},
       "order": 176,
-      "mode": 4,
+      "mode": 0,
       "inputs": [
         {
           "name": "images",
