@@ -1,8 +1,8 @@
 {
   "id": "9ae6082b-c7f4-433c-9971-7a8f65a3ea65",
   "revision": 0,
-  "last_node_id": 347,
-  "last_link_id": 549,
+  "last_node_id": 350,
+  "last_link_id": 551,
   "nodes": [
     {
       "id": 117,
@@ -11818,6 +11818,260 @@
       "color": "#2a363b",
       "bgcolor": "#3f5159",
       "shape": 1
+    },
+    {
+      "id": 348,
+      "type": "LoadImage",
+      "title": "REFERENCE image for the LLM prompt helper (load the picture you want turned into tags)",
+      "pos": [
+        -160.0,
+        2110.0
+      ],
+      "size": [
+        420,
+        500
+      ],
+      "flags": {},
+      "order": 213,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            550
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "placeholder.png",
+        "image"
+      ],
+      "color": "#223",
+      "bgcolor": "#335",
+      "shape": 1
+    },
+    {
+      "id": 349,
+      "type": "OpenRouterSimple",
+      "title": "LLM prompt helper (OpenRouter) -- set OPENROUTER_API_KEY in the pod env; no key is ever stored in this workflow",
+      "pos": [
+        340.0,
+        2110.0
+      ],
+      "size": [
+        500,
+        620
+      ],
+      "flags": {},
+      "order": 214,
+      "mode": 4,
+      "inputs": [
+        {
+          "localized_name": "image",
+          "name": "image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 550
+        },
+        {
+          "name": "image_2",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "localized_name": "video",
+          "name": "video",
+          "shape": 7,
+          "type": "VIDEO",
+          "link": null
+        },
+        {
+          "localized_name": "audio",
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "localized_name": "model",
+          "name": "model",
+          "type": "COMBO",
+          "widget": {
+            "name": "model"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "reasoning_effort",
+          "name": "reasoning_effort",
+          "type": "COMBO",
+          "widget": {
+            "name": "reasoning_effort"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "timeout_seconds",
+          "name": "timeout_seconds",
+          "type": "INT",
+          "widget": {
+            "name": "timeout_seconds"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "temperature",
+          "name": "temperature",
+          "type": "FLOAT",
+          "widget": {
+            "name": "temperature"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "max_tokens",
+          "name": "max_tokens",
+          "type": "INT",
+          "widget": {
+            "name": "max_tokens"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "response_format",
+          "name": "response_format",
+          "type": "COMBO",
+          "widget": {
+            "name": "response_format"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "zdr",
+          "name": "zdr",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "zdr"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "regenerate",
+          "name": "regenerate",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "regenerate"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "system_prompt",
+          "name": "system_prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "system_prompt"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "user_prompt",
+          "name": "user_prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "user_prompt"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "text",
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            551
+          ]
+        },
+        {
+          "localized_name": "info",
+          "name": "info",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "localized_name": "credits",
+          "name": "credits",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "aux_id": "Hearmeman24/ComfyUI-OpenRouter-Simple",
+        "Node name for S&R": "OpenRouterSimple"
+      },
+      "widgets_values": [
+        "qwen/qwen3-vl-235b-a22b-instruct",
+        "auto",
+        180,
+        0.7,
+        4096,
+        "text",
+        false,
+        true,
+        "You are a Danbooru-style prompt writer for Illustrious / SDXL anime checkpoints. You output ONE line: a flat, comma-separated list of lowercase Danbooru tags and short tag-like phrases. Nothing else -- no preamble, no explanation, no bullet points, no markdown, no quotes, no trailing period.\n\nTwo modes, decided by what is actually supplied to you:\n1. IMAGE ONLY (the user prompt is empty, or only contains a note/instruction to you rather than real prompt tags): read the image and write the prompt that would reproduce it on an Illustrious checkpoint.\n2. IMAGE + DRAFT (the user prompt already contains prompt text): improve THAT text. Keep the user's tags and their intent, fix ordering and syntax, drop duplicates and direct contradictions, and extend it with what the image actually shows that the draft is missing. You are editing their prompt, not replacing it. If no image is connected, work from the draft alone and just tighten and extend it.\n\nTag order: quality tags -> subject count / character / series -> body and appearance -> clothing and accessories -> pose, action, expression, gaze -> explicit and anatomy tags -> camera framing and angle -> background and setting -> lighting, style, rendering.\n\nRules:\n- Open with quality tags in this workflow's house style: masterpiece, best quality, amazing quality, very aesthetic, highres. Trim to fit; do not pile up synonyms.\n- Preserve verbatim, in place, any LoRA call (<lora:Name:1.0>) and any trigger word already in the draft. Never invent new ones.\n- Use real Danbooru tag vocabulary wherever it exists (1girl, solo, white hair, thighhighs, latex bodysuit, spread legs, cameltoe, on back, from below, cowboy shot, indoors, dutch angle, depth of field). Prefer spaces; use underscores only where the booru tag itself does.\n- Weight sparingly -- at most two or three tags -- in ComfyUI syntax: (tag:1.2).\n- This is an adult NSFW anime pipeline. Describe nudity, anatomy, sexual acts and fluids plainly and specifically using the ordinary booru tags for them. Do not censor, soften, euphemise, moralise, or append any disclaimer. Vagueness is a defect here: 'nsfw' on its own is useless, name what is actually visible.\n- Tag only what is really in the image or the draft. Do not guess at a character name or series you cannot actually identify -- use descriptive tags instead.\n- No negative-prompt tags (worst quality, bad anatomy, extra fingers...). This is the positive prompt only.\n- Aim for roughly 25-45 tags. Dense and specific beats long and repetitive.\n\nReturn only the tag line.",
+        "(leave this empty to tag the image from scratch -- or paste your own draft prompt here and it will be improved and extended against the image)"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 350,
+      "type": "ShowText|pysssss",
+      "title": "Generated / improved prompt (copy it out, or wire this STRING into whichever positive CLIPTextEncode you want)",
+      "pos": [
+        920.0,
+        2110.0
+      ],
+      "size": [
+        480,
+        400
+      ],
+      "flags": {},
+      "order": 215,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 551
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "shape": 6,
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-Custom-Scripts",
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [],
+      "color": "#223",
+      "bgcolor": "#335"
     }
   ],
   "links": [
@@ -14364,6 +14618,22 @@
       287,
       2,
       "CONDITIONING"
+    ],
+    [
+      550,
+      348,
+      0,
+      349,
+      0,
+      "IMAGE"
+    ],
+    [
+      551,
+      349,
+      0,
+      350,
+      0,
+      "STRING"
     ]
   ],
   "groups": [
@@ -14545,6 +14815,19 @@
         320
       ],
       "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 15,
+      "title": "LLM Prompt Helper (OpenRouter, off by default -- image -> Danbooru tags, or improve your own draft)",
+      "bounding": [
+        -180.0,
+        2050.0,
+        1620.0,
+        720.0
+      ],
+      "color": "#a1309b",
+      "font_size": 24,
       "flags": {}
     }
   ],
