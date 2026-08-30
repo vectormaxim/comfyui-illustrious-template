@@ -53,6 +53,14 @@ library versions the image ships. See `examples/inference_test_yolo.py`
 `examples/inference_test_dwpose.py` (DWPose keypoints + coordinate-space
 detection) for complete worked examples to adapt.
 
+Read `run-python.sh`'s own header before iterating on a script that
+downloads anything (DWPose's ONNX models especially): there's no cache
+between runs by default, a red CUDA-library error on every ONNX-touching
+run is expected noise on a CPU host not a real failure, and mount paths
+must be directories without a `:` in them. All confirmed by hitting them,
+not anticipated -- worth five minutes to read once so you don't re-learn
+them by re-downloading 200MB three times.
+
 ### 2. Frontend shape probing: what does this node ACTUALLY serialize to?
 
 For any node whose inputs/widgets aren't fully declared in `/object_info`
