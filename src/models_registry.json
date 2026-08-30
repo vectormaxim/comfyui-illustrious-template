@@ -45,5 +45,9 @@
   "OpenPoseXL2.safetensors": {
     "url": "https://huggingface.co/thibaud/controlnet-openpose-sdxl-1.0/resolve/main/OpenPoseXL2.safetensors",
     "subdir": "controlnet/SDXL"
+  },
+  "illustrious-xl-openpose.safetensors": {
+    "url": "https://huggingface.co/windsingai/openpose/resolve/main/openpose_s6000.safetensors",
+    "subdir": "controlnet/SDXL"
   }
 }

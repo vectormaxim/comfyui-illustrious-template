@@ -11740,11 +11740,12 @@
         "Node name for S&R": "ControlNetLoader"
       },
       "widgets_values": [
-        "SDXL/OpenPoseXL2.safetensors"
+        "SDXL/illustrious-xl-openpose.safetensors"
       ],
       "color": "#2a363b",
       "bgcolor": "#3f5159",
-      "shape": 1
+      "shape": 1,
+      "title": "OpenPose ControlNet (Illustrious-native; switch to SDXL/OpenPoseXL2.safetensors for thibaud's generic-SDXL alternative)"
     },
     {
       "id": 347,
