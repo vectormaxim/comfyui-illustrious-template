@@ -1,8 +1,8 @@
 {
   "id": "9ae6082b-c7f4-433c-9971-7a8f65a3ea65",
   "revision": 0,
-  "last_node_id": 350,
-  "last_link_id": 551,
+  "last_node_id": 351,
+  "last_link_id": 560,
   "nodes": [
     {
       "id": 117,
@@ -2505,7 +2505,7 @@
         {
           "name": "images",
           "type": "IMAGE",
-          "link": 266
+          "link": 560
         }
       ],
       "outputs": [
@@ -2692,13 +2692,9 @@
             281,
             308,
             490,
-            493,
             511,
-            513,
             519,
-            521,
-            524,
-            531
+            521
           ]
         },
         {
@@ -2716,9 +2712,7 @@
           "shape": 6,
           "type": "IMAGE",
           "links": [
-            246,
-            490,
-            493
+            246
           ]
         },
         {
@@ -2726,9 +2720,7 @@
           "shape": 6,
           "type": "IMAGE",
           "links": [
-            245,
-            490,
-            493
+            245
           ]
         },
         {
@@ -2736,19 +2728,14 @@
           "shape": 6,
           "type": "IMAGE",
           "links": [
-            244,
-            490,
-            493
+            244
           ]
         },
         {
           "name": "cnet_images",
           "shape": 6,
           "type": "IMAGE",
-          "links": [
-            490,
-            493
-          ]
+          "links": []
         }
       ],
       "properties": {
@@ -3930,9 +3917,7 @@
           "name": "image",
           "type": "IMAGE",
           "links": [
-            266,
-            311,
-            320
+            552
           ]
         },
         {
@@ -4028,7 +4013,7 @@
         {
           "name": "image",
           "type": "IMAGE",
-          "link": 311
+          "link": 558
         }
       ],
       "outputs": [
@@ -6369,7 +6354,7 @@
         {
           "name": "image",
           "type": "IMAGE",
-          "link": 320
+          "link": 559
         },
         {
           "name": "model",
@@ -9362,7 +9347,7 @@
           "name": "SEGS",
           "type": "SEGS",
           "links": [
-            492
+            554
           ]
         }
       ],
@@ -9380,285 +9365,6 @@
       ],
       "color": "#2a363b",
       "bgcolor": "#3f5159",
-      "shape": 1
-    },
-    {
-      "id": 304,
-      "type": "DetailerForEachDebugPipe",
-      "pos": [
-        13137.278524137195,
-        571.6024648535777
-      ],
-      "size": [
-        556.8,
-        664
-      ],
-      "flags": {},
-      "order": 123,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 493
-        },
-        {
-          "name": "segs",
-          "type": "SEGS",
-          "link": 492
-        },
-        {
-          "name": "basic_pipe",
-          "type": "BASIC_PIPE",
-          "link": 507
-        },
-        {
-          "name": "detailer_hook",
-          "shape": 7,
-          "type": "DETAILER_HOOK",
-          "link": null
-        },
-        {
-          "name": "refiner_basic_pipe_opt",
-          "shape": 7,
-          "type": "BASIC_PIPE",
-          "link": null
-        },
-        {
-          "name": "scheduler_func_opt",
-          "shape": 7,
-          "type": "SCHEDULER_FUNC",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "links": [
-            498
-          ]
-        },
-        {
-          "name": "segs",
-          "type": "SEGS",
-          "links": null
-        },
-        {
-          "name": "basic_pipe",
-          "type": "BASIC_PIPE",
-          "links": null
-        },
-        {
-          "name": "cropped",
-          "shape": 6,
-          "type": "IMAGE",
-          "links": [
-            495
-          ]
-        },
-        {
-          "name": "cropped_refined",
-          "shape": 6,
-          "type": "IMAGE",
-          "links": [
-            496
-          ]
-        },
-        {
-          "name": "cropped_refined_alpha",
-          "shape": 6,
-          "type": "IMAGE",
-          "links": [
-            497
-          ]
-        },
-        {
-          "name": "cnet_images",
-          "shape": 6,
-          "type": "IMAGE",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-impact-pack",
-        "Node name for S&R": "DetailerForEachDebugPipe",
-        "aux_id": "ltdrdata/ComfyUI-Impact-Pack"
-      },
-      "widgets_values": [
-        512,
-        true,
-        1024,
-        100,
-        "fixed",
-        30,
-        8,
-        "euler",
-        "normal",
-        0.5000000000000001,
-        5,
-        true,
-        true,
-        "",
-        0.2,
-        3,
-        false,
-        20,
-        false,
-        false
-      ],
-      "color": "#2a363b",
-      "bgcolor": "#3f5159",
-      "shape": 1
-    },
-    {
-      "id": 305,
-      "type": "PreviewImage",
-      "pos": [
-        13737.278524137195,
-        571.6024648535777
-      ],
-      "size": [
-        210,
-        246
-      ],
-      "flags": {},
-      "order": 129,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 497
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": [],
-      "color": "#223",
-      "bgcolor": "#335",
-      "shape": 1
-    },
-    {
-      "id": 306,
-      "type": "PreviewImage",
-      "pos": [
-        13737.278524137195,
-        831.6024648535777
-      ],
-      "size": [
-        210,
-        246
-      ],
-      "flags": {},
-      "order": 129,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 496
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": [],
-      "color": "#223",
-      "bgcolor": "#335",
-      "shape": 1
-    },
-    {
-      "id": 307,
-      "type": "PreviewImage",
-      "pos": [
-        13737.278524137195,
-        1091.6024648535777
-      ],
-      "size": [
-        210,
-        246
-      ],
-      "flags": {},
-      "order": 129,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 495
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": [],
-      "color": "#223",
-      "bgcolor": "#335",
-      "shape": 1
-    },
-    {
-      "id": 308,
-      "type": "SaveImage",
-      "pos": [
-        14037.278524137195,
-        571.6024648535777
-      ],
-      "size": [
-        435,
-        450
-      ],
-      "flags": {},
-      "order": 126,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 498
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "Node name for S&R": "SaveImage"
-      },
-      "widgets_values": [
-        "HIPS_GROIN_Detailer"
-      ],
-      "color": "#223",
-      "bgcolor": "#335",
       "shape": 1
     },
     {
@@ -9705,8 +9411,8 @@
           "shape": 3,
           "type": "CLIP",
           "links": [
-            501,
-            509
+            509,
+            501
           ]
         }
       ],
@@ -9914,10 +9620,7 @@
           "name": "basic_pipe",
           "type": "BASIC_PIPE",
           "links": [
-            507,
-            514,
-            525,
-            533
+            514
           ]
         }
       ],
@@ -10012,7 +9715,7 @@
           "name": "SEGS",
           "type": "SEGS",
           "links": [
-            512
+            555
           ]
         }
       ],
@@ -10050,12 +9753,12 @@
         {
           "name": "image",
           "type": "IMAGE",
-          "link": 513
+          "link": 552
         },
         {
           "name": "segs",
           "type": "SEGS",
-          "link": 512
+          "link": 557
         },
         {
           "name": "basic_pipe",
@@ -10086,7 +9789,10 @@
           "name": "image",
           "type": "IMAGE",
           "links": [
-            515
+            515,
+            558,
+            559,
+            560
           ]
         },
         {
@@ -10448,7 +10154,7 @@
           "name": "SEGS",
           "type": "SEGS",
           "links": [
-            523
+            556
           ]
         }
       ],
@@ -10466,285 +10172,6 @@
       ],
       "color": "#2a363b",
       "bgcolor": "#3f5159",
-      "shape": 1
-    },
-    {
-      "id": 324,
-      "type": "DetailerForEachDebugPipe",
-      "pos": [
-        13637.278524137195,
-        3071.6024648535777
-      ],
-      "size": [
-        556.8,
-        664
-      ],
-      "flags": {},
-      "order": 183,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 524
-        },
-        {
-          "name": "segs",
-          "type": "SEGS",
-          "link": 523
-        },
-        {
-          "name": "basic_pipe",
-          "type": "BASIC_PIPE",
-          "link": 525
-        },
-        {
-          "name": "detailer_hook",
-          "shape": 7,
-          "type": "DETAILER_HOOK",
-          "link": null
-        },
-        {
-          "name": "refiner_basic_pipe_opt",
-          "shape": 7,
-          "type": "BASIC_PIPE",
-          "link": null
-        },
-        {
-          "name": "scheduler_func_opt",
-          "shape": 7,
-          "type": "SCHEDULER_FUNC",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "links": [
-            526
-          ]
-        },
-        {
-          "name": "segs",
-          "type": "SEGS",
-          "links": null
-        },
-        {
-          "name": "basic_pipe",
-          "type": "BASIC_PIPE",
-          "links": null
-        },
-        {
-          "name": "cropped",
-          "shape": 6,
-          "type": "IMAGE",
-          "links": [
-            527
-          ]
-        },
-        {
-          "name": "cropped_refined",
-          "shape": 6,
-          "type": "IMAGE",
-          "links": [
-            528
-          ]
-        },
-        {
-          "name": "cropped_refined_alpha",
-          "shape": 6,
-          "type": "IMAGE",
-          "links": [
-            529
-          ]
-        },
-        {
-          "name": "cnet_images",
-          "shape": 6,
-          "type": "IMAGE",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-impact-pack",
-        "Node name for S&R": "DetailerForEachDebugPipe",
-        "aux_id": "ltdrdata/ComfyUI-Impact-Pack"
-      },
-      "widgets_values": [
-        512,
-        true,
-        1024,
-        100,
-        "fixed",
-        30,
-        8,
-        "euler",
-        "normal",
-        0.5000000000000001,
-        5,
-        true,
-        true,
-        "",
-        0.2,
-        3,
-        false,
-        20,
-        false,
-        false
-      ],
-      "color": "#2a363b",
-      "bgcolor": "#3f5159",
-      "shape": 1
-    },
-    {
-      "id": 325,
-      "type": "PreviewImage",
-      "pos": [
-        14237.278524137195,
-        3071.6024648535777
-      ],
-      "size": [
-        210,
-        246
-      ],
-      "flags": {},
-      "order": 187,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 529
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": [],
-      "color": "#223",
-      "bgcolor": "#335",
-      "shape": 1
-    },
-    {
-      "id": 326,
-      "type": "PreviewImage",
-      "pos": [
-        14237.278524137195,
-        3331.6024648535777
-      ],
-      "size": [
-        210,
-        246
-      ],
-      "flags": {},
-      "order": 186,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 528
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": [],
-      "color": "#223",
-      "bgcolor": "#335",
-      "shape": 1
-    },
-    {
-      "id": 327,
-      "type": "PreviewImage",
-      "pos": [
-        14237.278524137195,
-        3591.6024648535777
-      ],
-      "size": [
-        210,
-        246
-      ],
-      "flags": {},
-      "order": 185,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 527
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": [],
-      "color": "#223",
-      "bgcolor": "#335",
-      "shape": 1
-    },
-    {
-      "id": 328,
-      "type": "SaveImage",
-      "pos": [
-        14537.278524137195,
-        3071.6024648535777
-      ],
-      "size": [
-        435,
-        450
-      ],
-      "flags": {},
-      "order": 184,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 526
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "Node name for S&R": "SaveImage"
-      },
-      "widgets_values": [
-        "HIPS_GROIN_Detailer_POSE"
-      ],
-      "color": "#223",
-      "bgcolor": "#335",
       "shape": 1
     },
     {
@@ -10817,7 +10244,7 @@
           "name": "SEGS",
           "type": "SEGS",
           "links": [
-            532
+            553
           ]
         }
       ],
@@ -10835,285 +10262,6 @@
       ],
       "color": "#2a363b",
       "bgcolor": "#3f5159",
-      "shape": 1
-    },
-    {
-      "id": 331,
-      "type": "DetailerForEachDebugPipe",
-      "pos": [
-        13237.278524137195,
-        3971.6024648535777
-      ],
-      "size": [
-        556.8,
-        664
-      ],
-      "flags": {},
-      "order": 190,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 531
-        },
-        {
-          "name": "segs",
-          "type": "SEGS",
-          "link": 532
-        },
-        {
-          "name": "basic_pipe",
-          "type": "BASIC_PIPE",
-          "link": 533
-        },
-        {
-          "name": "detailer_hook",
-          "shape": 7,
-          "type": "DETAILER_HOOK",
-          "link": null
-        },
-        {
-          "name": "refiner_basic_pipe_opt",
-          "shape": 7,
-          "type": "BASIC_PIPE",
-          "link": null
-        },
-        {
-          "name": "scheduler_func_opt",
-          "shape": 7,
-          "type": "SCHEDULER_FUNC",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "links": [
-            534
-          ]
-        },
-        {
-          "name": "segs",
-          "type": "SEGS",
-          "links": null
-        },
-        {
-          "name": "basic_pipe",
-          "type": "BASIC_PIPE",
-          "links": null
-        },
-        {
-          "name": "cropped",
-          "shape": 6,
-          "type": "IMAGE",
-          "links": [
-            535
-          ]
-        },
-        {
-          "name": "cropped_refined",
-          "shape": 6,
-          "type": "IMAGE",
-          "links": [
-            536
-          ]
-        },
-        {
-          "name": "cropped_refined_alpha",
-          "shape": 6,
-          "type": "IMAGE",
-          "links": [
-            537
-          ]
-        },
-        {
-          "name": "cnet_images",
-          "shape": 6,
-          "type": "IMAGE",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-impact-pack",
-        "Node name for S&R": "DetailerForEachDebugPipe",
-        "aux_id": "ltdrdata/ComfyUI-Impact-Pack"
-      },
-      "widgets_values": [
-        512,
-        true,
-        1024,
-        100,
-        "fixed",
-        30,
-        8,
-        "euler",
-        "normal",
-        0.5000000000000001,
-        5,
-        true,
-        true,
-        "",
-        0.2,
-        3,
-        false,
-        20,
-        false,
-        false
-      ],
-      "color": "#2a363b",
-      "bgcolor": "#3f5159",
-      "shape": 1
-    },
-    {
-      "id": 332,
-      "type": "PreviewImage",
-      "pos": [
-        13837.278524137195,
-        3971.6024648535777
-      ],
-      "size": [
-        210,
-        246
-      ],
-      "flags": {},
-      "order": 194,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 537
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": [],
-      "color": "#223",
-      "bgcolor": "#335",
-      "shape": 1
-    },
-    {
-      "id": 333,
-      "type": "PreviewImage",
-      "pos": [
-        13837.278524137195,
-        4231.602464853578
-      ],
-      "size": [
-        210,
-        246
-      ],
-      "flags": {},
-      "order": 193,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 536
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": [],
-      "color": "#223",
-      "bgcolor": "#335",
-      "shape": 1
-    },
-    {
-      "id": 334,
-      "type": "PreviewImage",
-      "pos": [
-        13837.278524137195,
-        4491.602464853578
-      ],
-      "size": [
-        210,
-        246
-      ],
-      "flags": {},
-      "order": 192,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 535
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": [],
-      "color": "#223",
-      "bgcolor": "#335",
-      "shape": 1
-    },
-    {
-      "id": 335,
-      "type": "SaveImage",
-      "pos": [
-        14137.278524137195,
-        3971.6024648535777
-      ],
-      "size": [
-        435,
-        450
-      ],
-      "flags": {},
-      "order": 191,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 534
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "Node name for S&R": "SaveImage"
-      },
-      "widgets_values": [
-        "HIPS_GROIN_Detailer_MANUAL"
-      ],
-      "color": "#223",
-      "bgcolor": "#335",
       "shape": 1
     },
     {
@@ -12072,6 +11220,63 @@
       "widgets_values": [],
       "color": "#223",
       "bgcolor": "#335"
+    },
+    {
+      "id": 351,
+      "type": "Any Switch (rgthree)",
+      "title": "HIPS/GROIN source select (priority: Manual > SEGM > BBOX > Pose)",
+      "pos": [
+        15200.0,
+        700.0
+      ],
+      "size": [
+        263.85,
+        106
+      ],
+      "flags": {},
+      "order": 213,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "any_01",
+          "type": "*",
+          "link": 553
+        },
+        {
+          "name": "any_02",
+          "type": "*",
+          "link": 554
+        },
+        {
+          "name": "any_03",
+          "type": "*",
+          "link": 555
+        },
+        {
+          "name": "any_04",
+          "type": "*",
+          "link": 556
+        },
+        {
+          "name": "any_05",
+          "type": "*",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "shape": 3,
+          "type": "*",
+          "links": [
+            557
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "rgthree/rgthree-comfy"
+      },
+      "widgets_values": []
     }
   ],
   "links": [
@@ -12940,14 +12145,6 @@
       "CLIP"
     ],
     [
-      266,
-      212,
-      0,
-      183,
-      0,
-      "IMAGE"
-    ],
-    [
       267,
       181,
       0,
@@ -13300,14 +12497,6 @@
       "BASIC_PIPE"
     ],
     [
-      311,
-      212,
-      0,
-      213,
-      0,
-      "IMAGE"
-    ],
-    [
       312,
       218,
       0,
@@ -13368,14 +12557,6 @@
       220,
       0,
       217,
-      0,
-      "IMAGE"
-    ],
-    [
-      320,
-      212,
-      0,
-      218,
       0,
       "IMAGE"
     ],
@@ -14164,54 +13345,6 @@
       "SEGM_DETECTOR"
     ],
     [
-      492,
-      303,
-      0,
-      304,
-      1,
-      "SEGS"
-    ],
-    [
-      493,
-      186,
-      0,
-      304,
-      0,
-      "IMAGE"
-    ],
-    [
-      495,
-      304,
-      3,
-      307,
-      0,
-      "IMAGE"
-    ],
-    [
-      496,
-      304,
-      4,
-      306,
-      0,
-      "IMAGE"
-    ],
-    [
-      497,
-      304,
-      5,
-      305,
-      0,
-      "IMAGE"
-    ],
-    [
-      498,
-      304,
-      0,
-      308,
-      0,
-      "IMAGE"
-    ],
-    [
       499,
       244,
       0,
@@ -14292,14 +13425,6 @@
       "CONDITIONING"
     ],
     [
-      507,
-      313,
-      0,
-      304,
-      2,
-      "BASIC_PIPE"
-    ],
-    [
       510,
       314,
       0,
@@ -14313,22 +13438,6 @@
       0,
       315,
       1,
-      "IMAGE"
-    ],
-    [
-      512,
-      315,
-      0,
-      316,
-      1,
-      "SEGS"
-    ],
-    [
-      513,
-      186,
-      0,
-      316,
-      0,
       "IMAGE"
     ],
     [
@@ -14404,124 +13513,12 @@
       "MASK"
     ],
     [
-      523,
-      323,
-      0,
-      324,
-      1,
-      "SEGS"
-    ],
-    [
-      524,
-      186,
-      0,
-      324,
-      0,
-      "IMAGE"
-    ],
-    [
-      525,
-      313,
-      0,
-      324,
-      2,
-      "BASIC_PIPE"
-    ],
-    [
-      526,
-      324,
-      0,
-      328,
-      0,
-      "IMAGE"
-    ],
-    [
-      527,
-      324,
-      3,
-      327,
-      0,
-      "IMAGE"
-    ],
-    [
-      528,
-      324,
-      4,
-      326,
-      0,
-      "IMAGE"
-    ],
-    [
-      529,
-      324,
-      5,
-      325,
-      0,
-      "IMAGE"
-    ],
-    [
       530,
       329,
       1,
       330,
       0,
       "MASK"
-    ],
-    [
-      531,
-      186,
-      0,
-      331,
-      0,
-      "IMAGE"
-    ],
-    [
-      532,
-      330,
-      0,
-      331,
-      1,
-      "SEGS"
-    ],
-    [
-      533,
-      313,
-      0,
-      331,
-      2,
-      "BASIC_PIPE"
-    ],
-    [
-      534,
-      331,
-      0,
-      335,
-      0,
-      "IMAGE"
-    ],
-    [
-      535,
-      331,
-      3,
-      334,
-      0,
-      "IMAGE"
-    ],
-    [
-      536,
-      331,
-      4,
-      333,
-      0,
-      "IMAGE"
-    ],
-    [
-      537,
-      331,
-      5,
-      332,
-      0,
-      "IMAGE"
     ],
     [
       538,
@@ -14634,6 +13631,78 @@
       350,
       0,
       "STRING"
+    ],
+    [
+      552,
+      212,
+      0,
+      316,
+      0,
+      "IMAGE"
+    ],
+    [
+      553,
+      330,
+      0,
+      351,
+      0,
+      "SEGS"
+    ],
+    [
+      554,
+      303,
+      0,
+      351,
+      1,
+      "SEGS"
+    ],
+    [
+      555,
+      315,
+      0,
+      351,
+      2,
+      "SEGS"
+    ],
+    [
+      556,
+      323,
+      0,
+      351,
+      3,
+      "SEGS"
+    ],
+    [
+      557,
+      351,
+      0,
+      316,
+      1,
+      "SEGS"
+    ],
+    [
+      558,
+      316,
+      0,
+      213,
+      0,
+      "IMAGE"
+    ],
+    [
+      559,
+      316,
+      0,
+      218,
+      0,
+      "IMAGE"
+    ],
+    [
+      560,
+      316,
+      0,
+      183,
+      0,
+      "IMAGE"
     ]
   ],
   "groups": [
@@ -14758,7 +13827,7 @@
       "flags": {}
     },
     {
-      "title": "HIPS/GROIN Detailer (SEGM, BBOX, Pose, or Manual, off by default)",
+      "title": "HIPS/GROIN Detailer (SEGM, BBOX, Pose, or Manual -- now feeds the upscaler via Any Switch, priority Manual>SEGM>BBOX>Pose)",
       "bounding": [
         12157.278524137195,
         491.60246485357766,
