@@ -1,8 +1,8 @@
 {
   "id": "9ae6082b-c7f4-433c-9971-7a8f65a3ea65",
   "revision": 0,
-  "last_node_id": 328,
-  "last_link_id": 529,
+  "last_node_id": 335,
+  "last_link_id": 537,
   "nodes": [
     {
       "id": 117,
@@ -2697,7 +2697,8 @@
             513,
             519,
             521,
-            524
+            524,
+            531
           ]
         },
         {
@@ -9913,7 +9914,8 @@
           "links": [
             507,
             514,
-            525
+            525,
+            533
           ]
         }
       ],
@@ -10738,6 +10740,375 @@
       },
       "widgets_values": [
         "HIPS_GROIN_Detailer_POSE"
+      ],
+      "color": "#223",
+      "bgcolor": "#335",
+      "shape": 1
+    },
+    {
+      "id": 329,
+      "type": "LoadImage",
+      "title": "MANUAL mask (load the saved output PNG, right-click -> Open in MaskEditor and paint the region -- use when SEGM/BBOX/Pose all miss)",
+      "pos": [
+        12237.278524137195,
+        3971.6024648535777
+      ],
+      "size": [
+        420,
+        500
+      ],
+      "flags": {},
+      "order": 188,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": []
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            530
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "placeholder.png",
+        "image"
+      ],
+      "color": "#223",
+      "bgcolor": "#335",
+      "shape": 1
+    },
+    {
+      "id": 330,
+      "type": "MaskToSEGS",
+      "pos": [
+        12737.278524137195,
+        3971.6024648535777
+      ],
+      "size": [
+        400,
+        224
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 189,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 530
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SEGS",
+          "type": "SEGS",
+          "links": [
+            532
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-pack",
+        "Node name for S&R": "MaskToSEGS",
+        "aux_id": "ltdrdata/ComfyUI-Impact-Pack"
+      },
+      "widgets_values": [
+        false,
+        3.0,
+        false,
+        10,
+        false
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159",
+      "shape": 1
+    },
+    {
+      "id": 331,
+      "type": "DetailerForEachDebugPipe",
+      "pos": [
+        13237.278524137195,
+        3971.6024648535777
+      ],
+      "size": [
+        556.8,
+        664
+      ],
+      "flags": {},
+      "order": 190,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 531
+        },
+        {
+          "name": "segs",
+          "type": "SEGS",
+          "link": 532
+        },
+        {
+          "name": "basic_pipe",
+          "type": "BASIC_PIPE",
+          "link": 533
+        },
+        {
+          "name": "detailer_hook",
+          "shape": 7,
+          "type": "DETAILER_HOOK",
+          "link": null
+        },
+        {
+          "name": "refiner_basic_pipe_opt",
+          "shape": 7,
+          "type": "BASIC_PIPE",
+          "link": null
+        },
+        {
+          "name": "scheduler_func_opt",
+          "shape": 7,
+          "type": "SCHEDULER_FUNC",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            534
+          ]
+        },
+        {
+          "name": "segs",
+          "type": "SEGS",
+          "links": null
+        },
+        {
+          "name": "basic_pipe",
+          "type": "BASIC_PIPE",
+          "links": null
+        },
+        {
+          "name": "cropped",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": [
+            535
+          ]
+        },
+        {
+          "name": "cropped_refined",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": [
+            536
+          ]
+        },
+        {
+          "name": "cropped_refined_alpha",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": [
+            537
+          ]
+        },
+        {
+          "name": "cnet_images",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-pack",
+        "Node name for S&R": "DetailerForEachDebugPipe",
+        "aux_id": "ltdrdata/ComfyUI-Impact-Pack"
+      },
+      "widgets_values": [
+        512,
+        true,
+        1024,
+        100,
+        "fixed",
+        30,
+        8,
+        "euler",
+        "normal",
+        0.5000000000000001,
+        5,
+        true,
+        true,
+        "",
+        0.2,
+        3,
+        false,
+        20,
+        false,
+        false
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159",
+      "shape": 1
+    },
+    {
+      "id": 332,
+      "type": "PreviewImage",
+      "pos": [
+        13837.278524137195,
+        3971.6024648535777
+      ],
+      "size": [
+        210,
+        246
+      ],
+      "flags": {},
+      "order": 194,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 537
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": [],
+      "color": "#223",
+      "bgcolor": "#335",
+      "shape": 1
+    },
+    {
+      "id": 333,
+      "type": "PreviewImage",
+      "pos": [
+        13837.278524137195,
+        4231.602464853578
+      ],
+      "size": [
+        210,
+        246
+      ],
+      "flags": {},
+      "order": 193,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 536
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": [],
+      "color": "#223",
+      "bgcolor": "#335",
+      "shape": 1
+    },
+    {
+      "id": 334,
+      "type": "PreviewImage",
+      "pos": [
+        13837.278524137195,
+        4491.602464853578
+      ],
+      "size": [
+        210,
+        246
+      ],
+      "flags": {},
+      "order": 192,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 535
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": [],
+      "color": "#223",
+      "bgcolor": "#335",
+      "shape": 1
+    },
+    {
+      "id": 335,
+      "type": "SaveImage",
+      "pos": [
+        14137.278524137195,
+        3971.6024648535777
+      ],
+      "size": [
+        435,
+        450
+      ],
+      "flags": {},
+      "order": 191,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 534
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "HIPS_GROIN_Detailer_MANUAL"
       ],
       "color": "#223",
       "bgcolor": "#335",
@@ -13128,6 +13499,70 @@
       325,
       0,
       "IMAGE"
+    ],
+    [
+      530,
+      329,
+      1,
+      330,
+      0,
+      "MASK"
+    ],
+    [
+      531,
+      186,
+      0,
+      331,
+      0,
+      "IMAGE"
+    ],
+    [
+      532,
+      330,
+      0,
+      331,
+      1,
+      "SEGS"
+    ],
+    [
+      533,
+      313,
+      0,
+      331,
+      2,
+      "BASIC_PIPE"
+    ],
+    [
+      534,
+      331,
+      0,
+      335,
+      0,
+      "IMAGE"
+    ],
+    [
+      535,
+      331,
+      3,
+      334,
+      0,
+      "IMAGE"
+    ],
+    [
+      536,
+      331,
+      4,
+      333,
+      0,
+      "IMAGE"
+    ],
+    [
+      537,
+      331,
+      5,
+      332,
+      0,
+      "IMAGE"
     ]
   ],
   "groups": [
@@ -13252,12 +13687,12 @@
       "flags": {}
     },
     {
-      "title": "HIPS/GROIN Detailer (SEGM, BBOX, or Pose, off by default)",
+      "title": "HIPS/GROIN Detailer (SEGM, BBOX, Pose, or Manual, off by default)",
       "bounding": [
         12157.278524137195,
         491.60246485357766,
         2900.0,
-        3400.0
+        4300.0
       ],
       "color": "#3f789e",
       "font_size": 24,
