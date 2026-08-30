@@ -41,5 +41,9 @@
     "url": "https://huggingface.co/iahhnim/adetailer_collection/resolve/main/animePussyYOLO_v4/AnimePussyCameltoePenis-best2.pt",
     "subdir": "ultralytics/bbox/NSFWDetection",
     "min_size_mb": 5
+  },
+  "OpenPoseXL2.safetensors": {
+    "url": "https://huggingface.co/thibaud/controlnet-openpose-sdxl-1.0/resolve/main/OpenPoseXL2.safetensors",
+    "subdir": "controlnet/SDXL"
   }
 }

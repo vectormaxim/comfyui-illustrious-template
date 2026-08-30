@@ -1,8 +1,8 @@
 {
   "id": "9ae6082b-c7f4-433c-9971-7a8f65a3ea65",
   "revision": 0,
-  "last_node_id": 344,
-  "last_link_id": 544,
+  "last_node_id": 347,
+  "last_link_id": 549,
   "nodes": [
     {
       "id": 117,
@@ -8923,12 +8923,12 @@
         {
           "name": "positive",
           "type": "CONDITIONING",
-          "link": 455
+          "link": 548
         },
         {
           "name": "negative",
           "type": "CONDITIONING",
-          "link": 456
+          "link": 549
         },
         {
           "name": "latent_image",
@@ -9051,7 +9051,8 @@
             465,
             476,
             477,
-            478
+            478,
+            547
           ]
         }
       ],
@@ -11507,6 +11508,315 @@
         "customSortAlphabet": "",
         "toggleRestriction": "default"
       }
+    },
+    {
+      "id": 345,
+      "type": "OpenposeEditorNode",
+      "title": "Manual Pose (off by default -- drag joints, use when you want a specific pose)",
+      "pos": [
+        4200.0,
+        400.0
+      ],
+      "size": [
+        400,
+        464
+      ],
+      "flags": {},
+      "order": 210,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "POSE_KEYPOINT",
+          "shape": 7,
+          "type": "POSE_KEYPOINT",
+          "link": null
+        },
+        {
+          "name": "show_body",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "show_body"
+          },
+          "link": null
+        },
+        {
+          "name": "show_face",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "show_face"
+          },
+          "link": null
+        },
+        {
+          "name": "show_hands",
+          "shape": 7,
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "show_hands"
+          },
+          "link": null
+        },
+        {
+          "name": "resolution_x",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "resolution_x"
+          },
+          "link": null
+        },
+        {
+          "name": "pose_marker_size",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "pose_marker_size"
+          },
+          "link": null
+        },
+        {
+          "name": "face_marker_size",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "face_marker_size"
+          },
+          "link": null
+        },
+        {
+          "name": "hand_marker_size",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "hand_marker_size"
+          },
+          "link": null
+        },
+        {
+          "name": "hands_scale",
+          "shape": 7,
+          "type": "FLOAT",
+          "widget": {
+            "name": "hands_scale"
+          },
+          "link": null
+        },
+        {
+          "name": "body_scale",
+          "shape": 7,
+          "type": "FLOAT",
+          "widget": {
+            "name": "body_scale"
+          },
+          "link": null
+        },
+        {
+          "name": "head_scale",
+          "shape": 7,
+          "type": "FLOAT",
+          "widget": {
+            "name": "head_scale"
+          },
+          "link": null
+        },
+        {
+          "name": "overall_scale",
+          "shape": 7,
+          "type": "FLOAT",
+          "widget": {
+            "name": "overall_scale"
+          },
+          "link": null
+        },
+        {
+          "name": "scalelist_behavior",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "scalelist_behavior"
+          },
+          "link": null
+        },
+        {
+          "name": "match_scalelist_method",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "match_scalelist_method"
+          },
+          "link": null
+        },
+        {
+          "name": "only_scale_pose_index",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "only_scale_pose_index"
+          },
+          "link": null
+        },
+        {
+          "name": "POSE_JSON",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "POSE_JSON"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "POSE_IMAGE",
+          "type": "IMAGE",
+          "links": [
+            545
+          ]
+        },
+        {
+          "name": "POSE_KEYPOINT",
+          "type": "POSE_KEYPOINT",
+          "links": []
+        },
+        {
+          "name": "POSE_JSON",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "aux_id": "westNeighbor/ComfyUI-ultimate-openpose-editor",
+        "Node name for S&R": "OpenposeEditorNode"
+      },
+      "widgets_values": [
+        true,
+        true,
+        true,
+        -1,
+        4,
+        3,
+        2,
+        1,
+        1,
+        1,
+        1,
+        "poses",
+        "loop extend",
+        99,
+        ""
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159",
+      "shape": 1
+    },
+    {
+      "id": 346,
+      "type": "ControlNetLoader",
+      "pos": [
+        4700.0,
+        400.0
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 211,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CONTROL_NET",
+          "type": "CONTROL_NET",
+          "links": [
+            546
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "ControlNetLoader"
+      },
+      "widgets_values": [
+        "SDXL/OpenPoseXL2.safetensors"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159",
+      "shape": 1
+    },
+    {
+      "id": 347,
+      "type": "ControlNetApplyAdvanced",
+      "title": "Apply OpenPose ControlNet",
+      "pos": [
+        4700.0,
+        520.0
+      ],
+      "size": [
+        270,
+        186
+      ],
+      "flags": {},
+      "order": 212,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 455
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 456
+        },
+        {
+          "name": "control_net",
+          "type": "CONTROL_NET",
+          "link": 546
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 545
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 547
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            548
+          ]
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            549
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "ControlNetApplyAdvanced"
+      },
+      "widgets_values": [
+        1.0,
+        0.0,
+        1.0
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159",
+      "shape": 1
     }
   ],
   "links": [
@@ -13314,16 +13624,16 @@
       455,
       292,
       0,
-      287,
-      1,
+      347,
+      0,
       "CONDITIONING"
     ],
     [
       456,
       292,
       1,
-      287,
-      2,
+      347,
+      1,
       "CONDITIONING"
     ],
     [
@@ -14013,6 +14323,46 @@
       343,
       0,
       "STRING"
+    ],
+    [
+      545,
+      345,
+      0,
+      347,
+      3,
+      "IMAGE"
+    ],
+    [
+      546,
+      346,
+      0,
+      347,
+      2,
+      "CONTROL_NET"
+    ],
+    [
+      547,
+      285,
+      2,
+      347,
+      4,
+      "VAE"
+    ],
+    [
+      548,
+      347,
+      0,
+      287,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      549,
+      347,
+      1,
+      287,
+      2,
+      "CONDITIONING"
     ]
   ],
   "groups": [

@@ -11,13 +11,16 @@
     }
   },
   "auto_download": [
-    "depth_anything_vitl14.pth"
+    "depth_anything_vitl14.pth",
+    "dw-ll_ucoco_384_bs5.torchscript.pt",
+    "yolox_l.onnx"
   ],
   "models_symlink": true,
   "custom_nodes": {
     "target": "image",
     "repos": [
-      "https://github.com/vectormaxim/ComfyUI-HipRegionMask.git"
+      "https://github.com/vectormaxim/ComfyUI-HipRegionMask.git",
+      "https://github.com/westNeighbor/ComfyUI-ultimate-openpose-editor.git"
     ]
   },
   "sage": true
