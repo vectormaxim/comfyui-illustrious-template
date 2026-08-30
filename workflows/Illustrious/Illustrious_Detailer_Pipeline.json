@@ -1,8 +1,8 @@
 {
   "id": "9ae6082b-c7f4-433c-9971-7a8f65a3ea65",
   "revision": 0,
-  "last_node_id": 337,
-  "last_link_id": 539,
+  "last_node_id": 344,
+  "last_link_id": 544,
   "nodes": [
     {
       "id": 117,
@@ -11206,6 +11206,307 @@
       "color": "#223",
       "bgcolor": "#335",
       "shape": 1
+    },
+    {
+      "id": 338,
+      "type": "PrimitiveStringMultiline",
+      "title": "Prompt 1",
+      "pos": [
+        -160.0,
+        1650.0
+      ],
+      "size": [
+        400,
+        220
+      ],
+      "flags": {},
+      "order": 201,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "value",
+          "type": "STRING",
+          "widget": {
+            "name": "value"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            540
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "PrimitiveStringMultiline"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 339,
+      "type": "PrimitiveStringMultiline",
+      "title": "Prompt 2",
+      "pos": [
+        320.0,
+        1650.0
+      ],
+      "size": [
+        400,
+        220
+      ],
+      "flags": {},
+      "order": 202,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "value",
+          "type": "STRING",
+          "widget": {
+            "name": "value"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            541
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "PrimitiveStringMultiline"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 340,
+      "type": "PrimitiveStringMultiline",
+      "title": "Prompt 3",
+      "pos": [
+        800.0,
+        1650.0
+      ],
+      "size": [
+        400,
+        220
+      ],
+      "flags": {},
+      "order": 203,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "value",
+          "type": "STRING",
+          "widget": {
+            "name": "value"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            542
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "PrimitiveStringMultiline"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 341,
+      "type": "PrimitiveStringMultiline",
+      "title": "Prompt 4",
+      "pos": [
+        1280.0,
+        1650.0
+      ],
+      "size": [
+        400,
+        220
+      ],
+      "flags": {},
+      "order": 204,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "value",
+          "type": "STRING",
+          "widget": {
+            "name": "value"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            543
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "PrimitiveStringMultiline"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 342,
+      "type": "Power Puter (rgthree)",
+      "title": "Merge Prompts",
+      "pos": [
+        1780.0,
+        1650.0
+      ],
+      "size": [
+        280,
+        200
+      ],
+      "flags": {},
+      "order": 205,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "a",
+          "type": "*",
+          "link": 540
+        },
+        {
+          "name": "b",
+          "type": "*",
+          "link": 541
+        },
+        {
+          "name": "c",
+          "type": "*",
+          "link": 542
+        },
+        {
+          "name": "d",
+          "type": "*",
+          "link": 543
+        },
+        {
+          "name": "e",
+          "type": "*",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "STRING",
+          "name": "*",
+          "shape": 3,
+          "type": "STRING",
+          "links": [
+            544
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "rgthree/rgthree-comfy"
+      },
+      "widgets_values": [
+        {
+          "outputs": [
+            "STRING"
+          ]
+        },
+        "', '.join([x for x in [a, b, c, d] if x])"
+      ]
+    },
+    {
+      "id": 343,
+      "type": "ShowText|pysssss",
+      "title": "Merged Prompt (wire this into your positive CLIPTextEncode's text input)",
+      "pos": [
+        2100.0,
+        1650.0
+      ],
+      "size": [
+        300,
+        200
+      ],
+      "flags": {},
+      "order": 206,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 544
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-Custom-Scripts",
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 344,
+      "type": "Fast Groups Bypasser (rgthree)",
+      "title": "Toggle Prompt Segments",
+      "pos": [
+        2450.0,
+        1650.0
+      ],
+      "size": [
+        245.9,
+        120
+      ],
+      "flags": {},
+      "order": 207,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "OPT_CONNECTION",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "properties": {
+        "matchColors": "",
+        "matchTitle": "^Prompt \\d",
+        "showNav": true,
+        "showAllGraphs": true,
+        "sort": "position",
+        "customSortAlphabet": "",
+        "toggleRestriction": "default"
+      }
     }
   ],
   "links": [
@@ -13672,6 +13973,46 @@
       337,
       0,
       "IMAGE"
+    ],
+    [
+      540,
+      338,
+      0,
+      342,
+      0,
+      "STRING"
+    ],
+    [
+      541,
+      339,
+      0,
+      342,
+      1,
+      "STRING"
+    ],
+    [
+      542,
+      340,
+      0,
+      342,
+      2,
+      "STRING"
+    ],
+    [
+      543,
+      341,
+      0,
+      342,
+      3,
+      "STRING"
+    ],
+    [
+      544,
+      342,
+      0,
+      343,
+      0,
+      "STRING"
     ]
   ],
   "groups": [
@@ -13805,6 +14146,54 @@
       ],
       "color": "#3f789e",
       "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 11,
+      "title": "Prompt 1",
+      "bounding": [
+        -180.0,
+        1590.0,
+        440,
+        320
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 12,
+      "title": "Prompt 2",
+      "bounding": [
+        300.0,
+        1590.0,
+        440,
+        320
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 13,
+      "title": "Prompt 3",
+      "bounding": [
+        780.0,
+        1590.0,
+        440,
+        320
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 14,
+      "title": "Prompt 4",
+      "bounding": [
+        1260.0,
+        1590.0,
+        440,
+        320
+      ],
+      "color": "#3f789e",
       "flags": {}
     }
   ],
