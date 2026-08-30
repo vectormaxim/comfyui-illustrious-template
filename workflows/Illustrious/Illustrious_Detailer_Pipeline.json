@@ -9934,7 +9934,7 @@
     {
       "id": 314,
       "type": "UltralyticsDetectorProvider",
-      "title": "HIPS/GROIN BBOX (cameltoe, works over clothing)",
+      "title": "HIPS/GROIN BBOX (works over clothing)",
       "pos": [
         12237.278524137195,
         2171.6024648535777
@@ -9967,7 +9967,7 @@
         "aux_id": "ltdrdata/ComfyUI-Impact-Subpack"
       },
       "widgets_values": [
-        "bbox/NSFWDetection/AnimePussyCameltoePenis-best2.pt"
+        "bbox/NSFWDetection/pussyV2.pt"
       ],
       "color": "#2a363b",
       "bgcolor": "#3f5159",
