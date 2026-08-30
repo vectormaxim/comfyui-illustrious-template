@@ -5,8 +5,9 @@ Drives the shared runtime's provisioner (comfyui-runtime/src/provisioner.py,
 pinned by pins.json) against this repo's REAL template.json,
 models_registry.json and workflows/. Single flag, no swap groups, no
 precision profiles: the only shapes worth asserting are "flag off queues
-nothing", "flag on copies the one workflow and queues its registry files",
-and "the scrubbed checkpoint/LoRA placeholders are never queued".
+nothing", "flag on copies every workflow in workflows/Illustrious and queues
+their registry files", and "the scrubbed checkpoint/LoRA placeholders are
+never queued".
 
 Run: python3 tools/test_provisioner.py
 Stdlib only, no pytest. Needs template.json + pins.json in the repo root.
@@ -25,7 +26,8 @@ from validate_models import runtime_dir  # noqa: E402
 CHECKPOINT_PLACEHOLDER = "Your_Checkpoint_Here.safetensors"
 LORA_PLACEHOLDER = "Your_Character_LoRA_Here.safetensors"
 FLAG = "download_illustrious"
-EXPECTED_WORKFLOW_COUNT = 1
+# workflows/Illustrious/: the reference pipeline + the curated "Ultimate" build.
+EXPECTED_WORKFLOW_COUNT = 2
 
 
 def load_json(path: Path, hint: str) -> dict:
@@ -83,7 +85,7 @@ def main() -> int:
         assert wf_count == 0 and len(lines) == 0, (wf_count, len(lines))
         print(f"✅ {FLAG}=unset: 0 workflows copied, 0 models queued")
 
-        # --- Flag on: the one workflow copied, its registry files queued ---
+        # --- Flag on: every Illustrious workflow copied, registry files queued ---
         dst, manifest = tmp / "wf-on", tmp / "manifest-on.tsv"
         proc = run_provisioner(provisioner, REPO / "template.json", REPO / "src" / "models_registry.json",
                                 base_env(**{FLAG: "true"}), dst, manifest, tmp / "models-on")
