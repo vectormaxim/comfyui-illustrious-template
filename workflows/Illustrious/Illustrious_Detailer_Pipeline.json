@@ -10325,7 +10325,7 @@
       ],
       "flags": {},
       "order": 180,
-      "mode": 4,
+      "mode": 0,
       "inputs": [
         {
           "name": "image",
@@ -10379,7 +10379,7 @@
       ],
       "flags": {},
       "order": 181,
-      "mode": 4,
+      "mode": 0,
       "inputs": [
         {
           "name": "pose_keypoint",
@@ -10435,7 +10435,7 @@
         "collapsed": true
       },
       "order": 182,
-      "mode": 4,
+      "mode": 0,
       "inputs": [
         {
           "name": "mask",
@@ -10481,7 +10481,7 @@
       ],
       "flags": {},
       "order": 183,
-      "mode": 4,
+      "mode": 0,
       "inputs": [
         {
           "name": "image",
@@ -10610,7 +10610,7 @@
       ],
       "flags": {},
       "order": 187,
-      "mode": 4,
+      "mode": 0,
       "inputs": [
         {
           "name": "images",
@@ -10647,7 +10647,7 @@
       ],
       "flags": {},
       "order": 186,
-      "mode": 4,
+      "mode": 0,
       "inputs": [
         {
           "name": "images",
@@ -10684,7 +10684,7 @@
       ],
       "flags": {},
       "order": 185,
-      "mode": 4,
+      "mode": 0,
       "inputs": [
         {
           "name": "images",
@@ -10721,7 +10721,7 @@
       ],
       "flags": {},
       "order": 184,
-      "mode": 4,
+      "mode": 0,
       "inputs": [
         {
           "name": "images",
