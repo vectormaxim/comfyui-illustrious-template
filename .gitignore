@@ -4,3 +4,8 @@ __pycache__/
 .DS_Store
 architecture.md
 issues.md
+
+# Personal pinned copies of the workflows (real checkpoint/LoRA names).
+# These must live OUTSIDE workflows/, or validate_models walks them and goes
+# red on the non-placeholder model names.
+local/
