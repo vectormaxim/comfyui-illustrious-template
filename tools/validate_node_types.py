@@ -90,21 +90,38 @@ def provider(node: dict):
     return None, False
 
 
+def walk_nodes(graph):
+    """Every node in the graph, including those inside subgraph definitions.
+
+    A subgraph instance node reports cnr_id "comfy-core" -- it is a frontend
+    construct, not a pack node -- so scanning only the top level would let a
+    subgraph hide a node from an uninstalled pack. The definitions live in
+    graph["definitions"]["subgraphs"], each with its own nodes list, and those
+    can nest.
+    """
+    for node in graph.get("nodes", []):
+        yield node, ""
+    for sub in (graph.get("definitions") or {}).get("subgraphs", []):
+        label = f" [subgraph {sub.get('name') or sub.get('id', '')[:8]}]"
+        for node, inner in walk_nodes(sub):
+            yield node, (inner or label)
+
+
 def main() -> int:
     packs = installed_packs()
     errors, unknown = [], []
 
     for wf in sorted((REPO / "workflows").rglob("*.json")):
         graph = json.loads(wf.read_text())
-        for node in graph.get("nodes", []):
+        for node, where in walk_nodes(graph):
             name, is_core = provider(node)
             if is_core:
                 continue
             if name is None:
-                unknown.append((wf.name, node["id"], node.get("type")))
+                unknown.append((wf.name + where, node["id"], node.get("type")))
                 continue
             if norm(name) not in packs:
-                errors.append((wf.name, node["id"], node.get("type"), name))
+                errors.append((wf.name + where, node["id"], node.get("type"), name))
 
     for wfname, nid, ntype, name in errors:
         print(f"❌ {wfname}: node {nid} ({ntype}) needs pack {name!r}, "
