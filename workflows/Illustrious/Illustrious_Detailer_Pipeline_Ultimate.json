@@ -1,8 +1,8 @@
 {
   "id": "1b0f3a5c-9d24-4a7e-9a1e-4f0c8b26d511",
   "revision": 0,
-  "last_node_id": 360,
-  "last_link_id": 634,
+  "last_node_id": 366,
+  "last_link_id": 644,
   "nodes": [
     {
       "id": 117,
@@ -898,6 +898,14 @@
           "name": "clip",
           "type": "CLIP",
           "link": 597
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 640
         }
       ],
       "outputs": [
@@ -2738,6 +2746,14 @@
           "name": "clip",
           "type": "CLIP",
           "link": 602
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 644
         }
       ],
       "outputs": [
@@ -3610,6 +3626,14 @@
           "name": "clip",
           "type": "CLIP",
           "link": 600
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 643
         }
       ],
       "outputs": [
@@ -5821,6 +5845,14 @@
           "name": "clip",
           "type": "CLIP",
           "link": 607
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 637
         }
       ],
       "outputs": [
@@ -6850,7 +6882,10 @@
           "links": [
             544,
             559,
-            630
+            630,
+            635,
+            638,
+            641
           ]
         }
       ],
@@ -7972,6 +8007,271 @@
         "', '.join([x for x in [a, b] if x])"
       ],
       "id": 360
+    },
+    {
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        7710.974324918445,
+        -587.1993082177113
+      ],
+      "size": [
+        340,
+        110
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "title": "HIPS/GROIN emphasis",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            636
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "PrimitiveStringMultiline"
+      },
+      "widgets_values": [
+        "detailed anatomy"
+      ],
+      "id": 361
+    },
+    {
+      "type": "Power Puter (rgthree)",
+      "pos": [
+        7710.974324918445,
+        -447.1993082177113
+      ],
+      "size": [
+        340,
+        130
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "title": "HIPS/GROIN prompt  ( merged prompt + emphasis )",
+      "inputs": [
+        {
+          "name": "a",
+          "type": "*",
+          "link": 635
+        },
+        {
+          "name": "b",
+          "type": "*",
+          "link": 636
+        },
+        {
+          "name": "c",
+          "type": "*",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "STRING",
+          "name": "*",
+          "shape": 3,
+          "type": "STRING",
+          "links": [
+            637
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "rgthree/rgthree-comfy"
+      },
+      "widgets_values": [
+        {
+          "outputs": [
+            "STRING"
+          ]
+        },
+        "', '.join([x for x in [a, b] if x])"
+      ],
+      "id": 362
+    },
+    {
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        7710.974324918445,
+        -287.1993082177113
+      ],
+      "size": [
+        340,
+        110
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "title": "HANDS emphasis",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            639
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "PrimitiveStringMultiline"
+      },
+      "widgets_values": [
+        "detailed hands, perfect fingers"
+      ],
+      "id": 363
+    },
+    {
+      "type": "Power Puter (rgthree)",
+      "pos": [
+        7710.974324918445,
+        -147.1993082177113
+      ],
+      "size": [
+        340,
+        130
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "title": "HANDS prompt  ( merged prompt + emphasis )",
+      "inputs": [
+        {
+          "name": "a",
+          "type": "*",
+          "link": 638
+        },
+        {
+          "name": "b",
+          "type": "*",
+          "link": 639
+        },
+        {
+          "name": "c",
+          "type": "*",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "STRING",
+          "name": "*",
+          "shape": 3,
+          "type": "STRING",
+          "links": [
+            640
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "rgthree/rgthree-comfy"
+      },
+      "widgets_values": [
+        {
+          "outputs": [
+            "STRING"
+          ]
+        },
+        "', '.join([x for x in [a, b] if x])"
+      ],
+      "id": 364
+    },
+    {
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        7710.974324918445,
+        12.800691782288709
+      ],
+      "size": [
+        340,
+        110
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "title": "BREASTS emphasis",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            642
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "PrimitiveStringMultiline"
+      },
+      "widgets_values": [
+        "detailed chest"
+      ],
+      "id": 365
+    },
+    {
+      "type": "Power Puter (rgthree)",
+      "pos": [
+        7710.974324918445,
+        152.8006917822887
+      ],
+      "size": [
+        340,
+        130
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "title": "BREASTS prompt  ( merged prompt + emphasis )",
+      "inputs": [
+        {
+          "name": "a",
+          "type": "*",
+          "link": 641
+        },
+        {
+          "name": "b",
+          "type": "*",
+          "link": 642
+        },
+        {
+          "name": "c",
+          "type": "*",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "STRING",
+          "name": "*",
+          "shape": 3,
+          "type": "STRING",
+          "links": [
+            643,
+            644
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "rgthree/rgthree-comfy"
+      },
+      "widgets_values": [
+        {
+          "outputs": [
+            "STRING"
+          ]
+        },
+        "', '.join([x for x in [a, b] if x])"
+      ],
+      "id": 366
     }
   ],
   "links": [
@@ -9716,6 +10016,86 @@
       360,
       0,
       207,
+      1,
+      "STRING"
+    ],
+    [
+      635,
+      342,
+      0,
+      362,
+      0,
+      "STRING"
+    ],
+    [
+      636,
+      361,
+      0,
+      362,
+      1,
+      "STRING"
+    ],
+    [
+      637,
+      362,
+      0,
+      311,
+      1,
+      "STRING"
+    ],
+    [
+      638,
+      342,
+      0,
+      364,
+      0,
+      "STRING"
+    ],
+    [
+      639,
+      363,
+      0,
+      364,
+      1,
+      "STRING"
+    ],
+    [
+      640,
+      364,
+      0,
+      163,
+      1,
+      "STRING"
+    ],
+    [
+      641,
+      342,
+      0,
+      366,
+      0,
+      "STRING"
+    ],
+    [
+      642,
+      365,
+      0,
+      366,
+      1,
+      "STRING"
+    ],
+    [
+      643,
+      366,
+      0,
+      236,
+      1,
+      "STRING"
+    ],
+    [
+      644,
+      366,
+      0,
+      208,
       1,
       "STRING"
     ]
