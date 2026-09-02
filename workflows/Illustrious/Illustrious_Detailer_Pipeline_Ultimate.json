@@ -1,8 +1,8 @@
 {
   "id": "1b0f3a5c-9d24-4a7e-9a1e-4f0c8b26d511",
   "revision": 0,
-  "last_node_id": 356,
-  "last_link_id": 614,
+  "last_node_id": 360,
+  "last_link_id": 634,
   "nodes": [
     {
       "id": 117,
@@ -32,16 +32,11 @@
           "slot_index": 0,
           "links": [
             580,
-            581,
             582,
-            583,
             584,
             585,
             586,
-            587,
             590,
-            591,
-            592,
             593,
             594,
             595,
@@ -52,10 +47,6 @@
             600,
             601,
             602,
-            603,
-            604,
-            605,
-            606,
             607,
             608,
             609,
@@ -283,12 +274,12 @@
         {
           "name": "model",
           "type": "MODEL",
-          "link": 573
+          "link": 618
         },
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 583
+          "link": 619
         },
         {
           "name": "vae",
@@ -1517,7 +1508,7 @@
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "sad, frowning"
+        "blurry, low quality, bad anatomy, deformed, poorly drawn, jpeg artifacts, extra nipples"
       ],
       "color": "#322",
       "bgcolor": "#533",
@@ -1869,7 +1860,7 @@
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "sad, frowning"
+        "blurry, low quality, bad anatomy, deformed, poorly drawn, jpeg artifacts, extra nipples"
       ],
       "color": "#322",
       "bgcolor": "#533",
@@ -2282,7 +2273,7 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 603
+          "link": 628
         }
       ],
       "outputs": [
@@ -2301,7 +2292,7 @@
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "sad, frowning"
+        "blurred eyes, undetailed eyes, ugly face, blurred face, bad nose, weird mouth, glasses, pussy juice, dick juice, cum"
       ],
       "color": "#322",
       "bgcolor": "#533",
@@ -2486,7 +2477,7 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 605
+          "link": 629
         }
       ],
       "outputs": [
@@ -2505,7 +2496,7 @@
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "sad, frowning"
+        "blurred eyes, undetailed eyes, ugly face, blurred face, bad nose, weird mouth, glasses, pussy juice, dick juice, cum"
       ],
       "color": "#322",
       "bgcolor": "#533",
@@ -2574,12 +2565,12 @@
         {
           "name": "model",
           "type": "MODEL",
-          "link": 571
+          "link": 622
         },
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 581
+          "link": 623
         },
         {
           "name": "vae",
@@ -2695,7 +2686,15 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 606
+          "link": 626
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 634
         }
       ],
       "outputs": [
@@ -2757,7 +2756,7 @@
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "smiling, happy"
+        "masterpiece, best quality, perfect quality, very aesthetic, detailed skin, smooth skin, natural breasts"
       ],
       "color": "#232",
       "bgcolor": "#353",
@@ -3086,12 +3085,12 @@
         {
           "name": "model",
           "type": "MODEL",
-          "link": 577
+          "link": 620
         },
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 587
+          "link": 621
         },
         {
           "name": "vae",
@@ -3629,7 +3628,7 @@
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "smiling, happy"
+        "masterpiece, best quality, perfect quality, very aesthetic, detailed skin, smooth skin, natural breasts"
       ],
       "color": "#232",
       "bgcolor": "#353",
@@ -3777,7 +3776,15 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 604
+          "link": 625
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 633
         }
       ],
       "outputs": [
@@ -4145,7 +4152,7 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 591
+          "link": 627
         }
       ],
       "outputs": [
@@ -5661,7 +5668,15 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 592
+          "link": 624
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 632
         }
       ],
       "outputs": [
@@ -6834,7 +6849,8 @@
           "type": "STRING",
           "links": [
             544,
-            559
+            559,
+            630
           ]
         }
       ],
@@ -7736,22 +7752,21 @@
           "type": "MODEL",
           "links": [
             570,
-            571,
             572,
-            573,
             574,
             575,
             576,
-            577,
             578,
-            579
+            579,
+            615
           ]
         },
         {
           "name": "CLIP",
           "type": "CLIP",
           "links": [
-            569
+            569,
+            616
           ]
         }
       ],
@@ -7765,6 +7780,198 @@
         1
       ],
       "title": "LoRA 3  (spare -- un-bypass to use)"
+    },
+    {
+      "type": "LoraLoader",
+      "pos": [
+        7710.974324918445,
+        -1167.1993082177114
+      ],
+      "size": [
+        340,
+        126
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 4,
+      "title": "FACE style LoRA  (face-detailing stages only)",
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 615
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 616
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            618,
+            620,
+            622
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            617
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "LoraLoader"
+      },
+      "widgets_values": [
+        "Your_Character_LoRA_Here.safetensors",
+        1,
+        1
+      ],
+      "id": 357
+    },
+    {
+      "type": "CLIPSetLastLayer",
+      "pos": [
+        7710.974324918445,
+        -1017.1993082177113
+      ],
+      "size": [
+        260,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "title": "clip skip (face branch)",
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 617
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            619,
+            621,
+            623,
+            624,
+            625,
+            626,
+            627,
+            628,
+            629
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "CLIPSetLastLayer"
+      },
+      "widgets_values": [
+        -2
+      ],
+      "id": 358
+    },
+    {
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        7710.974324918445,
+        -887.1993082177113
+      ],
+      "size": [
+        340,
+        110
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "title": "Face emphasis",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            631
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "PrimitiveStringMultiline"
+      },
+      "widgets_values": [
+        "sexy, seductive, flustered, teasing"
+      ],
+      "id": 359
+    },
+    {
+      "type": "Power Puter (rgthree)",
+      "pos": [
+        7710.974324918445,
+        -747.1993082177113
+      ],
+      "size": [
+        340,
+        130
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "title": "Face prompt  ( merged prompt + face emphasis )",
+      "inputs": [
+        {
+          "name": "a",
+          "type": "*",
+          "link": 630
+        },
+        {
+          "name": "b",
+          "type": "*",
+          "link": 631
+        },
+        {
+          "name": "c",
+          "type": "*",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "STRING",
+          "name": "*",
+          "shape": 3,
+          "type": "STRING",
+          "links": [
+            632,
+            633,
+            634
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "rgthree/rgthree-comfy"
+      },
+      "widgets_values": [
+        {
+          "outputs": [
+            "STRING"
+          ]
+        },
+        "', '.join([x for x in [a, b] if x])"
+      ],
+      "id": 360
     }
   ],
   "links": [
@@ -9121,26 +9328,10 @@
       "MODEL"
     ],
     [
-      571,
-      356,
-      0,
-      205,
-      0,
-      "MODEL"
-    ],
-    [
       572,
       356,
       0,
       185,
-      0,
-      "MODEL"
-    ],
-    [
-      573,
-      356,
-      0,
-      128,
       0,
       "MODEL"
     ],
@@ -9169,14 +9360,6 @@
       "MODEL"
     ],
     [
-      577,
-      356,
-      0,
-      215,
-      0,
-      "MODEL"
-    ],
-    [
       578,
       356,
       0,
@@ -9201,26 +9384,10 @@
       "CLIP"
     ],
     [
-      581,
-      117,
-      0,
-      205,
-      1,
-      "CLIP"
-    ],
-    [
       582,
       117,
       0,
       185,
-      1,
-      "CLIP"
-    ],
-    [
-      583,
-      117,
-      0,
-      128,
       1,
       "CLIP"
     ],
@@ -9249,35 +9416,11 @@
       "CLIP"
     ],
     [
-      587,
-      117,
-      0,
-      215,
-      1,
-      "CLIP"
-    ],
-    [
       590,
       117,
       0,
       313,
       1,
-      "CLIP"
-    ],
-    [
-      591,
-      117,
-      0,
-      133,
-      0,
-      "CLIP"
-    ],
-    [
-      592,
-      117,
-      0,
-      132,
-      0,
       "CLIP"
     ],
     [
@@ -9361,38 +9504,6 @@
       "CLIP"
     ],
     [
-      603,
-      117,
-      0,
-      195,
-      0,
-      "CLIP"
-    ],
-    [
-      604,
-      117,
-      0,
-      216,
-      0,
-      "CLIP"
-    ],
-    [
-      605,
-      117,
-      0,
-      203,
-      0,
-      "CLIP"
-    ],
-    [
-      606,
-      117,
-      0,
-      207,
-      0,
-      "CLIP"
-    ],
-    [
       607,
       117,
       0,
@@ -9447,6 +9558,166 @@
       245,
       0,
       "IMAGE"
+    ],
+    [
+      615,
+      356,
+      0,
+      357,
+      0,
+      "MODEL"
+    ],
+    [
+      616,
+      356,
+      1,
+      357,
+      1,
+      "CLIP"
+    ],
+    [
+      617,
+      357,
+      1,
+      358,
+      0,
+      "CLIP"
+    ],
+    [
+      618,
+      357,
+      0,
+      128,
+      0,
+      "MODEL"
+    ],
+    [
+      619,
+      358,
+      0,
+      128,
+      1,
+      "CLIP"
+    ],
+    [
+      620,
+      357,
+      0,
+      215,
+      0,
+      "MODEL"
+    ],
+    [
+      621,
+      358,
+      0,
+      215,
+      1,
+      "CLIP"
+    ],
+    [
+      622,
+      357,
+      0,
+      205,
+      0,
+      "MODEL"
+    ],
+    [
+      623,
+      358,
+      0,
+      205,
+      1,
+      "CLIP"
+    ],
+    [
+      624,
+      358,
+      0,
+      132,
+      0,
+      "CLIP"
+    ],
+    [
+      625,
+      358,
+      0,
+      216,
+      0,
+      "CLIP"
+    ],
+    [
+      626,
+      358,
+      0,
+      207,
+      0,
+      "CLIP"
+    ],
+    [
+      627,
+      358,
+      0,
+      133,
+      0,
+      "CLIP"
+    ],
+    [
+      628,
+      358,
+      0,
+      195,
+      0,
+      "CLIP"
+    ],
+    [
+      629,
+      358,
+      0,
+      203,
+      0,
+      "CLIP"
+    ],
+    [
+      630,
+      342,
+      0,
+      360,
+      0,
+      "STRING"
+    ],
+    [
+      631,
+      359,
+      0,
+      360,
+      1,
+      "STRING"
+    ],
+    [
+      632,
+      360,
+      0,
+      132,
+      1,
+      "STRING"
+    ],
+    [
+      633,
+      360,
+      0,
+      216,
+      1,
+      "STRING"
+    ],
+    [
+      634,
+      360,
+      0,
+      207,
+      1,
+      "STRING"
     ]
   ],
   "groups": [
