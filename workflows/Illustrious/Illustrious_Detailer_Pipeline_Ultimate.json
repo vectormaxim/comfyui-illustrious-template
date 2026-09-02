@@ -2,7 +2,7 @@
   "id": "1b0f3a5c-9d24-4a7e-9a1e-4f0c8b26d511",
   "revision": 0,
   "last_node_id": 366,
-  "last_link_id": 644,
+  "last_link_id": 645,
   "nodes": [
     {
       "id": 117,
@@ -2874,7 +2874,8 @@
           "name": "image",
           "type": "IMAGE",
           "links": [
-            293
+            293,
+            645
           ]
         },
         {
@@ -3755,12 +3756,12 @@
       ],
       "flags": {},
       "order": 158,
-      "mode": 4,
+      "mode": 0,
       "inputs": [
         {
           "name": "images",
           "type": "IMAGE",
-          "link": 312
+          "link": 645
         }
       ],
       "outputs": [
@@ -3776,11 +3777,12 @@
         "Node name for S&R": "SaveImage"
       },
       "widgets_values": [
-        "Final-Image"
+        "99_FINAL"
       ],
       "color": "#232",
       "bgcolor": "#353",
-      "shape": 1
+      "shape": 1,
+      "title": "FINAL RESULT  (end of the chain, whatever stages are on)"
     },
     {
       "id": 216,
@@ -3912,47 +3914,6 @@
       "color": "#223",
       "bgcolor": "#335",
       "shape": 1
-    },
-    {
-      "id": 245,
-      "type": "SaveImage",
-      "pos": [
-        7321.387691217606,
-        -968.107376474999
-      ],
-      "size": [
-        635.25439453125,
-        664.5070190429688
-      ],
-      "flags": {},
-      "order": 108,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 614
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.27",
-        "Node name for S&R": "SaveImage"
-      },
-      "widgets_values": [
-        "00_base_pre_detailer"
-      ],
-      "color": "#223",
-      "bgcolor": "#335",
-      "shape": 1,
-      "title": "Pre-detailer image"
     },
     {
       "id": 124,
@@ -4482,7 +4443,6 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            312,
             330,
             336
           ]
@@ -4945,8 +4905,7 @@
             483,
             538,
             612,
-            613,
-            614
+            613
           ]
         }
       ],
@@ -8932,14 +8891,6 @@
       "BASIC_PIPE"
     ],
     [
-      312,
-      218,
-      0,
-      214,
-      0,
-      "IMAGE"
-    ],
-    [
       315,
       285,
       2,
@@ -9852,14 +9803,6 @@
       "IMAGE"
     ],
     [
-      614,
-      290,
-      0,
-      245,
-      0,
-      "IMAGE"
-    ],
-    [
       615,
       356,
       0,
@@ -10098,6 +10041,14 @@
       208,
       1,
       "STRING"
+    ],
+    [
+      645,
+      211,
+      0,
+      214,
+      0,
+      "IMAGE"
     ]
   ],
   "groups": [
