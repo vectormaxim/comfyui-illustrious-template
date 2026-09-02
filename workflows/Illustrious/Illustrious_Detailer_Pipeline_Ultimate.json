@@ -1,8 +1,8 @@
 {
   "id": "1b0f3a5c-9d24-4a7e-9a1e-4f0c8b26d511",
   "revision": 0,
-  "last_node_id": 353,
-  "last_link_id": 559,
+  "last_node_id": 356,
+  "last_link_id": 614,
   "nodes": [
     {
       "id": 117,
@@ -22,7 +22,7 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 159
+          "link": 569
         }
       ],
       "outputs": [
@@ -31,8 +31,35 @@
           "type": "CLIP",
           "slot_index": 0,
           "links": [
-            178,
-            179
+            580,
+            581,
+            582,
+            583,
+            584,
+            585,
+            586,
+            587,
+            590,
+            591,
+            592,
+            593,
+            594,
+            595,
+            596,
+            597,
+            598,
+            599,
+            600,
+            601,
+            602,
+            603,
+            604,
+            605,
+            606,
+            607,
+            608,
+            609,
+            610
           ]
         }
       ],
@@ -46,44 +73,6 @@
       ],
       "color": "#432",
       "bgcolor": "#653",
-      "shape": 1
-    },
-    {
-      "id": 118,
-      "type": "PreviewImage",
-      "pos": [
-        9300.959188199695,
-        47.714449106507466
-      ],
-      "size": [
-        210,
-        246
-      ],
-      "flags": {},
-      "order": 115,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 160
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.27",
-        "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": [],
-      "color": "#223",
-      "bgcolor": "#335",
       "shape": 1
     },
     {
@@ -201,44 +190,6 @@
       "shape": 1
     },
     {
-      "id": 123,
-      "type": "PreviewImage",
-      "pos": [
-        10849.748250699695,
-        66.13815516119496
-      ],
-      "size": [
-        210,
-        246
-      ],
-      "flags": {},
-      "order": 122,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 165
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.27",
-        "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": [],
-      "color": "#2a363b",
-      "bgcolor": "#3f5159",
-      "shape": 1
-    },
-    {
       "id": 126,
       "type": "PreviewImage",
       "pos": [
@@ -332,12 +283,12 @@
         {
           "name": "model",
           "type": "MODEL",
-          "link": 170
+          "link": 573
         },
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 171
+          "link": 583
         },
         {
           "name": "vae",
@@ -470,7 +421,7 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 180
+          "link": 593
         }
       ],
       "outputs": [
@@ -494,157 +445,6 @@
       "color": "#322",
       "bgcolor": "#533",
       "shape": 1
-    },
-    {
-      "id": 135,
-      "type": "CLIPSetLastLayer",
-      "pos": [
-        6794.819295621573,
-        580.1471883643197
-      ],
-      "size": [
-        210,
-        58
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 59,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 181
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "slot_index": 0,
-          "links": [
-            180,
-            209
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.26",
-        "Node name for S&R": "CLIPSetLastLayer"
-      },
-      "widgets_values": [
-        -2
-      ],
-      "color": "#432",
-      "bgcolor": "#653",
-      "shape": 1
-    },
-    {
-      "id": 136,
-      "type": "CLIPSetLastLayer",
-      "pos": [
-        8611.290242887195,
-        570.3427450049447
-      ],
-      "size": [
-        210,
-        58
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 55,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 182
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "slot_index": 0,
-          "links": [
-            183,
-            184
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.26",
-        "Node name for S&R": "CLIPSetLastLayer"
-      },
-      "widgets_values": [
-        -2
-      ],
-      "color": "#432",
-      "bgcolor": "#653",
-      "shape": 1
-    },
-    {
-      "id": 141,
-      "type": "BboxDetectorSEGS",
-      "pos": [
-        6861.517781949698,
-        1081.7167684424448
-      ],
-      "size": [
-        400,
-        224
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 117,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "bbox_detector",
-          "type": "BBOX_DETECTOR",
-          "link": 189
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 190
-        },
-        {
-          "name": "detailer_hook",
-          "shape": 7,
-          "type": "DETAILER_HOOK",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "SEGS",
-          "type": "SEGS",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-impact-pack",
-        "ver": "8.8.1",
-        "Node name for S&R": "BboxDetectorSEGS",
-        "aux_id": "ltdrdata/ComfyUI-Impact-Pack"
-      },
-      "widgets_values": [
-        0.5,
-        10,
-        3,
-        10,
-        "all"
-      ],
-      "color": "#2a363b",
-      "bgcolor": "#3f5159",
-      "shape": 1,
-      "title": "SPARE segs source -- drag its SEGS into a detailer's 'segs' to swap that pass to BBOX-from-the-SEGM-model"
     },
     {
       "id": 142,
@@ -705,65 +505,6 @@
       "color": "#2a363b",
       "bgcolor": "#3f5159",
       "shape": 1
-    },
-    {
-      "id": 143,
-      "type": "BboxDetectorSEGS",
-      "pos": [
-        8623.742391324695,
-        1171.0685750830698
-      ],
-      "size": [
-        400,
-        224
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 124,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "bbox_detector",
-          "type": "BBOX_DETECTOR",
-          "link": 193
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 194
-        },
-        {
-          "name": "detailer_hook",
-          "shape": 7,
-          "type": "DETAILER_HOOK",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "SEGS",
-          "type": "SEGS",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-impact-pack",
-        "ver": "8.8.1",
-        "Node name for S&R": "BboxDetectorSEGS",
-        "aux_id": "ltdrdata/ComfyUI-Impact-Pack"
-      },
-      "widgets_values": [
-        0.5,
-        10,
-        3,
-        10,
-        "all"
-      ],
-      "color": "#2a363b",
-      "bgcolor": "#3f5159",
-      "shape": 1,
-      "title": "SPARE segs source -- drag its SEGS into a detailer's 'segs' to swap that pass to BBOX-from-the-SEGM-model"
     },
     {
       "id": 144,
@@ -845,12 +586,12 @@
         {
           "name": "model",
           "type": "MODEL",
-          "link": 199
+          "link": 574
         },
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 200
+          "link": 584
         },
         {
           "name": "vae",
@@ -908,12 +649,12 @@
         {
           "name": "model",
           "type": "MODEL",
-          "link": 204
+          "link": 575
         },
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 205
+          "link": 585
         },
         {
           "name": "vae",
@@ -952,65 +693,6 @@
       "shape": 1
     },
     {
-      "id": 150,
-      "type": "SegmDetectorSEGS",
-      "pos": [
-        8190.362264371569,
-        -203.42318517083623
-      ],
-      "size": [
-        400,
-        224
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 106,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "segm_detector",
-          "type": "SEGM_DETECTOR",
-          "link": 211
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 212
-        },
-        {
-          "name": "detailer_hook",
-          "shape": 7,
-          "type": "DETAILER_HOOK",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "SEGS",
-          "type": "SEGS",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-impact-pack",
-        "ver": "8.8.1",
-        "Node name for S&R": "SegmDetectorSEGS",
-        "aux_id": "ltdrdata/ComfyUI-Impact-Pack"
-      },
-      "widgets_values": [
-        0.5,
-        10,
-        3,
-        10,
-        "all"
-      ],
-      "color": "#2a363b",
-      "bgcolor": "#3f5159",
-      "shape": 1,
-      "title": "SPARE segs source -- drag its SEGS into a detailer's 'segs' to swap that pass to SEGM"
-    },
-    {
       "id": 151,
       "type": "BboxDetectorSEGS",
       "pos": [
@@ -1035,7 +717,7 @@
         {
           "name": "image",
           "type": "IMAGE",
-          "link": 214
+          "link": 612
         },
         {
           "name": "detailer_hook",
@@ -1068,44 +750,6 @@
       ],
       "color": "#2a363b",
       "bgcolor": "#3f5159",
-      "shape": 1
-    },
-    {
-      "id": 155,
-      "type": "PreviewImage",
-      "pos": [
-        11467.594930387195,
-        1553.3078328955694
-      ],
-      "size": [
-        210,
-        246
-      ],
-      "flags": {},
-      "order": 143,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 219
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.27",
-        "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": [],
-      "color": "#223",
-      "bgcolor": "#335",
       "shape": 1
     },
     {
@@ -1185,52 +829,6 @@
       "shape": 1
     },
     {
-      "id": 158,
-      "type": "CLIPSetLastLayer",
-      "pos": [
-        10330.944051480945,
-        567.6701375830697
-      ],
-      "size": [
-        210,
-        58
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 57,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 222
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "slot_index": 0,
-          "links": [
-            230,
-            231
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.26",
-        "Node name for S&R": "CLIPSetLastLayer"
-      },
-      "widgets_values": [
-        -2
-      ],
-      "color": "#432",
-      "bgcolor": "#653",
-      "shape": 1
-    },
-    {
       "id": 161,
       "type": "SegmDetectorSEGS",
       "pos": [
@@ -1291,65 +889,6 @@
       "shape": 1
     },
     {
-      "id": 162,
-      "type": "BboxDetectorSEGS",
-      "pos": [
-        10369.523153043445,
-        1146.0014364111948
-      ],
-      "size": [
-        400,
-        224
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 133,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "bbox_detector",
-          "type": "BBOX_DETECTOR",
-          "link": 228
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 229
-        },
-        {
-          "name": "detailer_hook",
-          "shape": 7,
-          "type": "DETAILER_HOOK",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "SEGS",
-          "type": "SEGS",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-impact-pack",
-        "ver": "8.8.1",
-        "Node name for S&R": "BboxDetectorSEGS",
-        "aux_id": "ltdrdata/ComfyUI-Impact-Pack"
-      },
-      "widgets_values": [
-        0.5,
-        10,
-        3,
-        10,
-        "all"
-      ],
-      "color": "#2a363b",
-      "bgcolor": "#3f5159",
-      "shape": 1,
-      "title": "SPARE segs source -- drag its SEGS into a detailer's 'segs' to swap that pass to BBOX-from-the-SEGM-model"
-    },
-    {
       "id": 163,
       "type": "CLIPTextEncode",
       "pos": [
@@ -1367,7 +906,7 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 230
+          "link": 597
         }
       ],
       "outputs": [
@@ -1386,7 +925,7 @@
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "smiling, happy"
+        "masterpiece, best quality, perfect quality, very aesthetic, detailed hands, perfect hands, perfect fingers, five fingers"
       ],
       "color": "#232",
       "bgcolor": "#353",
@@ -1410,7 +949,7 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 231
+          "link": 598
         }
       ],
       "outputs": [
@@ -1429,7 +968,7 @@
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "sad, frowning"
+        "bad hands, bad fingers, extra fingers, missing fingers, fused fingers, mutated hands, extra digits, deformed hands, poorly drawn hands"
       ],
       "color": "#322",
       "bgcolor": "#533",
@@ -1453,7 +992,7 @@
         {
           "name": "image",
           "type": "IMAGE",
-          "link": 232
+          "link": 613
         },
         {
           "name": "segs",
@@ -1490,7 +1029,6 @@
           "type": "IMAGE",
           "links": [
             163,
-            186,
             188,
             235
           ]
@@ -1525,9 +1063,7 @@
           "name": "cropped_refined_alpha",
           "shape": 6,
           "type": "IMAGE",
-          "links": [
-            160
-          ]
+          "links": []
         },
         {
           "name": "cnet_images",
@@ -1622,7 +1158,6 @@
           "name": "image",
           "type": "IMAGE",
           "links": [
-            194,
             196,
             210,
             241
@@ -1658,9 +1193,7 @@
           "name": "cropped_refined_alpha",
           "shape": 6,
           "type": "IMAGE",
-          "links": [
-            167
-          ]
+          "links": []
         },
         {
           "name": "cnet_images",
@@ -1757,7 +1290,6 @@
           "links": [
             218,
             227,
-            229,
             250
           ]
         },
@@ -1791,9 +1323,7 @@
           "name": "cropped_refined_alpha",
           "shape": 6,
           "type": "IMAGE",
-          "links": [
-            175
-          ]
+          "links": []
         },
         {
           "name": "cnet_images",
@@ -1832,44 +1362,6 @@
       ],
       "color": "#2a363b",
       "bgcolor": "#3f5159",
-      "shape": 1
-    },
-    {
-      "id": 169,
-      "type": "PreviewImage",
-      "pos": [
-        13387.203817105945,
-        31.269746958069994
-      ],
-      "size": [
-        210,
-        246
-      ],
-      "flags": {},
-      "order": 150,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 244
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.27",
-        "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": [],
-      "color": "#223",
-      "bgcolor": "#335",
       "shape": 1
     },
     {
@@ -1949,52 +1441,6 @@
       "shape": 1
     },
     {
-      "id": 172,
-      "type": "CLIPSetLastLayer",
-      "pos": [
-        12250.571981168445,
-        -954.3694437157582
-      ],
-      "size": [
-        210,
-        58
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 54,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 247
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "slot_index": 0,
-          "links": [
-            249,
-            355
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.26",
-        "Node name for S&R": "CLIPSetLastLayer"
-      },
-      "widgets_values": [
-        -2
-      ],
-      "color": "#432",
-      "bgcolor": "#653",
-      "shape": 1
-    },
-    {
       "id": 173,
       "type": "SaveImage",
       "pos": [
@@ -2028,7 +1474,7 @@
         "Node name for S&R": "SaveImage"
       },
       "widgets_values": [
-        "ComfyUI"
+        "06_breasts_bbox"
       ],
       "color": "#223",
       "bgcolor": "#335",
@@ -2052,7 +1498,7 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 249
+          "link": 599
         }
       ],
       "outputs": [
@@ -2132,7 +1578,6 @@
           "type": "IMAGE",
           "links": [
             225,
-            254,
             273,
             279
           ]
@@ -2167,9 +1612,7 @@
           "name": "cropped_refined_alpha",
           "shape": 6,
           "type": "IMAGE",
-          "links": [
-            219
-          ]
+          "links": []
         },
         {
           "name": "cnet_images",
@@ -2211,65 +1654,6 @@
       "shape": 1
     },
     {
-      "id": 176,
-      "type": "SegmDetectorSEGS",
-      "pos": [
-        12289.916219449695,
-        -252.65408116692998
-      ],
-      "size": [
-        400,
-        224
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 139,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "segm_detector",
-          "type": "SEGM_DETECTOR",
-          "link": 553
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 254
-        },
-        {
-          "name": "detailer_hook",
-          "shape": 7,
-          "type": "DETAILER_HOOK",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "SEGS",
-          "type": "SEGS",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-impact-pack",
-        "ver": "8.8.1",
-        "Node name for S&R": "SegmDetectorSEGS",
-        "aux_id": "ltdrdata/ComfyUI-Impact-Pack"
-      },
-      "widgets_values": [
-        0.5,
-        10,
-        3,
-        10,
-        "all"
-      ],
-      "color": "#2a363b",
-      "bgcolor": "#3f5159",
-      "shape": 1,
-      "title": "SPARE segs source -- drag its SEGS into a detailer's 'segs' to swap that pass to SEGM"
-    },
-    {
       "id": 177,
       "type": "ToBasicPipe",
       "pos": [
@@ -2289,12 +1673,12 @@
         {
           "name": "model",
           "type": "MODEL",
-          "link": 255
+          "link": 570
         },
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 256
+          "link": 580
         },
         {
           "name": "vae",
@@ -2330,44 +1714,6 @@
       "widgets_values": [],
       "color": "#2a363b",
       "bgcolor": "#3f5159",
-      "shape": 1
-    },
-    {
-      "id": 178,
-      "type": "PreviewImage",
-      "pos": [
-        15219.848348355945,
-        46.35104578619502
-      ],
-      "size": [
-        210,
-        246
-      ],
-      "flags": {},
-      "order": 156,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 260
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.27",
-        "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": [],
-      "color": "#223",
-      "bgcolor": "#335",
       "shape": 1
     },
     {
@@ -2447,52 +1793,6 @@
       "shape": 1
     },
     {
-      "id": 181,
-      "type": "CLIPSetLastLayer",
-      "pos": [
-        14083.225301480945,
-        -939.2879617821644
-      ],
-      "size": [
-        210,
-        58
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 52,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 263
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "slot_index": 0,
-          "links": [
-            267,
-            302
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.26",
-        "Node name for S&R": "CLIPSetLastLayer"
-      },
-      "widgets_values": [
-        -2
-      ],
-      "color": "#432",
-      "bgcolor": "#653",
-      "shape": 1
-    },
-    {
       "id": 183,
       "type": "SaveImage",
       "pos": [
@@ -2526,7 +1826,7 @@
         "Node name for S&R": "SaveImage"
       },
       "widgets_values": [
-        "ComfyUI"
+        "07_breasts_segm"
       ],
       "color": "#223",
       "bgcolor": "#335",
@@ -2550,7 +1850,7 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 267
+          "link": 601
         }
       ],
       "outputs": [
@@ -2595,12 +1895,12 @@
         {
           "name": "model",
           "type": "MODEL",
-          "link": 268
+          "link": 572
         },
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 269
+          "link": 582
         },
         {
           "name": "vae",
@@ -2694,7 +1994,6 @@
           "links": [
             248,
             277,
-            281,
             308
           ]
         },
@@ -2728,9 +2027,7 @@
           "name": "cropped_refined_alpha",
           "shape": 6,
           "type": "IMAGE",
-          "links": [
-            244
-          ]
+          "links": []
         },
         {
           "name": "cnet_images",
@@ -2892,103 +2189,6 @@
       "shape": 1
     },
     {
-      "id": 189,
-      "type": "BboxDetectorSEGS",
-      "pos": [
-        14138.055379605945,
-        -353.3739908348987
-      ],
-      "size": [
-        400,
-        224
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 147,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "bbox_detector",
-          "type": "BBOX_DETECTOR",
-          "link": 280
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 281
-        },
-        {
-          "name": "detailer_hook",
-          "shape": 7,
-          "type": "DETAILER_HOOK",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "SEGS",
-          "type": "SEGS",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-impact-pack",
-        "ver": "8.8.1",
-        "Node name for S&R": "BboxDetectorSEGS",
-        "aux_id": "ltdrdata/ComfyUI-Impact-Pack"
-      },
-      "widgets_values": [
-        0.5,
-        10,
-        3,
-        10,
-        "all"
-      ],
-      "color": "#2a363b",
-      "bgcolor": "#3f5159",
-      "shape": 1,
-      "title": "SPARE segs source -- drag its SEGS into a detailer's 'segs' to swap that pass to BBOX"
-    },
-    {
-      "id": 190,
-      "type": "PreviewImage",
-      "pos": [
-        19509.16963741845,
-        93.61056727056985
-      ],
-      "size": [
-        210,
-        246
-      ],
-      "flags": {},
-      "order": 167,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 282
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.27",
-        "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": [],
-      "color": "#223",
-      "bgcolor": "#335",
-      "shape": 1
-    },
-    {
       "id": 191,
       "type": "PreviewImage",
       "pos": [
@@ -3065,52 +2265,6 @@
       "shape": 1
     },
     {
-      "id": 193,
-      "type": "CLIPSetLastLayer",
-      "pos": [
-        18372.54854366845,
-        -892.0225809227894
-      ],
-      "size": [
-        210,
-        58
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 53,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 285
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "slot_index": 0,
-          "links": [
-            288,
-            318
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.26",
-        "Node name for S&R": "CLIPSetLastLayer"
-      },
-      "widgets_values": [
-        -2
-      ],
-      "color": "#432",
-      "bgcolor": "#653",
-      "shape": 1
-    },
-    {
       "id": 195,
       "type": "CLIPTextEncode",
       "pos": [
@@ -3128,7 +2282,7 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 288
+          "link": 603
         }
       ],
       "outputs": [
@@ -3173,7 +2327,6 @@
           "name": "BBOX_DETECTOR",
           "type": "BBOX_DETECTOR",
           "links": [
-            280,
             552
           ]
         },
@@ -3181,8 +2334,7 @@
           "name": "SEGM_DETECTOR",
           "type": "SEGM_DETECTOR",
           "links": [
-            276,
-            553
+            276
           ]
         }
       ],
@@ -3199,44 +2351,6 @@
       "bgcolor": "#3f5159",
       "shape": 1,
       "title": "BREASTS detector (segm; drives both the BBOX and SEGM passes)"
-    },
-    {
-      "id": 197,
-      "type": "PreviewImage",
-      "pos": [
-        21287.02022335595,
-        56.386690317444966
-      ],
-      "size": [
-        210,
-        246
-      ],
-      "flags": {},
-      "order": 172,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 289
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.27",
-        "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": [],
-      "color": "#223",
-      "bgcolor": "#335",
-      "shape": 1
     },
     {
       "id": 198,
@@ -3315,52 +2429,6 @@
       "shape": 1
     },
     {
-      "id": 200,
-      "type": "CLIPSetLastLayer",
-      "pos": [
-        20150.34151241845,
-        -929.2466714989613
-      ],
-      "size": [
-        210,
-        58
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 32,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 292
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "slot_index": 0,
-          "links": [
-            294,
-            301
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.26",
-        "Node name for S&R": "CLIPSetLastLayer"
-      },
-      "widgets_values": [
-        -2
-      ],
-      "color": "#432",
-      "bgcolor": "#653",
-      "shape": 1
-    },
-    {
       "id": 202,
       "type": "SaveImage",
       "pos": [
@@ -3394,7 +2462,7 @@
         "Node name for S&R": "SaveImage"
       },
       "widgets_values": [
-        "ComfyUI"
+        "11_postup_segm"
       ],
       "color": "#223",
       "bgcolor": "#335",
@@ -3418,7 +2486,7 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 294
+          "link": 605
         }
       ],
       "outputs": [
@@ -3462,16 +2530,13 @@
         {
           "name": "BBOX_DETECTOR",
           "type": "BBOX_DETECTOR",
-          "links": [
-            333
-          ]
+          "links": []
         },
         {
           "name": "SEGM_DETECTOR",
           "type": "SEGM_DETECTOR",
           "links": [
-            299,
-            328
+            299
           ]
         }
       ],
@@ -3509,17 +2574,17 @@
         {
           "name": "model",
           "type": "MODEL",
-          "link": 295
+          "link": 571
         },
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 296
+          "link": 581
         },
         {
           "name": "vae",
           "type": "VAE",
-          "link": null
+          "link": 562
         },
         {
           "name": "positive",
@@ -3630,7 +2695,7 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 301
+          "link": 606
         }
       ],
       "outputs": [
@@ -3673,7 +2738,7 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 302
+          "link": 602
         }
       ],
       "outputs": [
@@ -3827,9 +2892,7 @@
           "name": "cropped_refined_alpha",
           "shape": 6,
           "type": "IMAGE",
-          "links": [
-            289
-          ]
+          "links": []
         },
         {
           "name": "cnet_images",
@@ -3962,9 +3025,7 @@
           "name": "cropped_refined_alpha",
           "shape": 6,
           "type": "IMAGE",
-          "links": [
-            260
-          ]
+          "links": []
         },
         {
           "name": "cnet_images",
@@ -4006,61 +3067,6 @@
       "shape": 1
     },
     {
-      "id": 213,
-      "type": "GetImageSize+",
-      "pos": [
-        16073.527059293454,
-        -478.2522867333362
-      ],
-      "size": [
-        214.20001220703125,
-        66
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 153,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 311
-        }
-      ],
-      "outputs": [
-        {
-          "name": "width",
-          "type": "INT",
-          "links": [
-            326
-          ]
-        },
-        {
-          "name": "height",
-          "type": "INT",
-          "links": [
-            327
-          ]
-        },
-        {
-          "name": "count",
-          "type": "INT",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui_essentials",
-        "ver": "1.1.0",
-        "Node name for S&R": "GetImageSize+",
-        "aux_id": "cubiq/ComfyUI_essentials"
-      },
-      "widgets_values": [],
-      "color": "#322",
-      "bgcolor": "#533",
-      "shape": 1
-    },
-    {
       "id": 215,
       "type": "ToBasicPipe",
       "pos": [
@@ -4080,12 +3086,12 @@
         {
           "name": "model",
           "type": "MODEL",
-          "link": 313
+          "link": 577
         },
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 314
+          "link": 587
         },
         {
           "name": "vae",
@@ -4157,70 +3163,11 @@
         "Node name for S&R": "SaveImage"
       },
       "widgets_values": [
-        "ComfyUI"
+        "10_postup_bbox"
       ],
       "color": "#223",
       "bgcolor": "#335",
       "shape": 1
-    },
-    {
-      "id": 219,
-      "type": "SegmDetectorSEGS",
-      "pos": [
-        18338.63838741845,
-        -248.14248448724248
-      ],
-      "size": [
-        400,
-        224
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 159,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "segm_detector",
-          "type": "SEGM_DETECTOR",
-          "link": 328
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 329
-        },
-        {
-          "name": "detailer_hook",
-          "shape": 7,
-          "type": "DETAILER_HOOK",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "SEGS",
-          "type": "SEGS",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-impact-pack",
-        "ver": "8.8.1",
-        "Node name for S&R": "SegmDetectorSEGS",
-        "aux_id": "ltdrdata/ComfyUI-Impact-Pack"
-      },
-      "widgets_values": [
-        0.5,
-        10,
-        3,
-        10,
-        "all"
-      ],
-      "color": "#2a363b",
-      "bgcolor": "#3f5159",
-      "shape": 1,
-      "title": "SPARE segs source -- drag its SEGS into a detailer's 'segs' to swap that pass to SEGM"
     },
     {
       "id": 220,
@@ -4278,8 +3225,7 @@
           "links": [
             300,
             305,
-            319,
-            334
+            319
           ]
         },
         {
@@ -4312,9 +3258,7 @@
           "name": "cropped_refined_alpha",
           "shape": 6,
           "type": "IMAGE",
-          "links": [
-            282
-          ]
+          "links": []
         },
         {
           "name": "cnet_images",
@@ -4354,65 +3298,6 @@
       "color": "#2a363b",
       "bgcolor": "#3f5159",
       "shape": 1
-    },
-    {
-      "id": 221,
-      "type": "BboxDetectorSEGS",
-      "pos": [
-        20149.88838741845,
-        -392.4753091942737
-      ],
-      "size": [
-        400,
-        224
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 164,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "bbox_detector",
-          "type": "BBOX_DETECTOR",
-          "link": 333
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 334
-        },
-        {
-          "name": "detailer_hook",
-          "shape": 7,
-          "type": "DETAILER_HOOK",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "SEGS",
-          "type": "SEGS",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-impact-pack",
-        "ver": "8.8.1",
-        "Node name for S&R": "BboxDetectorSEGS",
-        "aux_id": "ltdrdata/ComfyUI-Impact-Pack"
-      },
-      "widgets_values": [
-        0.5,
-        10,
-        3,
-        10,
-        "all"
-      ],
-      "color": "#2a363b",
-      "bgcolor": "#3f5159",
-      "shape": 1,
-      "title": "SPARE segs source -- drag its SEGS into a detailer's 'segs' to swap that pass to BBOX-from-the-SEGM-model"
     },
     {
       "id": 222,
@@ -4537,12 +3422,12 @@
         {
           "name": "model",
           "type": "MODEL",
-          "link": 337
+          "link": 576
         },
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 338
+          "link": 586
         },
         {
           "name": "vae",
@@ -4599,9 +3484,7 @@
         {
           "name": "BBOX_DETECTOR",
           "type": "BBOX_DETECTOR",
-          "links": [
-            193
-          ]
+          "links": []
         },
         {
           "name": "SEGM_DETECTOR",
@@ -4643,9 +3526,7 @@
         {
           "name": "BBOX_DETECTOR",
           "type": "BBOX_DETECTOR",
-          "links": [
-            189
-          ]
+          "links": []
         },
         {
           "name": "SEGM_DETECTOR",
@@ -4729,7 +3610,7 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 355
+          "link": 600
         }
       ],
       "outputs": [
@@ -4773,9 +3654,7 @@
         {
           "name": "BBOX_DETECTOR",
           "type": "BBOX_DETECTOR",
-          "links": [
-            228
-          ]
+          "links": []
         },
         {
           "name": "SEGM_DETECTOR",
@@ -4797,294 +3676,6 @@
       "color": "#2a363b",
       "bgcolor": "#3f5159",
       "shape": 1
-    },
-    {
-      "id": 227,
-      "type": "Power Lora Loader (rgthree)",
-      "pos": [
-        12250.508874000816,
-        -842.8410249688169
-      ],
-      "size": [
-        340.519921875,
-        190
-      ],
-      "flags": {},
-      "order": 37,
-      "mode": 4,
-      "inputs": [
-        {
-          "dir": 3,
-          "name": "model",
-          "type": "MODEL",
-          "link": 348
-        },
-        {
-          "dir": 3,
-          "name": "clip",
-          "type": "CLIP",
-          "link": 349
-        }
-      ],
-      "outputs": [
-        {
-          "dir": 4,
-          "name": "MODEL",
-          "shape": 3,
-          "type": "MODEL",
-          "links": [
-            255
-          ]
-        },
-        {
-          "dir": 4,
-          "name": "CLIP",
-          "shape": 3,
-          "type": "CLIP",
-          "links": [
-            247,
-            256
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "rgthree-comfy",
-        "ver": "1.0.2512112053",
-        "Show Strengths": "Single Strength",
-        "Match": "",
-        "aux_id": "rgthree/rgthree-comfy"
-      },
-      "widgets_values": [
-        {},
-        {
-          "type": "PowerLoraLoaderHeaderWidget"
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {},
-        ""
-      ]
-    },
-    {
-      "id": 201,
-      "type": "Power Lora Loader (rgthree)",
-      "pos": [
-        20076.283942675436,
-        -816.8824672814065
-      ],
-      "size": [
-        340.519921875,
-        166
-      ],
-      "flags": {},
-      "order": 8,
-      "mode": 4,
-      "inputs": [
-        {
-          "dir": 3,
-          "name": "model",
-          "type": "MODEL",
-          "link": null
-        },
-        {
-          "dir": 3,
-          "name": "clip",
-          "type": "CLIP",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "dir": 4,
-          "name": "MODEL",
-          "shape": 3,
-          "type": "MODEL",
-          "links": [
-            295
-          ]
-        },
-        {
-          "dir": 4,
-          "name": "CLIP",
-          "shape": 3,
-          "type": "CLIP",
-          "links": [
-            292,
-            296
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "rgthree-comfy",
-        "ver": "1.0.2512112053",
-        "Show Strengths": "Single Strength",
-        "Match": "",
-        "aux_id": "rgthree/rgthree-comfy"
-      },
-      "widgets_values": [
-        {},
-        {
-          "type": "PowerLoraLoaderHeaderWidget"
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {},
-        ""
-      ]
-    },
-    {
-      "id": 182,
-      "type": "Power Lora Loader (rgthree)",
-      "pos": [
-        14062.162200563393,
-        -769.1084646027457
-      ],
-      "size": [
-        340.519921875,
-        166
-      ],
-      "flags": {},
-      "order": 35,
-      "mode": 4,
-      "inputs": [
-        {
-          "dir": 3,
-          "name": "model",
-          "type": "MODEL",
-          "link": 264
-        },
-        {
-          "dir": 3,
-          "name": "clip",
-          "type": "CLIP",
-          "link": 265
-        }
-      ],
-      "outputs": [
-        {
-          "dir": 4,
-          "name": "MODEL",
-          "shape": 3,
-          "type": "MODEL",
-          "links": [
-            268
-          ]
-        },
-        {
-          "dir": 4,
-          "name": "CLIP",
-          "shape": 3,
-          "type": "CLIP",
-          "links": [
-            263,
-            269
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "rgthree-comfy",
-        "ver": "1.0.2512112053",
-        "Show Strengths": "Single Strength",
-        "Match": "",
-        "aux_id": "rgthree/rgthree-comfy"
-      },
-      "widgets_values": [
-        {},
-        {
-          "type": "PowerLoraLoaderHeaderWidget"
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {},
-        ""
-      ]
-    },
-    {
-      "id": 225,
-      "type": "VAEDecode",
-      "pos": [
-        6400.6653073770385,
-        -463.3871845619823
-      ],
-      "size": [
-        210,
-        46
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 104,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "samples",
-          "type": "LATENT",
-          "link": 363
-        },
-        {
-          "name": "vae",
-          "type": "VAE",
-          "link": 343
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            212,
-            214,
-            232,
-            359
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.27",
-        "Node name for S&R": "VAEDecode"
-      },
-      "widgets_values": [],
-      "color": "#223",
-      "bgcolor": "#335",
-      "shape": 1,
-      "title": "VAE round-trip: hands the base image to the detailer chain"
     },
     {
       "id": 209,
@@ -5186,7 +3777,7 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 318
+          "link": 604
         }
       ],
       "outputs": [
@@ -5245,7 +3836,7 @@
         "Node name for S&R": "SaveImage"
       },
       "widgets_values": [
-        "ComfyUI"
+        "01_face_bbox"
       ],
       "color": "#223",
       "bgcolor": "#335",
@@ -5285,7 +3876,7 @@
         "Node name for S&R": "SaveImage"
       },
       "widgets_values": [
-        "ComfyUI"
+        "03_eyes"
       ],
       "color": "#223",
       "bgcolor": "#335",
@@ -5309,7 +3900,7 @@
         {
           "name": "images",
           "type": "IMAGE",
-          "link": 359
+          "link": 614
         }
       ],
       "outputs": [
@@ -5325,7 +3916,7 @@
         "Node name for S&R": "SaveImage"
       },
       "widgets_values": [
-        "ComfyUI"
+        "00_base_pre_detailer"
       ],
       "color": "#223",
       "bgcolor": "#335",
@@ -5371,445 +3962,6 @@
       "shape": 1
     },
     {
-      "id": 152,
-      "type": "Power Lora Loader (rgthree)",
-      "pos": [
-        8148.210301063357,
-        -694.3332825778422
-      ],
-      "size": [
-        340.519921875,
-        238
-      ],
-      "flags": {},
-      "order": 39,
-      "mode": 0,
-      "inputs": [
-        {
-          "dir": 3,
-          "name": "model",
-          "type": "MODEL",
-          "link": 215
-        },
-        {
-          "dir": 3,
-          "name": "clip",
-          "type": "CLIP",
-          "link": 216
-        }
-      ],
-      "outputs": [
-        {
-          "dir": 4,
-          "name": "MODEL",
-          "shape": 3,
-          "type": "MODEL",
-          "links": [
-            170
-          ]
-        },
-        {
-          "dir": 4,
-          "name": "CLIP",
-          "shape": 3,
-          "type": "CLIP",
-          "links": [
-            159,
-            171
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "rgthree-comfy",
-        "ver": "1.0.2512112053",
-        "Show Strengths": "Single Strength",
-        "Match": "",
-        "aux_id": "rgthree/rgthree-comfy"
-      },
-      "widgets_values": [
-        {},
-        {
-          "type": "PowerLoraLoaderHeaderWidget"
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 0.5,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {},
-        ""
-      ]
-    },
-    {
-      "id": 231,
-      "type": "Power Lora Loader (rgthree)",
-      "pos": [
-        6799.912866486832,
-        1349.3001789690275
-      ],
-      "size": [
-        340.519921875,
-        190
-      ],
-      "flags": {},
-      "order": 42,
-      "mode": 4,
-      "inputs": [
-        {
-          "dir": 3,
-          "name": "model",
-          "type": "MODEL",
-          "link": 353
-        },
-        {
-          "dir": 3,
-          "name": "clip",
-          "type": "CLIP",
-          "link": 354
-        }
-      ],
-      "outputs": [
-        {
-          "dir": 4,
-          "name": "MODEL",
-          "shape": 3,
-          "type": "MODEL",
-          "links": [
-            199
-          ]
-        },
-        {
-          "dir": 4,
-          "name": "CLIP",
-          "shape": 3,
-          "type": "CLIP",
-          "links": [
-            181,
-            200
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "rgthree-comfy",
-        "ver": "1.0.2512112053",
-        "Show Strengths": "Single Strength",
-        "Match": "",
-        "aux_id": "rgthree/rgthree-comfy"
-      },
-      "widgets_values": [
-        {},
-        {
-          "type": "PowerLoraLoaderHeaderWidget"
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {},
-        ""
-      ]
-    },
-    {
-      "id": 145,
-      "type": "Power Lora Loader (rgthree)",
-      "pos": [
-        8611.818423283192,
-        678.9734473610999
-      ],
-      "size": [
-        340.519921875,
-        214
-      ],
-      "flags": {},
-      "order": 38,
-      "mode": 4,
-      "inputs": [
-        {
-          "dir": 3,
-          "name": "model",
-          "type": "MODEL",
-          "link": 197
-        },
-        {
-          "dir": 3,
-          "name": "clip",
-          "type": "CLIP",
-          "link": 198
-        }
-      ],
-      "outputs": [
-        {
-          "dir": 4,
-          "name": "MODEL",
-          "shape": 3,
-          "type": "MODEL",
-          "links": [
-            204
-          ]
-        },
-        {
-          "dir": 4,
-          "name": "CLIP",
-          "shape": 3,
-          "type": "CLIP",
-          "links": [
-            182,
-            205
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "rgthree-comfy",
-        "ver": "1.0.2512112053",
-        "Show Strengths": "Single Strength",
-        "Match": "",
-        "aux_id": "rgthree/rgthree-comfy"
-      },
-      "widgets_values": [
-        {},
-        {
-          "type": "PowerLoraLoaderHeaderWidget"
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {},
-        ""
-      ]
-    },
-    {
-      "id": 159,
-      "type": "Power Lora Loader (rgthree)",
-      "pos": [
-        10344.75338854829,
-        690.2629259621754
-      ],
-      "size": [
-        340.519921875,
-        190
-      ],
-      "flags": {},
-      "order": 40,
-      "mode": 4,
-      "inputs": [
-        {
-          "dir": 3,
-          "name": "model",
-          "type": "MODEL",
-          "link": 223
-        },
-        {
-          "dir": 3,
-          "name": "clip",
-          "type": "CLIP",
-          "link": 224
-        }
-      ],
-      "outputs": [
-        {
-          "dir": 4,
-          "name": "MODEL",
-          "shape": 3,
-          "type": "MODEL",
-          "links": [
-            337
-          ]
-        },
-        {
-          "dir": 4,
-          "name": "CLIP",
-          "shape": 3,
-          "type": "CLIP",
-          "links": [
-            222,
-            338
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "rgthree-comfy",
-        "ver": "1.0.2512112053",
-        "Show Strengths": "Single Strength",
-        "Match": "",
-        "aux_id": "rgthree/rgthree-comfy"
-      },
-      "widgets_values": [
-        {},
-        {
-          "type": "PowerLoraLoaderHeaderWidget"
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {},
-        ""
-      ]
-    },
-    {
-      "id": 194,
-      "type": "Power Lora Loader (rgthree)",
-      "pos": [
-        18335.35519294605,
-        -773.3822137747027
-      ],
-      "size": [
-        340.519921875,
-        214
-      ],
-      "flags": {},
-      "order": 36,
-      "mode": 4,
-      "inputs": [
-        {
-          "dir": 3,
-          "name": "model",
-          "type": "MODEL",
-          "link": 286
-        },
-        {
-          "dir": 3,
-          "name": "clip",
-          "type": "CLIP",
-          "link": 287
-        }
-      ],
-      "outputs": [
-        {
-          "dir": 4,
-          "name": "MODEL",
-          "shape": 3,
-          "type": "MODEL",
-          "links": [
-            313
-          ]
-        },
-        {
-          "dir": 4,
-          "name": "CLIP",
-          "shape": 3,
-          "type": "CLIP",
-          "links": [
-            285,
-            314
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "rgthree-comfy",
-        "ver": "1.0.2512112053",
-        "Show Strengths": "Single Strength",
-        "Match": "",
-        "aux_id": "rgthree/rgthree-comfy"
-      },
-      "widgets_values": [
-        {},
-        {
-          "type": "PowerLoraLoaderHeaderWidget"
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {},
-        ""
-      ]
-    },
-    {
       "id": 160,
       "type": "SaveImage",
       "pos": [
@@ -5843,7 +3995,7 @@
         "Node name for S&R": "SaveImage"
       },
       "widgets_values": [
-        "ComfyUI"
+        "05_hands"
       ],
       "color": "#223",
       "bgcolor": "#335",
@@ -5883,7 +4035,7 @@
         "Node name for S&R": "SaveImage"
       },
       "widgets_values": [
-        "ComfyUIEyesandMouth"
+        "04_mouth"
       ],
       "color": "#223",
       "bgcolor": "#335",
@@ -5907,7 +4059,7 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 209
+          "link": 594
         }
       ],
       "outputs": [
@@ -5950,7 +4102,7 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 183
+          "link": 595
         }
       ],
       "outputs": [
@@ -5993,7 +4145,7 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 179
+          "link": 591
         }
       ],
       "outputs": [
@@ -6036,7 +4188,7 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 184
+          "link": 596
         }
       ],
       "outputs": [
@@ -6283,7 +4435,7 @@
           "widget": {
             "name": "tile_width"
           },
-          "link": 326
+          "link": null
         },
         {
           "name": "tile_height",
@@ -6291,7 +4443,7 @@
           "widget": {
             "name": "tile_height"
           },
-          "link": 327
+          "link": null
         }
       ],
       "outputs": [
@@ -6300,7 +4452,6 @@
           "type": "IMAGE",
           "links": [
             312,
-            329,
             330,
             336
           ]
@@ -6323,7 +4474,7 @@
         0.1,
         "Linear",
         1024,
-        1016,
+        1024,
         8,
         32,
         "None",
@@ -6358,16 +4509,13 @@
         {
           "name": "BBOX_DETECTOR",
           "type": "BBOX_DETECTOR",
-          "links": [
-            185
-          ]
+          "links": []
         },
         {
           "name": "SEGM_DETECTOR",
           "type": "SEGM_DETECTOR",
           "links": [
-            187,
-            211
+            187
           ]
         }
       ],
@@ -6384,65 +4532,6 @@
       "bgcolor": "#3f5159",
       "shape": 1,
       "title": "FACE SEGM detector"
-    },
-    {
-      "id": 139,
-      "type": "BboxDetectorSEGS",
-      "pos": [
-        9639.20881710595,
-        -374.5709537255237
-      ],
-      "size": [
-        400,
-        224
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 111,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "bbox_detector",
-          "type": "BBOX_DETECTOR",
-          "link": 185
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 186
-        },
-        {
-          "name": "detailer_hook",
-          "shape": 7,
-          "type": "DETAILER_HOOK",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "SEGS",
-          "type": "SEGS",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-impact-pack",
-        "ver": "8.8.1",
-        "Node name for S&R": "BboxDetectorSEGS",
-        "aux_id": "ltdrdata/ComfyUI-Impact-Pack"
-      },
-      "widgets_values": [
-        0.5,
-        10,
-        3,
-        10,
-        "all"
-      ],
-      "color": "#2a363b",
-      "bgcolor": "#3f5159",
-      "shape": 1,
-      "title": "SPARE segs source -- drag its SEGS into a detailer's 'segs' to swap that pass to BBOX-from-the-SEGM-model"
     },
     {
       "id": 140,
@@ -6538,7 +4627,7 @@
         "Node name for S&R": "SaveImage"
       },
       "widgets_values": [
-        "ComfyUIBeforeEyesandLips"
+        "02_face_segm"
       ],
       "color": "#2a363b",
       "bgcolor": "#3f5159",
@@ -6574,131 +4663,12 @@
         "Node name for S&R": "UpscaleModelLoader"
       },
       "widgets_values": [
-        "Your_Character_LoRA_Here.safetensors"
+        "4x-AnimeSharp.pth"
       ],
       "color": "#232",
       "bgcolor": "#353",
       "shape": 1,
       "title": "UPSCALE MODEL -- pick your ESRGAN/DAT model here"
-    },
-    {
-      "id": 129,
-      "type": "PreviewImage",
-      "pos": [
-        9743.085331548018,
-        1599.1778559142956
-      ],
-      "size": [
-        210,
-        246
-      ],
-      "flags": {},
-      "order": 136,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 175
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.27",
-        "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": [],
-      "color": "#223",
-      "bgcolor": "#335",
-      "shape": 1
-    },
-    {
-      "id": 125,
-      "type": "PreviewImage",
-      "pos": [
-        7940.675368972022,
-        1601.3090851403313
-      ],
-      "size": [
-        210,
-        246
-      ],
-      "flags": {},
-      "order": 129,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 167
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.27",
-        "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": [],
-      "color": "#223",
-      "bgcolor": "#335",
-      "shape": 1
-    },
-    {
-      "id": 246,
-      "type": "VAEEncode",
-      "pos": [
-        6179.092678380132,
-        -627.5373854182048
-      ],
-      "size": [
-        140,
-        46
-      ],
-      "flags": {},
-      "order": 101,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "pixels",
-          "type": "IMAGE",
-          "link": 482
-        },
-        {
-          "name": "vae",
-          "type": "VAE",
-          "link": 362
-        }
-      ],
-      "outputs": [
-        {
-          "name": "LATENT",
-          "type": "LATENT",
-          "links": [
-            363
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.18.2",
-        "Node name for S&R": "VAEEncode"
-      },
-      "widgets_values": [],
-      "title": "VAE round-trip: hands the base image to the detailer chain"
     },
     {
       "id": 277,
@@ -6941,9 +4911,11 @@
           "type": "IMAGE",
           "links": [
             458,
-            482,
             483,
-            538
+            538,
+            612,
+            613,
+            614
           ]
         }
       ],
@@ -7064,7 +5036,6 @@
           "name": "image",
           "type": "IMAGE",
           "links": [
-            190,
             192,
             217,
             238
@@ -7100,9 +5071,7 @@
           "name": "cropped_refined_alpha",
           "shape": 6,
           "type": "IMAGE",
-          "links": [
-            165
-          ]
+          "links": []
         },
         {
           "name": "cnet_images",
@@ -7177,7 +5146,7 @@
         "Node name for S&R": "SaveImage"
       },
       "widgets_values": [
-        "ComfyUI"
+        "00_base"
       ],
       "title": "Base generation result"
     },
@@ -7431,7 +5400,7 @@
         {
           "name": "model",
           "type": "MODEL",
-          "link": 454
+          "link": 578
         },
         {
           "name": "positive",
@@ -7494,7 +5463,7 @@
       "outputs": [],
       "properties": {},
       "widgets_values": [
-        "(masterpiece, best quality, amazing quality, newest, simple background), 1girl, white hair<lora:Shanher_Suit_v6.1:1> shanhersuit, latex bodysuit, turtleneck latex bodysuit, multicolored bodysuit, soft lighting, dynamic lighting, bedroom, sexy face, spread legs, en pointe, ballet shoes, fox ears, curved posture, modern bedroom, maebari, dramatic lighting, depth of field, cinematic perspective, hyper-realistic"
+        "Example prompt structure -- copy a line into one of the Prompt boxes:\n\n(masterpiece, best quality, amazing quality, newest), 1girl, solo\n<your character LoRA trigger words go here>\nsoft lighting, dynamic lighting, bedroom, depth of field, cinematic perspective\n\nKeep one idea per box -- the Power Puter joins whichever boxes are non-empty."
       ],
       "color": "#432",
       "bgcolor": "#653"
@@ -7542,33 +5511,17 @@
           "name": "MODEL",
           "type": "MODEL",
           "links": [
-            197,
-            215,
-            223,
-            264,
-            286,
             321,
-            348,
-            353,
-            444,
-            499
+            563
           ]
         },
         {
           "name": "CLIP",
           "type": "CLIP",
           "links": [
-            198,
-            216,
-            224,
-            265,
-            287,
             303,
             304,
-            349,
-            354,
-            445,
-            500
+            564
           ]
         },
         {
@@ -7583,13 +5536,12 @@
             315,
             324,
             339,
-            343,
-            362,
             451,
             460,
             465,
             502,
-            547
+            547,
+            562
           ]
         }
       ],
@@ -7621,7 +5573,7 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 453
+          "link": 610
         },
         {
           "name": "text",
@@ -7647,7 +5599,7 @@
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "masterpiece, very detailed, extreme detail, Best Quality, highly detailed, high quality, best quality, nsfw,blue short hair 1 girl, single, stationary restraints, medium breasts, lockedsexmachine, closed eyes, armpits, hair clip, shanhersuit, latex bodysuit, turtleneck latex bodysuit, multicolored bodysuit, covered collarbone, covered neck, neck covered, spread legs"
+        "masterpiece, best quality, amazing quality, very aesthetic, absurdres, 1girl, solo, simple background"
       ],
       "title": "MAIN POSITIVE PROMPT (text comes from the Prompt 1-4 boxes)"
     },
@@ -7669,7 +5621,7 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 452
+          "link": 609
         }
       ],
       "outputs": [
@@ -7709,7 +5661,7 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 178
+          "link": 592
         }
       ],
       "outputs": [
@@ -7733,101 +5685,6 @@
       "color": "#232",
       "bgcolor": "#353",
       "shape": 1
-    },
-    {
-      "id": 276,
-      "type": "Power Lora Loader (rgthree)",
-      "pos": [
-        362.8313680164931,
-        -951.4452638360184
-      ],
-      "size": [
-        340.519921875,
-        238
-      ],
-      "flags": {},
-      "order": 48,
-      "mode": 0,
-      "inputs": [
-        {
-          "dir": 3,
-          "name": "model",
-          "type": "MODEL",
-          "link": 444
-        },
-        {
-          "dir": 3,
-          "name": "clip",
-          "type": "CLIP",
-          "link": 445
-        }
-      ],
-      "outputs": [
-        {
-          "dir": 4,
-          "name": "MODEL",
-          "shape": 3,
-          "type": "MODEL",
-          "links": [
-            454
-          ]
-        },
-        {
-          "dir": 4,
-          "name": "CLIP",
-          "shape": 3,
-          "type": "CLIP",
-          "links": [
-            452,
-            453
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "rgthree-comfy",
-        "ver": "1.0.2512112053",
-        "Show Strengths": "Single Strength",
-        "Match": "",
-        "aux_id": "rgthree/rgthree-comfy"
-      },
-      "widgets_values": [
-        {},
-        {
-          "type": "PowerLoraLoaderHeaderWidget"
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 0.7,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "None",
-          "strength": 0.4,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {},
-        ""
-      ]
     },
     {
       "id": 302,
@@ -7931,127 +5788,6 @@
       "shape": 1
     },
     {
-      "id": 309,
-      "type": "Power Lora Loader (rgthree)",
-      "pos": [
-        12237.28,
-        1700
-      ],
-      "size": [
-        340.5,
-        190
-      ],
-      "flags": {},
-      "order": 42,
-      "mode": 4,
-      "inputs": [
-        {
-          "dir": 3,
-          "name": "model",
-          "type": "MODEL",
-          "link": 499
-        },
-        {
-          "dir": 3,
-          "name": "clip",
-          "type": "CLIP",
-          "link": 500
-        }
-      ],
-      "outputs": [
-        {
-          "dir": 4,
-          "name": "MODEL",
-          "shape": 3,
-          "type": "MODEL",
-          "links": [
-            508
-          ]
-        },
-        {
-          "dir": 4,
-          "name": "CLIP",
-          "shape": 3,
-          "type": "CLIP",
-          "links": [
-            501,
-            509
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "rgthree-comfy",
-        "Show Strengths": "Single Strength",
-        "Match": "",
-        "aux_id": "rgthree/rgthree-comfy"
-      },
-      "widgets_values": [
-        {},
-        {
-          "type": "PowerLoraLoaderHeaderWidget"
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "Your_Character_LoRA_Here.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {},
-        ""
-      ]
-    },
-    {
-      "id": 310,
-      "type": "CLIPSetLastLayer",
-      "pos": [
-        12637.28,
-        1720
-      ],
-      "size": [
-        210,
-        58
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 59,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 501
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "slot_index": 0,
-          "links": [
-            503,
-            504
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "Node name for S&R": "CLIPSetLastLayer"
-      },
-      "widgets_values": [
-        -2
-      ],
-      "color": "#432",
-      "bgcolor": "#653",
-      "shape": 1
-    },
-    {
       "id": 311,
       "type": "CLIPTextEncode",
       "pos": [
@@ -8064,12 +5800,12 @@
       ],
       "flags": {},
       "order": 83,
-      "mode": 4,
+      "mode": 0,
       "inputs": [
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 503
+          "link": 607
         }
       ],
       "outputs": [
@@ -8087,7 +5823,7 @@
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "smiling, happy"
+        "masterpiece, best quality, perfect quality, very aesthetic, detailed skin, smooth skin"
       ],
       "color": "#232",
       "bgcolor": "#353",
@@ -8106,12 +5842,12 @@
       ],
       "flags": {},
       "order": 82,
-      "mode": 4,
+      "mode": 0,
       "inputs": [
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 504
+          "link": 608
         }
       ],
       "outputs": [
@@ -8129,7 +5865,7 @@
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "sad, frowning"
+        "blurry, low quality, bad anatomy, deformed, extra limbs, poorly drawn, jpeg artifacts"
       ],
       "color": "#322",
       "bgcolor": "#533",
@@ -8150,17 +5886,17 @@
         "collapsed": true
       },
       "order": 92,
-      "mode": 4,
+      "mode": 0,
       "inputs": [
         {
           "name": "model",
           "type": "MODEL",
-          "link": 508
+          "link": 579
         },
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 509
+          "link": 590
         },
         {
           "name": "vae",
@@ -8352,7 +6088,6 @@
           "name": "image",
           "type": "IMAGE",
           "links": [
-            311,
             320,
             515
           ]
@@ -8387,9 +6122,7 @@
           "name": "cropped_refined_alpha",
           "shape": 6,
           "type": "IMAGE",
-          "links": [
-            518
-          ]
+          "links": []
         },
         {
           "name": "cnet_images",
@@ -8429,43 +6162,6 @@
       "bgcolor": "#3f5159",
       "shape": 1,
       "title": "HIPS/GROIN inpaint (shared by all four detector branches)"
-    },
-    {
-      "id": 317,
-      "type": "PreviewImage",
-      "pos": [
-        13737.278524137195,
-        2171.6024648535777
-      ],
-      "size": [
-        210,
-        246
-      ],
-      "flags": {},
-      "order": 179,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 518
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": [],
-      "color": "#223",
-      "bgcolor": "#335",
-      "shape": 1
     },
     {
       "id": 318,
@@ -8959,7 +6655,7 @@
         "Node name for S&R": "PrimitiveStringMultiline"
       },
       "widgets_values": [
-        "masterpiece, very detailed, extreme detail, Best Quality, highly detailed, high quality, best quality, nsfw,blue short hair 1 girl, single, stationary restraints, medium breasts, lockedsexmachine, closed eyes, armpits, hair clip, shanhersuit, latex bodysuit, turtleneck latex bodysuit, multicolored bodysuit, covered collarbone, covered neck, neck covered, spread legs"
+        "masterpiece, best quality, amazing quality, very aesthetic, absurdres, 1girl, solo, simple background"
       ]
     },
     {
@@ -9901,25 +7597,177 @@
       ],
       "color": "#432",
       "bgcolor": "#653"
+    },
+    {
+      "id": 354,
+      "type": "LoraLoader",
+      "pos": [
+        362.8313680164931,
+        -951.4452638360184
+      ],
+      "size": [
+        340,
+        126
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 563
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 564
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            565
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            566
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "LoraLoader"
+      },
+      "widgets_values": [
+        "Your_Character_LoRA_Here.safetensors",
+        1,
+        1
+      ],
+      "title": "LoRA 1  (shared by base gen and every detailer)"
+    },
+    {
+      "id": 355,
+      "type": "LoraLoader",
+      "pos": [
+        362.8313680164931,
+        -821.4452638360184
+      ],
+      "size": [
+        340,
+        126
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 565
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 566
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            567
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            568
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "LoraLoader"
+      },
+      "widgets_values": [
+        "Your_Character_LoRA_Here.safetensors",
+        1,
+        1
+      ],
+      "title": "LoRA 2  (spare -- un-bypass to use)"
+    },
+    {
+      "id": 356,
+      "type": "LoraLoader",
+      "pos": [
+        362.8313680164931,
+        -691.4452638360184
+      ],
+      "size": [
+        340,
+        126
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 567
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 568
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            570,
+            571,
+            572,
+            573,
+            574,
+            575,
+            576,
+            577,
+            578,
+            579
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            569
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "LoraLoader"
+      },
+      "widgets_values": [
+        "Your_Character_LoRA_Here.safetensors",
+        1,
+        1
+      ],
+      "title": "LoRA 3  (spare -- un-bypass to use)"
     }
   ],
   "links": [
-    [
-      159,
-      152,
-      1,
-      117,
-      0,
-      "CLIP"
-    ],
-    [
-      160,
-      165,
-      5,
-      118,
-      0,
-      "IMAGE"
-    ],
     [
       161,
       165,
@@ -9953,26 +7801,10 @@
       "IMAGE"
     ],
     [
-      165,
-      166,
-      5,
-      123,
-      0,
-      "IMAGE"
-    ],
-    [
       166,
       166,
       4,
       124,
-      0,
-      "IMAGE"
-    ],
-    [
-      167,
-      167,
-      5,
-      125,
       0,
       "IMAGE"
     ],
@@ -9991,22 +7823,6 @@
       127,
       0,
       "IMAGE"
-    ],
-    [
-      170,
-      152,
-      0,
-      128,
-      0,
-      "MODEL"
-    ],
-    [
-      171,
-      152,
-      1,
-      128,
-      1,
-      "CLIP"
     ],
     [
       172,
@@ -10033,14 +7849,6 @@
       "CONDITIONING"
     ],
     [
-      175,
-      168,
-      5,
-      129,
-      0,
-      "IMAGE"
-    ],
-    [
       176,
       168,
       4,
@@ -10057,78 +7865,6 @@
       "IMAGE"
     ],
     [
-      178,
-      117,
-      0,
-      132,
-      0,
-      "CLIP"
-    ],
-    [
-      179,
-      117,
-      0,
-      133,
-      0,
-      "CLIP"
-    ],
-    [
-      180,
-      135,
-      0,
-      134,
-      0,
-      "CLIP"
-    ],
-    [
-      181,
-      231,
-      1,
-      135,
-      0,
-      "CLIP"
-    ],
-    [
-      182,
-      145,
-      1,
-      136,
-      0,
-      "CLIP"
-    ],
-    [
-      183,
-      136,
-      0,
-      137,
-      0,
-      "CLIP"
-    ],
-    [
-      184,
-      136,
-      0,
-      138,
-      0,
-      "CLIP"
-    ],
-    [
-      185,
-      234,
-      0,
-      139,
-      0,
-      "BBOX_DETECTOR"
-    ],
-    [
-      186,
-      165,
-      0,
-      139,
-      1,
-      "IMAGE"
-    ],
-    [
       187,
       234,
       1,
@@ -10141,22 +7877,6 @@
       165,
       0,
       140,
-      1,
-      "IMAGE"
-    ],
-    [
-      189,
-      233,
-      0,
-      141,
-      0,
-      "BBOX_DETECTOR"
-    ],
-    [
-      190,
-      166,
-      0,
-      141,
       1,
       "IMAGE"
     ],
@@ -10177,22 +7897,6 @@
       "IMAGE"
     ],
     [
-      193,
-      232,
-      0,
-      143,
-      0,
-      "BBOX_DETECTOR"
-    ],
-    [
-      194,
-      167,
-      0,
-      143,
-      1,
-      "IMAGE"
-    ],
-    [
       195,
       232,
       1,
@@ -10207,38 +7911,6 @@
       144,
       1,
       "IMAGE"
-    ],
-    [
-      197,
-      285,
-      0,
-      145,
-      0,
-      "MODEL"
-    ],
-    [
-      198,
-      285,
-      1,
-      145,
-      1,
-      "CLIP"
-    ],
-    [
-      199,
-      231,
-      0,
-      146,
-      0,
-      "MODEL"
-    ],
-    [
-      200,
-      231,
-      1,
-      146,
-      1,
-      "CLIP"
     ],
     [
       201,
@@ -10265,22 +7937,6 @@
       "CONDITIONING"
     ],
     [
-      204,
-      145,
-      0,
-      147,
-      0,
-      "MODEL"
-    ],
-    [
-      205,
-      145,
-      1,
-      147,
-      1,
-      "CLIP"
-    ],
-    [
       206,
       285,
       2,
@@ -10305,35 +7961,11 @@
       "CONDITIONING"
     ],
     [
-      209,
-      135,
-      0,
-      148,
-      0,
-      "CLIP"
-    ],
-    [
       210,
       167,
       0,
       149,
       0,
-      "IMAGE"
-    ],
-    [
-      211,
-      234,
-      1,
-      150,
-      0,
-      "SEGM_DETECTOR"
-    ],
-    [
-      212,
-      225,
-      0,
-      150,
-      1,
       "IMAGE"
     ],
     [
@@ -10343,30 +7975,6 @@
       151,
       0,
       "BBOX_DETECTOR"
-    ],
-    [
-      214,
-      225,
-      0,
-      151,
-      1,
-      "IMAGE"
-    ],
-    [
-      215,
-      285,
-      0,
-      152,
-      0,
-      "MODEL"
-    ],
-    [
-      216,
-      285,
-      1,
-      152,
-      1,
-      "CLIP"
     ],
     [
       217,
@@ -10385,14 +7993,6 @@
       "IMAGE"
     ],
     [
-      219,
-      175,
-      5,
-      155,
-      0,
-      "IMAGE"
-    ],
-    [
       220,
       175,
       4,
@@ -10407,30 +8007,6 @@
       157,
       0,
       "IMAGE"
-    ],
-    [
-      222,
-      159,
-      1,
-      158,
-      0,
-      "CLIP"
-    ],
-    [
-      223,
-      285,
-      0,
-      159,
-      0,
-      "MODEL"
-    ],
-    [
-      224,
-      285,
-      1,
-      159,
-      1,
-      "CLIP"
     ],
     [
       225,
@@ -10454,46 +8030,6 @@
       0,
       161,
       1,
-      "IMAGE"
-    ],
-    [
-      228,
-      237,
-      0,
-      162,
-      0,
-      "BBOX_DETECTOR"
-    ],
-    [
-      229,
-      168,
-      0,
-      162,
-      1,
-      "IMAGE"
-    ],
-    [
-      230,
-      158,
-      0,
-      163,
-      0,
-      "CLIP"
-    ],
-    [
-      231,
-      158,
-      0,
-      164,
-      0,
-      "CLIP"
-    ],
-    [
-      232,
-      225,
-      0,
-      165,
-      0,
       "IMAGE"
     ],
     [
@@ -10585,14 +8121,6 @@
       "BASIC_PIPE"
     ],
     [
-      244,
-      186,
-      5,
-      169,
-      0,
-      "IMAGE"
-    ],
-    [
       245,
       186,
       4,
@@ -10609,28 +8137,12 @@
       "IMAGE"
     ],
     [
-      247,
-      227,
-      1,
-      172,
-      0,
-      "CLIP"
-    ],
-    [
       248,
       186,
       0,
       173,
       0,
       "IMAGE"
-    ],
-    [
-      249,
-      172,
-      0,
-      174,
-      0,
-      "CLIP"
     ],
     [
       250,
@@ -10657,30 +8169,6 @@
       "BASIC_PIPE"
     ],
     [
-      254,
-      175,
-      0,
-      176,
-      1,
-      "IMAGE"
-    ],
-    [
-      255,
-      227,
-      0,
-      177,
-      0,
-      "MODEL"
-    ],
-    [
-      256,
-      227,
-      1,
-      177,
-      1,
-      "CLIP"
-    ],
-    [
       257,
       285,
       2,
@@ -10705,14 +8193,6 @@
       "CONDITIONING"
     ],
     [
-      260,
-      212,
-      5,
-      178,
-      0,
-      "IMAGE"
-    ],
-    [
       261,
       212,
       4,
@@ -10729,60 +8209,12 @@
       "IMAGE"
     ],
     [
-      263,
-      182,
-      1,
-      181,
-      0,
-      "CLIP"
-    ],
-    [
-      264,
-      285,
-      0,
-      182,
-      0,
-      "MODEL"
-    ],
-    [
-      265,
-      285,
-      1,
-      182,
-      1,
-      "CLIP"
-    ],
-    [
       266,
       212,
       0,
       183,
       0,
       "IMAGE"
-    ],
-    [
-      267,
-      181,
-      0,
-      184,
-      0,
-      "CLIP"
-    ],
-    [
-      268,
-      182,
-      0,
-      185,
-      0,
-      "MODEL"
-    ],
-    [
-      269,
-      182,
-      1,
-      185,
-      1,
-      "CLIP"
     ],
     [
       270,
@@ -10857,30 +8289,6 @@
       "IMAGE"
     ],
     [
-      280,
-      196,
-      0,
-      189,
-      0,
-      "BBOX_DETECTOR"
-    ],
-    [
-      281,
-      186,
-      0,
-      189,
-      1,
-      "IMAGE"
-    ],
-    [
-      282,
-      220,
-      5,
-      190,
-      0,
-      "IMAGE"
-    ],
-    [
       283,
       220,
       4,
@@ -10893,46 +8301,6 @@
       220,
       3,
       192,
-      0,
-      "IMAGE"
-    ],
-    [
-      285,
-      194,
-      1,
-      193,
-      0,
-      "CLIP"
-    ],
-    [
-      286,
-      285,
-      0,
-      194,
-      0,
-      "MODEL"
-    ],
-    [
-      287,
-      285,
-      1,
-      194,
-      1,
-      "CLIP"
-    ],
-    [
-      288,
-      193,
-      0,
-      195,
-      0,
-      "CLIP"
-    ],
-    [
-      289,
-      211,
-      5,
-      197,
       0,
       "IMAGE"
     ],
@@ -10953,44 +8321,12 @@
       "IMAGE"
     ],
     [
-      292,
-      201,
-      1,
-      200,
-      0,
-      "CLIP"
-    ],
-    [
       293,
       211,
       0,
       202,
       0,
       "IMAGE"
-    ],
-    [
-      294,
-      200,
-      0,
-      203,
-      0,
-      "CLIP"
-    ],
-    [
-      295,
-      201,
-      0,
-      205,
-      0,
-      "MODEL"
-    ],
-    [
-      296,
-      201,
-      1,
-      205,
-      1,
-      "CLIP"
     ],
     [
       297,
@@ -11023,22 +8359,6 @@
       206,
       1,
       "IMAGE"
-    ],
-    [
-      301,
-      200,
-      0,
-      207,
-      0,
-      "CLIP"
-    ],
-    [
-      302,
-      181,
-      0,
-      208,
-      0,
-      "CLIP"
     ],
     [
       303,
@@ -11105,36 +8425,12 @@
       "BASIC_PIPE"
     ],
     [
-      311,
-      316,
-      0,
-      213,
-      0,
-      "IMAGE"
-    ],
-    [
       312,
       218,
       0,
       214,
       0,
       "IMAGE"
-    ],
-    [
-      313,
-      194,
-      0,
-      215,
-      0,
-      "MODEL"
-    ],
-    [
-      314,
-      194,
-      1,
-      215,
-      1,
-      "CLIP"
     ],
     [
       315,
@@ -11159,14 +8455,6 @@
       215,
       4,
       "CONDITIONING"
-    ],
-    [
-      318,
-      193,
-      0,
-      216,
-      0,
-      "CLIP"
     ],
     [
       319,
@@ -11225,38 +8513,6 @@
       "UPSCALE_MODEL"
     ],
     [
-      326,
-      213,
-      0,
-      218,
-      8,
-      "INT"
-    ],
-    [
-      327,
-      213,
-      1,
-      218,
-      9,
-      "INT"
-    ],
-    [
-      328,
-      204,
-      1,
-      219,
-      0,
-      "SEGM_DETECTOR"
-    ],
-    [
-      329,
-      218,
-      0,
-      219,
-      1,
-      "IMAGE"
-    ],
-    [
       330,
       218,
       0,
@@ -11281,22 +8537,6 @@
       "BASIC_PIPE"
     ],
     [
-      333,
-      204,
-      0,
-      221,
-      0,
-      "BBOX_DETECTOR"
-    ],
-    [
-      334,
-      220,
-      0,
-      221,
-      1,
-      "IMAGE"
-    ],
-    [
       335,
       222,
       0,
@@ -11311,22 +8551,6 @@
       223,
       1,
       "IMAGE"
-    ],
-    [
-      337,
-      159,
-      0,
-      224,
-      0,
-      "MODEL"
-    ],
-    [
-      338,
-      159,
-      1,
-      224,
-      1,
-      "CLIP"
     ],
     [
       339,
@@ -11351,94 +8575,6 @@
       224,
       4,
       "CONDITIONING"
-    ],
-    [
-      343,
-      285,
-      2,
-      225,
-      1,
-      "VAE"
-    ],
-    [
-      348,
-      285,
-      0,
-      227,
-      0,
-      "MODEL"
-    ],
-    [
-      349,
-      285,
-      1,
-      227,
-      1,
-      "CLIP"
-    ],
-    [
-      353,
-      285,
-      0,
-      231,
-      0,
-      "MODEL"
-    ],
-    [
-      354,
-      285,
-      1,
-      231,
-      1,
-      "CLIP"
-    ],
-    [
-      355,
-      172,
-      0,
-      236,
-      0,
-      "CLIP"
-    ],
-    [
-      359,
-      225,
-      0,
-      245,
-      0,
-      "IMAGE"
-    ],
-    [
-      362,
-      285,
-      2,
-      246,
-      1,
-      "VAE"
-    ],
-    [
-      363,
-      246,
-      0,
-      225,
-      0,
-      "LATENT"
-    ],
-    [
-      444,
-      285,
-      0,
-      276,
-      0,
-      "MODEL"
-    ],
-    [
-      445,
-      285,
-      1,
-      276,
-      1,
-      "CLIP"
     ],
     [
       447,
@@ -11479,30 +8615,6 @@
       282,
       4,
       "VAE"
-    ],
-    [
-      452,
-      276,
-      1,
-      283,
-      0,
-      "CLIP"
-    ],
-    [
-      453,
-      276,
-      1,
-      284,
-      0,
-      "CLIP"
-    ],
-    [
-      454,
-      276,
-      0,
-      287,
-      0,
-      "MODEL"
     ],
     [
       455,
@@ -11625,14 +8737,6 @@
       "IMAGE"
     ],
     [
-      482,
-      290,
-      0,
-      246,
-      0,
-      "IMAGE"
-    ],
-    [
       483,
       290,
       0,
@@ -11657,52 +8761,12 @@
       "SEGM_DETECTOR"
     ],
     [
-      499,
-      285,
-      0,
-      309,
-      0,
-      "MODEL"
-    ],
-    [
-      500,
-      285,
-      1,
-      309,
-      1,
-      "CLIP"
-    ],
-    [
-      501,
-      309,
-      1,
-      310,
-      0,
-      "CLIP"
-    ],
-    [
       502,
       285,
       2,
       313,
       2,
       "VAE"
-    ],
-    [
-      503,
-      310,
-      0,
-      311,
-      0,
-      "CLIP"
-    ],
-    [
-      504,
-      310,
-      0,
-      312,
-      0,
-      "CLIP"
     ],
     [
       505,
@@ -11719,22 +8783,6 @@
       313,
       4,
       "CONDITIONING"
-    ],
-    [
-      508,
-      309,
-      0,
-      313,
-      0,
-      "MODEL"
-    ],
-    [
-      509,
-      309,
-      1,
-      313,
-      1,
-      "CLIP"
     ],
     [
       510,
@@ -11789,14 +8837,6 @@
       316,
       4,
       318,
-      0,
-      "IMAGE"
-    ],
-    [
-      518,
-      316,
-      5,
-      317,
       0,
       "IMAGE"
     ],
@@ -11961,14 +9001,6 @@
       "BBOX_DETECTOR"
     ],
     [
-      553,
-      196,
-      1,
-      176,
-      0,
-      "SEGM_DETECTOR"
-    ],
-    [
       554,
       330,
       0,
@@ -12015,6 +9047,406 @@
       284,
       1,
       "STRING"
+    ],
+    [
+      562,
+      285,
+      2,
+      205,
+      2,
+      "VAE"
+    ],
+    [
+      563,
+      285,
+      0,
+      354,
+      0,
+      "MODEL"
+    ],
+    [
+      564,
+      285,
+      1,
+      354,
+      1,
+      "CLIP"
+    ],
+    [
+      565,
+      354,
+      0,
+      355,
+      0,
+      "MODEL"
+    ],
+    [
+      566,
+      354,
+      1,
+      355,
+      1,
+      "CLIP"
+    ],
+    [
+      567,
+      355,
+      0,
+      356,
+      0,
+      "MODEL"
+    ],
+    [
+      568,
+      355,
+      1,
+      356,
+      1,
+      "CLIP"
+    ],
+    [
+      569,
+      356,
+      1,
+      117,
+      0,
+      "CLIP"
+    ],
+    [
+      570,
+      356,
+      0,
+      177,
+      0,
+      "MODEL"
+    ],
+    [
+      571,
+      356,
+      0,
+      205,
+      0,
+      "MODEL"
+    ],
+    [
+      572,
+      356,
+      0,
+      185,
+      0,
+      "MODEL"
+    ],
+    [
+      573,
+      356,
+      0,
+      128,
+      0,
+      "MODEL"
+    ],
+    [
+      574,
+      356,
+      0,
+      146,
+      0,
+      "MODEL"
+    ],
+    [
+      575,
+      356,
+      0,
+      147,
+      0,
+      "MODEL"
+    ],
+    [
+      576,
+      356,
+      0,
+      224,
+      0,
+      "MODEL"
+    ],
+    [
+      577,
+      356,
+      0,
+      215,
+      0,
+      "MODEL"
+    ],
+    [
+      578,
+      356,
+      0,
+      287,
+      0,
+      "MODEL"
+    ],
+    [
+      579,
+      356,
+      0,
+      313,
+      0,
+      "MODEL"
+    ],
+    [
+      580,
+      117,
+      0,
+      177,
+      1,
+      "CLIP"
+    ],
+    [
+      581,
+      117,
+      0,
+      205,
+      1,
+      "CLIP"
+    ],
+    [
+      582,
+      117,
+      0,
+      185,
+      1,
+      "CLIP"
+    ],
+    [
+      583,
+      117,
+      0,
+      128,
+      1,
+      "CLIP"
+    ],
+    [
+      584,
+      117,
+      0,
+      146,
+      1,
+      "CLIP"
+    ],
+    [
+      585,
+      117,
+      0,
+      147,
+      1,
+      "CLIP"
+    ],
+    [
+      586,
+      117,
+      0,
+      224,
+      1,
+      "CLIP"
+    ],
+    [
+      587,
+      117,
+      0,
+      215,
+      1,
+      "CLIP"
+    ],
+    [
+      590,
+      117,
+      0,
+      313,
+      1,
+      "CLIP"
+    ],
+    [
+      591,
+      117,
+      0,
+      133,
+      0,
+      "CLIP"
+    ],
+    [
+      592,
+      117,
+      0,
+      132,
+      0,
+      "CLIP"
+    ],
+    [
+      593,
+      117,
+      0,
+      134,
+      0,
+      "CLIP"
+    ],
+    [
+      594,
+      117,
+      0,
+      148,
+      0,
+      "CLIP"
+    ],
+    [
+      595,
+      117,
+      0,
+      137,
+      0,
+      "CLIP"
+    ],
+    [
+      596,
+      117,
+      0,
+      138,
+      0,
+      "CLIP"
+    ],
+    [
+      597,
+      117,
+      0,
+      163,
+      0,
+      "CLIP"
+    ],
+    [
+      598,
+      117,
+      0,
+      164,
+      0,
+      "CLIP"
+    ],
+    [
+      599,
+      117,
+      0,
+      174,
+      0,
+      "CLIP"
+    ],
+    [
+      600,
+      117,
+      0,
+      236,
+      0,
+      "CLIP"
+    ],
+    [
+      601,
+      117,
+      0,
+      184,
+      0,
+      "CLIP"
+    ],
+    [
+      602,
+      117,
+      0,
+      208,
+      0,
+      "CLIP"
+    ],
+    [
+      603,
+      117,
+      0,
+      195,
+      0,
+      "CLIP"
+    ],
+    [
+      604,
+      117,
+      0,
+      216,
+      0,
+      "CLIP"
+    ],
+    [
+      605,
+      117,
+      0,
+      203,
+      0,
+      "CLIP"
+    ],
+    [
+      606,
+      117,
+      0,
+      207,
+      0,
+      "CLIP"
+    ],
+    [
+      607,
+      117,
+      0,
+      311,
+      0,
+      "CLIP"
+    ],
+    [
+      608,
+      117,
+      0,
+      312,
+      0,
+      "CLIP"
+    ],
+    [
+      609,
+      117,
+      0,
+      283,
+      0,
+      "CLIP"
+    ],
+    [
+      610,
+      117,
+      0,
+      284,
+      0,
+      "CLIP"
+    ],
+    [
+      612,
+      290,
+      0,
+      151,
+      1,
+      "IMAGE"
+    ],
+    [
+      613,
+      290,
+      0,
+      165,
+      0,
+      "IMAGE"
+    ],
+    [
+      614,
+      290,
+      0,
+      245,
+      0,
+      "IMAGE"
     ]
   ],
   "groups": [
@@ -12136,7 +9568,8 @@
       ],
       "color": "#3f789e",
       "font_size": 24,
-      "flags": {}
+      "flags": {},
+      "id": 9
     },
     {
       "id": 11,

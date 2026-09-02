@@ -28,12 +28,11 @@
 # AutoModelForDepthEstimation call, cached in the normal HF cache, so that
 # basename is only in template.json's auto_download list, to suppress the
 # boot report's missing-model warning); rgthree/rgthree-comfy registers
-# "Power Lora Loader (rgthree)", "Bookmark (rgthree)" (frontend-only JS, no
+# "Power Puter (rgthree)", "Any Switch (rgthree)", "Bookmark (rgthree)" (frontend-only JS, no
 # Python class) and "Fast Groups Bypasser (rgthree)"; ssitu/ComfyUI_UltimateSDUpscale
 # registers UltimateSDUpscaleCustomSample alongside the stock
 # UltimateSDUpscale/UltimateSDUpscaleNoUpscale/UltimateSDUpscaleGuider (in
-# usdu_nodes.py — same repo, not a fork); cubiq/ComfyUI_essentials registers
-# "GetImageSize+"; geroldmeisinger/ComfyUI-outputlists-combiner (branch main)
+# usdu_nodes.py — same repo, not a fork); geroldmeisinger/ComfyUI-outputlists-combiner (branch main)
 # registers XyzGridPlot, CombineOutputLists, FormattedString, JSONOutputList,
 # NumberOutputList and StringOutputList — the XY-plot grid (LoRA strength x
 # expression prompt) added to the base-gen stage; pythongosssss/ComfyUI-Custom-Scripts
@@ -56,7 +55,6 @@ ADD https://api.github.com/repos/ltdrdata/ComfyUI-Impact-Subpack/git/refs/heads/
 ADD https://api.github.com/repos/Fannovel16/comfyui_controlnet_aux/git/refs/heads/main /pack-refs/comfyui_controlnet_aux.json
 ADD https://api.github.com/repos/rgthree/rgthree-comfy/git/refs/heads/main /pack-refs/rgthree-comfy.json
 ADD https://api.github.com/repos/ssitu/ComfyUI_UltimateSDUpscale/git/refs/heads/main /pack-refs/ComfyUI_UltimateSDUpscale.json
-ADD https://api.github.com/repos/cubiq/ComfyUI_essentials/git/refs/heads/main /pack-refs/ComfyUI_essentials.json
 ADD https://api.github.com/repos/geroldmeisinger/ComfyUI-outputlists-combiner/git/refs/heads/main /pack-refs/ComfyUI-outputlists-combiner.json
 ADD https://api.github.com/repos/pythongosssss/ComfyUI-Custom-Scripts/git/refs/heads/main /pack-refs/ComfyUI-Custom-Scripts.json
 # PIP_CONSTRAINT (base-owned) applies to every requirements install below.
@@ -79,7 +77,6 @@ RUN for repo in \
     https://github.com/Fannovel16/comfyui_controlnet_aux.git \
     https://github.com/rgthree/rgthree-comfy.git \
     https://github.com/ssitu/ComfyUI_UltimateSDUpscale.git \
-    https://github.com/cubiq/ComfyUI_essentials.git \
     https://github.com/geroldmeisinger/ComfyUI-outputlists-combiner.git \
     https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git; \
     do \

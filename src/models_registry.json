@@ -54,5 +54,10 @@
   "illustrious-xl-openpose.safetensors": {
     "url": "https://huggingface.co/windsingai/openpose/resolve/main/openpose_s6000.safetensors",
     "subdir": "controlnet/SDXL"
+  },
+  "4x-AnimeSharp.pth": {
+    "url": "https://huggingface.co/Kim2091/AnimeSharp/resolve/main/4x-AnimeSharp.pth",
+    "subdir": "upscale_models",
+    "min_size_mb": 50
   }
 }
