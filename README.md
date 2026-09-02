@@ -38,3 +38,16 @@ Click Connect, then open port 8188 for ComfyUI or port 8888 for JupyterLab. The 
 Open the Workflows tab in ComfyUI. The workflow carries notes in the graph telling you what each
 group of nodes does. The pod also writes three notes into the top of that same list on first boot:
 Welcome, Adding Models, and Troubleshooting.
+
+### Leave "Nodes 2.0" turned off
+
+ComfyUI's new node rendering is opt-in from the app menu. Both workflows rely on
+rgthree nodes with documented breakage under it — **Fast Groups Bypasser** (the
+per-stage on/off toggles) and **Power Lora Loader** inside collapsed subgraphs.
+The reference pipeline uses eleven Power Lora Loaders; the Ultimate pipeline no
+longer uses any, but both still depend on the group bypasser to switch detailer
+stages on and off, which is the main way you drive them.
+
+Comfy Org and rgthree are working on compatibility. Until that lands, keep it
+off — if your group toggles stop responding or a loader renders blank, this is
+why.

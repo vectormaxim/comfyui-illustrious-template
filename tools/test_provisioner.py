@@ -14,6 +14,7 @@ Stdlib only, no pytest. Needs template.json + pins.json in the repo root.
 """
 import json
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -23,8 +24,13 @@ REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from validate_models import runtime_dir  # noqa: E402
 
-CHECKPOINT_PLACEHOLDER = "Your_Checkpoint_Here.safetensors"
-LORA_PLACEHOLDER = "Your_Character_LoRA_Here.safetensors"
+# The single scrubbed placeholder. Both the checkpoint slots and every LoRA
+# slot carry this same string -- there is no separate checkpoint placeholder,
+# and asserting on one would be vacuous.
+PLACEHOLDER = "Your_Character_LoRA_Here.safetensors"
+# Anything model-shaped in a widget slot: "name.safetensors", or a
+# subdir-prefixed "SDXL/name.safetensors" / "bbox/NSFWDetection/name.pt".
+MODEL_RE = re.compile(r"^[\w./-]+\.(?:safetensors|pt|pth|ckpt|onnx)$")
 FLAG = "download_illustrious"
 # workflows/Illustrious/: the reference pipeline + the curated "Ultimate" build.
 EXPECTED_WORKFLOW_COUNT = 2
@@ -94,14 +100,32 @@ def main() -> int:
         assert wf_count == EXPECTED_WORKFLOW_COUNT, (wf_count, EXPECTED_WORKFLOW_COUNT)
         lines = [l for l in manifest.read_text().splitlines() if l]
         downloaded = {l.split("\t")[1].rsplit("/", 1)[1] for l in lines}
-        assert CHECKPOINT_PLACEHOLDER not in downloaded, \
-            "the scrubbed checkpoint placeholder must never be queued for download"
-        assert LORA_PLACEHOLDER not in downloaded, \
-            "the scrubbed LoRA placeholder must never be queued for download"
+        assert PLACEHOLDER not in downloaded, \
+            "the scrubbed placeholder must never be queued for download"
         for name in downloaded:
             assert name in registry, f"queued file not in registry: {name}"
+
+        # The check that actually catches a leak. The loop above is
+        # one-directional -- it only looks at what WAS queued, so a workflow
+        # naming a model the template does not ship (a personal LoRA, say)
+        # sails through because it is never queued in the first place. Assert
+        # the other direction too: every model-shaped widget value in the
+        # COPIED workflows must be queued, lazily auto-downloaded, or the
+        # scrubbed placeholder. Nothing else may be user-supplied.
+        allowed = downloaded | set(template.get("auto_download", [])) | {PLACEHOLDER}
+        referenced = set()
+        for wf in dst.rglob("*.json"):
+            for node in json.loads(wf.read_text()).get("nodes", []):
+                for w in node.get("widgets_values") or []:
+                    if isinstance(w, str) and MODEL_RE.match(w):
+                        referenced.add(w.rsplit("/", 1)[-1])
+        user_supplied = referenced - allowed
+        assert not user_supplied, (
+            f"workflows reference models the template neither ships nor "
+            f"auto-downloads: {sorted(user_supplied)}")
+
         print(f"✅ {FLAG}=true: {wf_count} workflow(s) copied, {len(downloaded)} model(s) queued, "
-              f"placeholders untouched")
+              f"{len(referenced)} referenced, 0 user-supplied")
 
     print("✅ provisioner self-check passed")
     return 0

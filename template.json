@@ -19,8 +19,8 @@
   "custom_nodes": {
     "target": "image",
     "repos": [
-      "https://github.com/vectormaxim/ComfyUI-HipRegionMask.git",
-      "https://github.com/westNeighbor/ComfyUI-ultimate-openpose-editor.git"
+      "https://github.com/vectormaxim/ComfyUI-HipRegionMask.git|75c933712b3dcda9bf8dc2ae523e90f5ca0c2dca",
+      "https://github.com/westNeighbor/ComfyUI-ultimate-openpose-editor.git|a21cc3bc8dd3036fe70d80917f11d66427cb3bb2"
     ]
   },
   "sage": true

@@ -113,6 +113,16 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 # CUDAExecutionProvider assertion and for the no-pip-install-after-it rule.
 RUN python3 -c "import onnxruntime; p = onnxruntime.get_available_providers(); assert 'CUDAExecutionProvider' in p, p; print('onnxruntime providers OK:', p)"
 
+# Build-time gate: every baked pack must actually import. The clone loop above
+# deliberately has no `set -e`, so a failed `git clone` or a failed
+# `pip install -r requirements.txt` leaves a green build and a pack that dies
+# at import -- surfacing as a red node in a customer's pod with nothing in the
+# build log. `--quick-test-for-ci` runs ComfyUI's own node-loading path and
+# exits non-zero if any pack fails to import, turning that into a build
+# failure here. `--cpu` because CI builders have no GPU; node import does not
+# need one. Not a pip install, so it does not violate the ordering rule above.
+RUN cd /ComfyUI && python main.py --quick-test-for-ci --cpu
+
 COPY src/start_script.sh /start_script.sh
 RUN chmod +x /start_script.sh
 

@@ -2342,7 +2342,7 @@
         "cnr_id": "comfyui-impact-subpack",
         "ver": "40a3ba4d4199bb2b59b7e4da521c934b2bd48d0c",
         "Node name for S&R": "UltralyticsDetectorProvider",
-        "aux_id": "RedsAnalysis/ComfyUI-Impact-Subpack"
+        "aux_id": "ltdrdata/ComfyUI-Impact-Subpack"
       },
       "widgets_values": [
         "segm/NSFWDetection/breasts_seg.pt"
@@ -2544,7 +2544,7 @@
         "cnr_id": "comfyui-impact-subpack",
         "ver": "40a3ba4d4199bb2b59b7e4da521c934b2bd48d0c",
         "Node name for S&R": "UltralyticsDetectorProvider",
-        "aux_id": "RedsAnalysis/ComfyUI-Impact-Subpack"
+        "aux_id": "ltdrdata/ComfyUI-Impact-Subpack"
       },
       "widgets_values": [
         "segm/99coins_anime_girl_face_m_seg.pt"
@@ -3332,7 +3332,7 @@
         "cnr_id": "comfyui-impact-subpack",
         "ver": "40a3ba4d4199bb2b59b7e4da521c934b2bd48d0c",
         "Node name for S&R": "UltralyticsDetectorProvider",
-        "aux_id": "RedsAnalysis/ComfyUI-Impact-Subpack"
+        "aux_id": "ltdrdata/ComfyUI-Impact-Subpack"
       },
       "widgets_values": [
         "bbox/face_yolov8m.pt"
@@ -3498,7 +3498,7 @@
         "cnr_id": "comfyui-impact-subpack",
         "ver": "40a3ba4d4199bb2b59b7e4da521c934b2bd48d0c",
         "Node name for S&R": "UltralyticsDetectorProvider",
-        "aux_id": "RedsAnalysis/ComfyUI-Impact-Subpack"
+        "aux_id": "ltdrdata/ComfyUI-Impact-Subpack"
       },
       "widgets_values": [
         "segm/adetailer2dMouth_v10.pt"
@@ -3540,7 +3540,7 @@
         "cnr_id": "comfyui-impact-subpack",
         "ver": "40a3ba4d4199bb2b59b7e4da521c934b2bd48d0c",
         "Node name for S&R": "UltralyticsDetectorProvider",
-        "aux_id": "RedsAnalysis/ComfyUI-Impact-Subpack"
+        "aux_id": "ltdrdata/ComfyUI-Impact-Subpack"
       },
       "widgets_values": [
         "segm/PitEyeDetailer-v2-seg.pt"
@@ -3582,7 +3582,7 @@
         "cnr_id": "comfyui-impact-subpack",
         "ver": "40a3ba4d4199bb2b59b7e4da521c934b2bd48d0c",
         "Node name for S&R": "UltralyticsDetectorProvider",
-        "aux_id": "RedsAnalysis/ComfyUI-Impact-Subpack"
+        "aux_id": "ltdrdata/ComfyUI-Impact-Subpack"
       },
       "widgets_values": [
         "bbox/face_yolov8m.pt"
@@ -3668,7 +3668,7 @@
         "cnr_id": "comfyui-impact-subpack",
         "ver": "40a3ba4d4199bb2b59b7e4da521c934b2bd48d0c",
         "Node name for S&R": "UltralyticsDetectorProvider",
-        "aux_id": "RedsAnalysis/ComfyUI-Impact-Subpack"
+        "aux_id": "ltdrdata/ComfyUI-Impact-Subpack"
       },
       "widgets_values": [
         "segm/PitHandDetailer-v2-Test-v9c.pt"
@@ -4523,7 +4523,7 @@
         "cnr_id": "comfyui-impact-subpack",
         "ver": "40a3ba4d4199bb2b59b7e4da521c934b2bd48d0c",
         "Node name for S&R": "UltralyticsDetectorProvider",
-        "aux_id": "RedsAnalysis/ComfyUI-Impact-Subpack"
+        "aux_id": "ltdrdata/ComfyUI-Impact-Subpack"
       },
       "widgets_values": [
         "segm/99coins_anime_girl_face_m_seg.pt"
