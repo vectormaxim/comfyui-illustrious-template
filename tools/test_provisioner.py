@@ -32,8 +32,9 @@ PLACEHOLDER = "Your_Character_LoRA_Here.safetensors"
 # subdir-prefixed "SDXL/name.safetensors" / "bbox/NSFWDetection/name.pt".
 MODEL_RE = re.compile(r"^[\w./-]+\.(?:safetensors|pt|pth|ckpt|onnx)$")
 FLAG = "download_illustrious"
-# workflows/Illustrious/: the reference pipeline + the curated "Ultimate" build.
-EXPECTED_WORKFLOW_COUNT = 2
+# workflows/Illustrious/: the reference pipeline, the curated "Ultimate" build,
+# and the subgraph rebuild.
+EXPECTED_WORKFLOW_COUNT = 3
 
 
 def load_json(path: Path, hint: str) -> dict:
