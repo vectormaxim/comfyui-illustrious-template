@@ -77,6 +77,64 @@ there's a trap).
 close-ups are the actual screenshots -- read them with the Read tool the same
 way you'd read any image.
 
+## Subgraphs
+
+Established by probing frontend 1.48.7 directly, because the docs are thin
+here and in one case say the opposite.
+
+**The JSON shape.** `graph.serialize()` gains a `definitions` key holding
+`definitions.subgraphs`: an array of `{id (a UUID), name, inputs, outputs,
+inputNode: {id: -10, ...}, outputNode: {id: -20, ...}, nodes, links}`. A
+top-level node whose `type` is one of those UUIDs is an *instance* of that
+definition. **Inside a definition, `links` are objects** --
+`{id, origin_id, origin_slot, target_id, target_slot, type}` -- not the
+positional arrays used at the top level. Getting that wrong by analogy is
+easy; check before hand-authoring.
+
+**Instances share their definition.** Two instances of one subgraph in the
+same workflow produce a single entry in `definitions.subgraphs` and both
+carry the same UUID `type`. Editing the definition changes every instance.
+(The docs' warning that instances are independent snapshots applies to
+*Blueprints*, a different feature.) Promoted widgets, meanwhile, **are**
+per-instance: two instances serialize with different `widgets_values`.
+
+**What you cannot do.** `convertToSubgraph` creates boundary inputs only for
+links that **cross the selection** -- a cluster built in isolation and then
+collapsed gets no inputs at all. `convertWidgetToInput` is a silent no-op.
+`subgraph.addInput(name, type)` does work but produces an input *socket*,
+not a widget, so it needs a wire per instance. Net effect: **a COMBO widget
+(a model dropdown) cannot be promoted**, so a node whose model choice varies
+per stage cannot live in a *shared* definition. Subgraphs nest, which is the
+way around it -- an outer per-stage definition can contain an instance of a
+shared inner one.
+
+**Validators must recurse.** A subgraph instance node reports
+`properties.cnr_id: "comfy-core"` (it is a frontend construct), so a scan of
+top-level `nodes` sees nothing pack-related while an Impact-Pack node sits
+one level down inside the definition. Walk `definitions.subgraphs[].nodes`
+too, and recursively, since definitions nest.
+
+## Node types legitimately absent from /object_info
+
+Do not treat these as missing packs -- they are frontend-only, with no
+Python class, so they never appear in `/object_info`:
+
+- `Note`, `MarkdownNote` (litegraph built-ins)
+- `Bookmark (rgthree)`, `Fast Groups Bypasser (rgthree)`,
+  `Fast Groups Muter (rgthree)`
+
+Everything else in a workflow should resolve. If something does resolve in
+`/object_info` on a booted server but the *preview container* reports it as
+a missing node pack, check whether that pack is installed at boot by the
+runtime rather than baked into the image -- the render harness boots the
+bare image without the runtime entrypoint, so boot-installed packs are
+absent there and the warning is an artifact.
+
+But do not over-apply that: on a real pod the boot-time clone can also just
+*fail* (see the RunPod notes in `test-comfyui-node`), so "installed at boot"
+is not the same as "present". Confirm on the pod before concluding either
+way.
+
 ## Gotchas
 
 - The image must actually contain the node packs the workflow references, or

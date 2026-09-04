@@ -93,6 +93,79 @@ Read `<probe output>` for the exact `inputs`/`outputs`/`widgets_values`
 shape and copy it into your hand-authored node JSON -- don't extrapolate
 from a *different* node's shape or from `/object_info`'s partial schema.
 
+## Verifying a run: "success" is not proof
+
+This is the single most expensive lesson from using this skill in anger.
+
+**`POST /prompt` returns HTTP 200 with a `node_errors` body when an output
+node's subtree fails validation.** ComfyUI drops that output node, executes
+everything else, and the run reports `status: "success"` with no error
+messages in `/history`. A workflow whose final SaveImage never fired looks
+exactly like a clean run.
+
+Three runs "passed" that way in one session while the final image was never
+produced. The cause was a single unconnected required input
+(`HipRegionMask.image`) several nodes upstream.
+
+So when you queue a prompt to verify something:
+
+1. **Read `node_errors` on a 200 response**, not just non-200. If it is
+   non-empty, the run is a failure no matter what `status` says.
+2. **Check `outputs_to_execute`** in the history entry's prompt tuple
+   (`prompt[4]`). If the output node you care about is missing from it,
+   ComfyUI never intended to run it.
+3. **Verify by effect, not by status.** What proved a 1.5x upscale actually
+   ran was the output PNG being 1248x1824 instead of 832x1216. Success,
+   output count, and even "cached nodes: 31" all looked fine while nothing
+   had happened. Assert on a number that can only be true if the work
+   happened: image dimensions, file size, a pixel diff against the input.
+4. **A run that finishes suspiciously fast did not run.** Check
+   `execution_start` vs `execution_success` timestamps in `/history`;
+   24 milliseconds with 31 cached nodes means everything was skipped.
+
+## Queueing a prompt correctly
+
+- **Send `extra_data.extra_pnginfo.workflow`.** The real frontend always
+  does. rgthree's Power Puter reads `pnginfo["workflow"]` directly and dies
+  with `argument of type 'NoneType' is not iterable` without it, which looks
+  like a workflow bug and is not.
+- **Wait for `graphToPrompt()` to settle.** With subgraphs in the graph it
+  returns a *partial* prompt while instances are still resolving --
+  6 seconds after `loadGraphData` was not enough. Poll it until the node
+  count stops changing, then queue that. Queueing early silently submits a
+  smaller graph, and the symptom is a big `execution_cached` count.
+- `page.waitForFunction(fn, arg, options)` takes options as the **third**
+  argument. Passing `{timeout: N}` second makes it the *arg* and silently
+  uses the 30s default.
+
+## Importing ComfyUI internals outside the server
+
+Mostly you cannot, and reaching for it wastes time:
+
+- `nodes.init_extra_nodes()` is a **coroutine** now -- `asyncio.run()` it, or
+  `NODE_CLASS_MAPPINGS` stays empty and every custom node lookup KeyErrors.
+- Even then, **Impact-Pack raises `AttributeError: type object 'PromptServer'
+  has no attribute 'instance'`** on import outside a running server. There is
+  no cheap workaround. To test an Impact node's behavior, queue a small
+  purpose-built workflow through a running server instead.
+- Getting a script onto a pod without scp: `base64 -w0` it locally and
+  `echo <b64> | base64 -d > /tmp/x.py` remotely. A heredoc nested inside a
+  command that is itself fed over stdin gets eaten by the outer shell.
+
+## Driving a remote pod (RunPod)
+
+- The `ssh.runpod.io` proxy **refuses remote command execution** (hangs) and
+  **refuses port forwarding** (`-L` fails), and demands a PTY. Feed commands
+  over stdin to an interactive `ssh -tt` session and fence the real output
+  with markers.
+- The HTTP proxy at `https://<podid>-<port>.proxy.runpod.net` does work, and
+  is how to point Playwright or `curl` at a pod's ComfyUI.
+- **Anonymous git-over-HTTPS from a pod is unreliable** -- the same *public*
+  repo cloned 1 time in 6 from one pod, failing with
+  `could not read Username for 'https://github.com'` and
+  `expected flush after ref listing`. That is throttling, not a private
+  repo. Retry before concluding a pack is missing or a repo is gated.
+
 ## When you don't need this
 
 Static, fully-declared nodes (`/object_info` shows a complete `required`/
