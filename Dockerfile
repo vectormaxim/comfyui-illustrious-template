@@ -36,7 +36,14 @@
 # registers XyzGridPlot, CombineOutputLists, FormattedString, JSONOutputList,
 # NumberOutputList and StringOutputList — the XY-plot grid (LoRA strength x
 # expression prompt) added to the base-gen stage; pythongosssss/ComfyUI-Custom-Scripts
-# (branch main, no requirements.txt) registers "ShowText|pysssss". Everything
+# (branch main, no requirements.txt) registers "ShowText|pysssss";
+# chrisgoringe/cg-image-filter (branch main, no requirements.txt) registers
+# "Image Filter", "Mask Image Filter", "Text Image Filter" and the helper
+# "Image List From Batch" -- the pause-and-pick stage. NOTE: no SHIPPED
+# workflow uses these yet; the pack is baked so a batch-pick workflow can be
+# opened without a manual clone (the node draws a popup, and its `timeout` /
+# `ontimeout` widgets mean a paused run auto-resolves instead of wedging the
+# queue). Everything
 # else the workflow uses (CLIPTextEncode, CLIPSetLastLayer,
 # CheckpointLoaderSimple, ControlNetLoader, ControlNetApplyAdvanced,
 # EmptyLatentImage, KSamplerAdvanced, LoadImage, LoraLoader, PreviewImage,
@@ -57,6 +64,7 @@ ADD https://api.github.com/repos/rgthree/rgthree-comfy/git/refs/heads/main /pack
 ADD https://api.github.com/repos/ssitu/ComfyUI_UltimateSDUpscale/git/refs/heads/main /pack-refs/ComfyUI_UltimateSDUpscale.json
 ADD https://api.github.com/repos/geroldmeisinger/ComfyUI-outputlists-combiner/git/refs/heads/main /pack-refs/ComfyUI-outputlists-combiner.json
 ADD https://api.github.com/repos/pythongosssss/ComfyUI-Custom-Scripts/git/refs/heads/main /pack-refs/ComfyUI-Custom-Scripts.json
+ADD https://api.github.com/repos/chrisgoringe/cg-image-filter/git/refs/heads/main /pack-refs/cg-image-filter.json
 # PIP_CONSTRAINT (base-owned) applies to every requirements install below.
 # --no-build-isolation is required here: ComfyUI-Impact-Pack's requirements.txt
 # pulls `git+https://github.com/facebookresearch/sam2`, whose pyproject.toml
@@ -78,7 +86,8 @@ RUN for repo in \
     https://github.com/rgthree/rgthree-comfy.git \
     https://github.com/ssitu/ComfyUI_UltimateSDUpscale.git \
     https://github.com/geroldmeisinger/ComfyUI-outputlists-combiner.git \
-    https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git; \
+    https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git \
+    https://github.com/chrisgoringe/cg-image-filter.git; \
     do \
         cd /ComfyUI/custom_nodes; \
         repo_dir=$(basename "$repo" .git); \

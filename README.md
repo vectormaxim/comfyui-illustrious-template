@@ -2,8 +2,8 @@
 
 SDXL/Illustrious generation followed by a cascade of Impact-Pack detailer passes — face, eyes,
 mouth, hands, body, hips — then an Ultimate SD Upscale pass and a final detailer pass on the
-upscaled image. Three workflows ship, same job at different sizes; see
-[Which workflow](#which-workflow).
+upscaled image. Four workflows ship — three are the same job at different sizes, and one adds a
+batch-and-pick step; see [Which workflow](#which-workflow).
 
 ## Before you deploy
 
@@ -47,14 +47,15 @@ them.
 
 ### Which workflow
 
-Three ship in the `Illustrious` folder. They do the same job at different
-sizes:
+Four ship in the `Illustrious` folder. The first three do the same job at
+different sizes; the fourth adds a pick step:
 
 | Workflow | Nodes | Notes |
 |---|---|---|
 | `Illustrious_Detailer_Subgraphs` | 51 | **Start here.** Each detailer stage is one node built from subgraphs. No rgthree, so "Nodes 2.0" is safe. |
 | `Illustrious_Detailer_Pipeline_Ultimate` | 156 | The flat version. Same features, everything on one canvas. |
 | `Illustrious_Detailer_Pipeline` | 207 | The original reference build, kept deliberately flat, plus an XY-plot stage. |
+| `Illustrious_Detailer_Filter` | 53 | `Subgraphs` plus a **pick step**: generates a batch of 10, pops up a window, and only the images you pick go through the detailers. |
 
 ### Driving the subgraph workflow
 
@@ -105,14 +106,42 @@ crop previews inside each stage show before/after per detected region.
 One extra knob: `FACE LoRA` feeds only the face stages, through their own
 pipe. Set it if you want a style LoRA on faces alone.
 
+### Picking from a batch
+
+`Illustrious_Detailer_Filter` is `Subgraphs` with one extra stage spliced in
+between the base generation and the detailers:
+
+    decode base -> Image Filter -> Image List From Batch -> FACE (bbox) -> ...
+
+`Resolution` is set to a batch of 10. When the run reaches `PICK KEEPERS`, a
+popup appears with the ten images. Click the ones worth keeping (their border
+turns green) and press **Send** — only those go through the detailer cascade,
+so you are not paying for detailing on images you were going to throw away.
+Hover an image and press **Space** to zoom it fullscreen, arrow keys to move
+between them, **Escape** to cancel the run.
+
+Two knobs on the `PICK KEEPERS` node:
+
+- `pick_list` — leave empty for the popup. Put a comma-separated list of
+  indices in it (e.g. `0,3`) and those get selected automatically with no
+  popup, which is how you turn the pause off without rewiring anything. Zero
+  indexed, or set `pick_list_start` to 1 to count from one.
+- `timeout` / `ontimeout` — 600 seconds by default, then `send none`, which
+  cancels. A forgotten popup times out instead of holding the queue open.
+
+`Image List From Batch` after it is **not optional**: Impact-Pack's detailers
+reject image batches outright (`DetailerForEach does not allow image batches`),
+so the picks have to become a list, which is also what makes the chain run once
+per picked image.
+
 ### "Nodes 2.0" and the older workflows
 
 ComfyUI's new node rendering is opt-in from the app menu. It has documented
 breakage in two rgthree nodes: **Fast Groups Bypasser** and **Power Lora
 Loader** inside collapsed subgraphs.
 
-`Illustrious_Detailer_Subgraphs` uses **no rgthree nodes at all** and is safe
-to run with Nodes 2.0 on. The other two are not: the Ultimate pipeline has 11
+`Illustrious_Detailer_Subgraphs` and `Illustrious_Detailer_Filter` use **no
+rgthree nodes at all** and are safe to run with Nodes 2.0 on. The other two are not: the Ultimate pipeline has 11
 rgthree nodes and the reference pipeline 18, both including the group bypasser
 that switches their detailer stages on and off. Keep Nodes 2.0 off for those —
 if group toggles stop responding or a loader renders blank, that is why.
