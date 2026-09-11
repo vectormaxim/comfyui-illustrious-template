@@ -1,3 +1,21 @@
+# ============================================================================
+# INHERITED AND INERT -- this pipeline has never run for this repo.
+#
+# This file arrived in the initial import (daf9cfb) from the upstream
+# Hearmeman template and describes THAT account's CircleCI project. It was
+# never connected here: as of 2026-09-11 the repo has 0 webhooks, 0 check-runs
+# and 0 commit statuses, and the CircleCI API returns "Project not found" for
+# gh/vectormaxim/comfyui-illustrious-template. The `docker-hub` and
+# `flowbot-webhook-token` contexts it references belong to upstream.
+#
+# So a `vN` tag does NOT build or publish anything. Images are built and
+# pushed by hand from a local checkout; that is how :latest was made.
+#
+# Before reviving this: GitHub-hosted runners are not an option (~14GB disk
+# against a 29.7GB image on a 24.2GB base), which is why the config uses a
+# machine executor at resource_class xlarge with docker_layer_caching. Keep
+# that shape, and expect to create both contexts above.
+# ============================================================================
 version: 2.1
 
 executors:
