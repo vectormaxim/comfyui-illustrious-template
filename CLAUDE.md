@@ -15,8 +15,12 @@ runtime_dir; print(runtime_dir())"` prints where, and `CONTRACTS.md` /
 
 ## 1. Know which tier you are changing
 
-From the runtime's `ARCHITECTURE.md`. Blast radius differs enormously, and
-**you should prefer the lowest tier that solves the problem.**
+Restated from the runtime's `ARCHITECTURE.md` as read at upstream `0ea1f91`
+(`ARCHITECTURE.md` last touched there by `212a31e`, 2026-08-31). Upstream is the
+authority and this repo has no write access to it, so if the two disagree,
+upstream wins and this section is stale — re-read it in the validator checkout
+before trusting the table. Blast radius differs enormously, and **you should
+prefer the lowest tier that solves the problem.**
 
 | Tier | What | How it ships | Reaches |
 |---|---|---|---|
