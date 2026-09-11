@@ -30,7 +30,7 @@ FYI: this template is built for CUDA 13.0 and above.
 | `download_illustrious` | false | Downloads the shared models (ControlNets, upscaler, detector models) and copies the workflow |
 | `CIVITAI_CHECKPOINTS` | empty | Comma-separated CivitAI version IDs, downloaded to `models/checkpoints`. This is how you get the SDXL/Illustrious checkpoint. |
 | `CIVITAI_LORAS` | empty | Comma-separated CivitAI version IDs, downloaded to `models/loras`. This is how you get your character/style LoRAs. |
-| `civitai_token` | empty | Your CivitAI API token |
+| `civitai_token` | empty | Your CivitAI API token. Also feeds Civicomfy (see below), so leave its in-app API Key field blank. `CIVITAI_TOKEN` and `CIVITAI_API_KEY` work too. |
 | `HF_TOKEN` | empty | Optional. Raises your Hugging Face rate limit, which makes a first boot less likely to stall. |
 
 ## Once it is up
@@ -44,6 +44,34 @@ notes into the top of that list on first boot: Welcome, Adding Models, and Troub
 The two older workflows carry notes in the graph explaining each group of nodes. The subgraph
 workflow does not — its stages are named and self-contained, and the walkthrough below replaces
 them.
+
+### Downloading models on the fly
+
+Civicomfy is installed, for pulling checkpoints and LoRAs from CivitAI mid-session without
+restarting the pod. Open it from the **Civicomfy** button at the top right.
+
+**Do not type your API key into its settings panel.** The key is already supplied from the pod
+environment and the field is meant to stay empty: Civicomfy checks the settings field first and the
+`CIVITAI_API_KEY` environment variable second, so anything typed there overrides your pod env for
+that browser. Whichever of `civitai_token`, `CIVITAI_TOKEN` or `CIVITAI_API_KEY` you set is mapped
+onto the name Civicomfy reads at boot; the log line `🔑 Civicomfy will authenticate from the
+environment` confirms it.
+
+Leave **Global Download Root** empty as well. Empty means Civicomfy uses ComfyUI's normal model
+paths, which this template symlinks onto the network volume, so downloads persist across restarts
+and appear in the loader nodes straight away. Setting a global root writes to
+`custom_nodes/Civicomfy/root_settings.json`, which is container-local and lost on the next restart.
+
+The rest of its settings live in your browser, not on the pod, so set them once per machine:
+
+| Setting | Default | Worth knowing |
+|---|---|---|
+| Hide R-rated (Mature) images in search | off | Blurs mature previews in search results; click one to reveal it. Turn this on if you browse CivitAI with someone looking over your shoulder. |
+| NSFW Blur Threshold (`nsfwLevel`) | 4 | CivitAI's own 0-128 rating scale, and the point at which a preview gets blurred. Lower blurs more aggressively, higher lets more through; `0` blurs essentially everything. Independent of the checkbox above, which only covers the R-rated tier. |
+| Default Model Type | Checkpoint | Where a one-click download lands when the model page is ambiguous. Set it to **Lora** if you mostly pull LoRAs. |
+| Switch to Status tab after starting download | off | Jumps to the progress view on each download. |
+
+Downloads keep running in the background while you queue prompts; three run concurrently.
 
 ### Which workflow
 
