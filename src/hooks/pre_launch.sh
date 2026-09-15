@@ -49,3 +49,58 @@ fi
 # volume and survive a restart. A global root would persist to
 # custom_nodes/Civicomfy/root_settings.json, which is container-local and lost
 # on every pod restart -- it would have to be rewritten here every boot to stick.
+
+# ---------------------------------------------------------------------------
+# 2. CIVITAI_DIFFUSION_MODELS: CIVITAI_CHECKPOINTS, for diffusion-model-only files.
+#
+# The runtime's CivitAI loop (start.sh:663-668) downloads into exactly two
+# folders, models/checkpoints and models/loras. Anima checkpoints such as
+# WAI-ANIMA (version 2983680) are diffusion-model-only files: UNETLoader lists
+# models/diffusion_models and never models/checkpoints, so a file fetched with
+# CIVITAI_CHECKPOINTS lands where the Anima workflow cannot see it.
+#
+# Same downloader, same token, different folder. download_with_aria.py asks for
+# type=Model, which for a multi-file version is the Model-type file (for
+# 2983680 that is waiANIMA_v10Base10.safetensors, not its bundled text encoder
+# or VAE), and it skips a file that is already complete, so a restart does not
+# re-download. resolve_civitai_env already ran at start.sh:662, so CIVITAI_TOKEN
+# holds the key whichever spelling the template set.
+#
+# Sequential and blocking, like the runtime loop it mirrors: ComfyUI launches
+# once the files are there. Never fatal: a failed ID warns and boot continues.
+# ---------------------------------------------------------------------------
+_civitai_diffusion_models() {
+    local ids="${CIVITAI_DIFFUSION_MODELS:-}" dest id
+    if [ -z "$ids" ] || [ "$ids" = "replace_with_ids" ]; then
+        echo "⏭️  Skipping CivitAI diffusion-model downloads (CIVITAI_DIFFUSION_MODELS not set)"
+        return 0
+    fi
+    if [ -z "${CIVITAI_TOKEN:-}${civitai_token:-}" ]; then
+        echo "❌ CIVITAI_DIFFUSION_MODELS is set but there is no CivitAI token; skipping"
+        declare -F report_warn >/dev/null \
+            && report_warn "CIVITAI_DIFFUSION_MODELS needs civitai_token (or CIVITAI_TOKEN) to download"
+        return 0
+    fi
+
+    dest="${PERSIST_ROOT:-/workspace/ComfyUI}/models/diffusion_models"
+    mkdir -p "$dest" || return 0
+
+    local IFS=','
+    for id in $ids; do
+        id="${id//[[:space:]]/}"
+        [ -n "$id" ] || continue
+        if ! [[ "$id" =~ ^[0-9]+$ ]]; then
+            echo "❌ CIVITAI_DIFFUSION_MODELS: '$id' is not a CivitAI version ID; skipping"
+            declare -F report_warn >/dev/null \
+                && report_warn "CIVITAI_DIFFUSION_MODELS: '$id' is not a CivitAI version ID"
+            continue
+        fi
+        echo "🚀 CivitAI diffusion model $id -> $dest"
+        if ! download_with_aria.py -m "$id" -o "$dest"; then
+            echo "❌ CivitAI diffusion model $id failed to download"
+            declare -F report_warn >/dev/null \
+                && report_warn "CivitAI diffusion model $id failed to download"
+        fi
+    done
+}
+_civitai_diffusion_models
