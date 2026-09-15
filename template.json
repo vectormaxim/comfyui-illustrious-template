@@ -8,6 +8,12 @@
       "folders": [
         "Illustrious"
       ]
+    },
+    "download_anima": {
+      "default": false,
+      "folders": [
+        "Anima"
+      ]
     }
   },
   "auto_download": [

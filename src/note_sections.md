@@ -10,6 +10,15 @@ The flag is off by default. Set `download_illustrious` to `true` on the
 template to pull in the shared models (ControlNets, upscaler, detector
 models) and copy the workflow.
 
+There is also an Anima version of the keeper-filter detailer workflow
+(`download_anima`, also off by default). Anima is not SDXL: it loads a
+diffusion model, a Qwen3 0.6B text encoder and the Qwen-Image VAE as three
+separate files. The flag fetches the text encoder, the VAE and the detector
+and upscale models; the diffusion model (for example WAI-ANIMA) is yours to
+supply in `models/diffusion_models/`. `CIVITAI_CHECKPOINTS` downloads into
+`models/checkpoints/`, which the Anima loader does not list, so move the file
+across. SDXL LoRAs and ControlNets do not work with Anima.
+
 ## Bring your own checkpoint and LoRAs
 
 This template ships no checkpoint and no character
@@ -43,6 +52,7 @@ you deploy, or edit the variables on this pod and restart it.
 | Variable | Default | What it does |
 |---|---|---|
 | download_illustrious | false | Downloads the shared models (ControlNets, upscaler, detector models) and copies the Illustrious detailer workflow. |
+| download_anima | false | Downloads the Anima text encoder and VAE plus the detector and upscale models, and copies the Anima keeper-filter detailer workflow. |
 | CIVITAI_CHECKPOINTS | unset | Comma-separated CivitAI model version IDs to download into models/checkpoints/. This is how you get the SDXL/Illustrious checkpoint itself. |
 | CIVITAI_LORAS | unset | Comma-separated CivitAI model version IDs to download into models/loras/. This is how you get your character/style LoRAs. |
 | civitai_token | unset | Your CivitAI API token. CIVITAI_TOKEN and CIVITAI_API_KEY are also accepted. |

@@ -59,5 +59,13 @@
     "url": "https://huggingface.co/Kim2091/AnimeSharp/resolve/main/4x-AnimeSharp.pth",
     "subdir": "upscale_models",
     "min_size_mb": 50
+  },
+  "qwen_3_06b_base.safetensors": {
+    "url": "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/text_encoders/qwen_3_06b_base.safetensors",
+    "subdir": "text_encoders"
+  },
+  "qwen_image_vae.safetensors": {
+    "url": "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/vae/qwen_image_vae.safetensors",
+    "subdir": "vae"
   }
 }

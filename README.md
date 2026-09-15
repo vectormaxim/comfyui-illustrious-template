@@ -28,6 +28,7 @@ FYI: this template is built for CUDA 13.0 and above.
 | Variable | Default | What it does |
 |---|---|---|
 | `download_illustrious` | false | Downloads the shared models (ControlNets, upscaler, detector models) and copies the workflow |
+| `download_anima` | false | Copies the Anima keeper-filter detailer workflow and downloads its text encoder (Qwen3 0.6B), VAE (Qwen-Image), detectors and upscaler. The Anima diffusion model itself is yours to put in `models/diffusion_models` |
 | `CIVITAI_CHECKPOINTS` | empty | Comma-separated CivitAI version IDs, downloaded to `models/checkpoints`. This is how you get the SDXL/Illustrious checkpoint. |
 | `CIVITAI_LORAS` | empty | Comma-separated CivitAI version IDs, downloaded to `models/loras`. This is how you get your character/style LoRAs. |
 | `civitai_token` | empty | Your CivitAI API token. Also feeds Civicomfy (see below), so leave its in-app API Key field blank. `CIVITAI_TOKEN` and `CIVITAI_API_KEY` work too. |
