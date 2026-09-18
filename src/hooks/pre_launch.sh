@@ -104,3 +104,25 @@ _civitai_diffusion_models() {
     done
 }
 _civitai_diffusion_models
+
+# ---------------------------------------------------------------------------
+# 3. Make cg-image-filter's Mask Image Filter work on Linux.
+#
+# At the pinned 9fe9e16 (1.9.1, "fix mask"), newest_mask_file() sorts the mask
+# editor's saved files by stat().st_birthtime. Linux Python has no such field
+# (3.12 in this image: AttributeError), so the FIX stage crashed the moment you
+# pressed Save in the mask editor. Tested on this image in --cpu mode: with
+# st_mtime instead, the painted mask arrives intact; Save without painting and
+# a timeout both give a blank mask, so the image passes through unchanged.
+#
+# Idempotent, only touches the one attribute, and skipped once upstream stops
+# using it. Never fatal: if the file is not there the stage simply is not
+# available, which the runtime's missing-node report already shows.
+# ---------------------------------------------------------------------------
+_cg_filter_nodes="${CUSTOM_NODES_DIR:-/ComfyUI/custom_nodes}/cg-image-filter/image_filter_nodes.py"
+if [ -f "$_cg_filter_nodes" ] && grep -q 'st_birthtime' "$_cg_filter_nodes"; then
+    if sed -i 's/\.st_birthtime/.st_mtime/g' "$_cg_filter_nodes"; then
+        echo "🩹 cg-image-filter: mask files sorted by st_mtime (Linux has no st_birthtime)"
+    fi
+fi
+unset _cg_filter_nodes

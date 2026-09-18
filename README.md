@@ -85,7 +85,7 @@ different sizes; the fourth adds a pick step:
 | `Illustrious_Detailer_Subgraphs` | 51 | **Start here.** Each detailer stage is one node built from subgraphs. No rgthree, so "Nodes 2.0" is safe. |
 | `Illustrious_Detailer_Pipeline_Ultimate` | 156 | The flat version. Same features, everything on one canvas. |
 | `Illustrious_Detailer_Pipeline` | 207 | The original reference build, kept deliberately flat, plus an XY-plot stage. |
-| `Illustrious_Detailer_Filter` | 53 | `Subgraphs` plus a **pick step**: generates a batch of 10, pops up a window, and only the images you pick go through the detailers. |
+| `Illustrious_Detailer_Filter` | 61 | `Subgraphs` plus a **pick step**: generates a batch of 10, pops up a window, and only the images you pick go through the detailers. Then a **fix step**: paint over anything that should be redone. |
 
 ### Driving the subgraph workflow
 
@@ -163,6 +163,43 @@ Two knobs on the `PICK KEEPERS` node:
 reject image batches outright (`DetailerForEach does not allow image batches`),
 so the picks have to become a list, which is also what makes the chain run once
 per picked image.
+
+### Fixing a spot: the FIX stage
+
+Both keeper-filter workflows (`Illustrious_Detailer_Filter`, `Anima_Detailer_Filter`)
+end their detailer chain with `FIX (paint a mask)`, before the optional upscale:
+
+    ... -> HIPS/GROIN stages -> FIX (paint a mask) -> UPSCALE -> 99_FINAL
+
+When the run gets there, the mask editor opens on each kept image in turn.
+
+- **Something to fix** (a belt that shouldn't be there, a strap, the thing
+  between the breasts): paint over it generously and press **Save**. Only
+  that area is repainted, at denoise 0.7, with the result blended back in.
+- **Nothing to fix**: press **Save** without painting. The image goes through
+  unchanged. A popup left alone for 600 s does the same.
+- **Cancel stops the whole run**, including the other kept images. Don't use
+  it to skip an image.
+
+What gets painted there is steered by two boxes next to the FACE pipe:
+
+- `FIX: add to prompt (what should be there)` — appended to the main prompt for
+  the repaint only, e.g. `bare skin, cleavage` or `smooth bodysuit`.
+- `FIX: add to negative (what to get rid of)` — appended to the negative. It
+  starts with `belt, strap, harness, buckle, o-ring, ribbon, string, extra
+  object`; name the thing you're removing here.
+
+If the object comes back, raise `denoise` inside the stage (double-click it,
+`repaint the masked area`) to 0.8, and paint a bit wider than the object: the
+sampler needs some surroundings to paint over. Rule of thumb: the lower the
+denoise, the more of the old shape survives. Ctrl+B on the stage turns the pause off entirely.
+
+The popup is cg-image-filter's `Mask Image Filter`. Its release 1.9.1 (pinned)
+is the one that works with this frontend's mask editor, but it sorts saved masks
+by `st_birthtime`, which Linux Python does not have, so pressing Save crashed.
+`src/hooks/pre_launch.sh` patches that to `st_mtime` at boot. The stage also
+feeds the node a blank mask of the image's size, which is what it falls back to
+when nothing is saved; without it a timeout errors out looking for a file.
 
 ### "Nodes 2.0" and the older workflows
 

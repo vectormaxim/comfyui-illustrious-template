@@ -27,7 +27,7 @@
     "repos": [
       "https://github.com/vectormaxim/ComfyUI-HipRegionMask.git|75c933712b3dcda9bf8dc2ae523e90f5ca0c2dca",
       "https://github.com/westNeighbor/ComfyUI-ultimate-openpose-editor.git|a21cc3bc8dd3036fe70d80917f11d66427cb3bb2",
-      "https://github.com/chrisgoringe/cg-image-filter.git|694f8444e67f44d601861c5604bb3e55c35daf9d",
+      "https://github.com/chrisgoringe/cg-image-filter.git|9fe9e1676f5287fc4edc108c6e89148ce5930f3e",
       "https://github.com/MoonGoblinDev/Civicomfy.git|555e984bbcb02fc955075cb8eb699a6884c51239"
     ]
   },
