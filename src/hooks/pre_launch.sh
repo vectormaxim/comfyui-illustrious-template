@@ -126,3 +126,60 @@ if [ -f "$_cg_filter_nodes" ] && grep -q 'st_birthtime' "$_cg_filter_nodes"; the
     fi
 fi
 unset _cg_filter_nodes
+
+# ---------------------------------------------------------------------------
+# 4. Let comfyui-model-linker use the pod's CivitAI key and find NSFW models.
+#
+# Model Linker (Ctrl+Shift+L, or the button in ComfyUI's Missing Models popup)
+# finds a dragged-in workflow's missing checkpoints/LoRAs and downloads them.
+# As pinned (a201f43) it has no server-side key: searches go out anonymous and
+# downloads only carry a key the browser sends, which its UI never does. And
+# CivitAI's search leaves NSFW models out unless asked: tested 2026-09-18,
+# Shanher_Suit_v6.1 and MoriiMee_Gothic_Realistic only appear with nsfw=true.
+#
+# So: searches default to CIVITAI_API_KEY (set from whichever token name the
+# pod uses, section 1 above) and ask for nsfw=true; downloads fall back to the
+# same key. The key only ever travels as an Authorization header from the
+# server, the way Civicomfy sends it: upstream puts it in the URL as ?token=,
+# and those URLs are shown to the browser (search results, download progress),
+# i.e. to anyone who has the pod's proxy link.
+#
+# Idempotent; each edit is skipped with a warning if upstream changed the
+# line. Never fatal: unpatched, it still works, just without the key.
+# ---------------------------------------------------------------------------
+_model_linker="${CUSTOM_NODES_DIR:-/ComfyUI/custom_nodes}/comfyui-model-linker"
+if [ -d "$_model_linker" ]; then
+    python3 - "$_model_linker" <<'PY' || echo "⚠️  comfyui-model-linker: patch step failed; it still works, without the pod's CivitAI key"
+import sys
+from pathlib import Path
+root = Path(sys.argv[1])
+edits = [
+    ("core/sources/civitai.py", "api_key: Optional[str] = None",
+     'api_key: Optional[str] = os.environ.get("CIVITAI_API_KEY") or None'),
+    ("core/sources/civitai.py", '    if api_key:\n        url += f"?token={api_key}"\n    return url',
+     "    return url  # the key is sent as a header at download time, never in a URL"),
+    ("core/sources/civitai.py", "/models?query={quote(search_term)}&limit=10",
+     "/models?query={quote(search_term)}&limit=10&nsfw=true"),
+    ("__init__.py",
+     "civitai_key = data.get('civitai_key', '')\n"
+     "                            if civitai_key and 'token=' not in url:\n"
+     "                                url += f\"{'&' if '?' in url else '?'}token={civitai_key}\"",
+     "civitai_key = data.get('civitai_key') or __import__('os').environ.get('CIVITAI_API_KEY', '')\n"
+     "                            if civitai_key and 'token=' not in url:\n"
+     "                                headers['Authorization'] = f'Bearer {civitai_key}'"),
+]
+done = 0
+for rel, old, new in edits:
+    f = root / rel
+    text = f.read_text()
+    if new in text:
+        done += 1
+    elif old in text:
+        f.write_text(text.replace(old, new))
+        done += 1
+    else:
+        print(f"⚠️  comfyui-model-linker: {rel} changed upstream, one patch skipped")
+print(f"🩹 comfyui-model-linker: {done}/{len(edits)} patches in place (pod CivitAI key, NSFW search)")
+PY
+fi
+unset _model_linker
