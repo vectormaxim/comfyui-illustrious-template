@@ -28,8 +28,7 @@
       "https://github.com/vectormaxim/ComfyUI-HipRegionMask.git|75c933712b3dcda9bf8dc2ae523e90f5ca0c2dca",
       "https://github.com/westNeighbor/ComfyUI-ultimate-openpose-editor.git|a21cc3bc8dd3036fe70d80917f11d66427cb3bb2",
       "https://github.com/chrisgoringe/cg-image-filter.git|9fe9e1676f5287fc4edc108c6e89148ce5930f3e",
-      "https://github.com/MoonGoblinDev/Civicomfy.git|555e984bbcb02fc955075cb8eb699a6884c51239",
-      "https://github.com/kianxyzw/comfyui-model-linker.git|a201f4324687b314e1558b1ce59529795d5d0afe"
+      "https://github.com/MoonGoblinDev/Civicomfy.git|555e984bbcb02fc955075cb8eb699a6884c51239"
     ]
   },
   "sage": true

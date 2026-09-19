@@ -75,30 +75,6 @@ The rest of its settings live in your browser, not on the pod, so set them once 
 
 Downloads keep running in the background while you queue prompts; three run concurrently.
 
-### Missing models in a workflow you drag in
-
-Model Linker (comfyui-model-linker) handles workflows that name checkpoints or LoRAs you don't have.
-Open it with the **Model Linker** button in the top bar, **Ctrl+Shift+L**, or the button it adds to
-ComfyUI's Missing Models popup. For each missing file it:
-
-1. looks for the same file under another name among your models, and links it (**Auto-Link 100%**
-   takes every exact match);
-2. otherwise finds a download: a URL embedded in the workflow, then known model lists, then Hugging
-   Face, then CivitAI, always by **exact filename**;
-3. downloads into the matching folder (`loras`, `checkpoints`, …) on the network volume.
-   **Download All Missing** does all of them.
-
-It uses the same CivitAI key as Civicomfy (`civitai_token` / `CIVITAI_TOKEN` / `CIVITAI_API_KEY`
-in the pod env) with nothing typed in. `src/hooks/pre_launch.sh` patches that in at boot, plus two
-more things. Searches ask CivitAI for NSFW models too; without that, CivitAI leaves them out, and
-e.g. `Shanher_Suit_v6.1` isn't found. And the key goes only as an `Authorization` header from the pod,
-never as `?token=` in a URL the browser gets to see. The boot log confirms it with
-`🩹 comfyui-model-linker: 4/4 patches in place`.
-
-Limits: a workflow only stores filenames, so a LoRA that was renamed after downloading, or isn't
-public, won't be found; use Civicomfy's search for those. Save the workflow after linking; the
-tool changes the open graph, not the file.
-
 ### Which workflow
 
 Four ship in the `Illustrious` folder. The first three do the same job at
