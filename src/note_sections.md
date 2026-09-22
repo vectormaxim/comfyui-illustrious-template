@@ -20,6 +20,18 @@ supply. Put its CivitAI version ID in `CIVITAI_DIFFUSION_MODELS`, not
 and `CIVITAI_CHECKPOINTS` downloads into `models/checkpoints/`. SDXL LoRAs and
 ControlNets do not work with Anima.
 
+Some Anima finetunes ship their own fine-tuned text encoder beside the model
+(a second file on the CivitAI version, typed `Text Encoder`, usually named
+`..._txt.safetensors`) and are meant to run against it rather than the stock
+`qwen_3_06b_base`. `CIVITAI_DIFFUSION_MODELS` only ever downloads a version's
+primary file, so that encoder never arrives on its own. Name it in
+`CIVITAI_TEXT_ENCODERS`, which takes CivitAI URLs as well as version IDs -- a
+URL with `fileId` is the only way to point at a non-primary file. For One
+obsession_Anima v4.0: `CIVITAI_DIFFUSION_MODELS=3301424` and
+`CIVITAI_TEXT_ENCODERS=https://civitai.com/api/download/models/3301424?fileId=3186759`,
+then pick both files in the workflow's `DIFFUSION MODEL` and `TEXT ENCODER`
+loaders. The workflow's own READ ME note repeats this.
+
 ## Bring your own checkpoint and LoRAs
 
 This template ships no checkpoint and no character
@@ -55,7 +67,8 @@ you deploy, or edit the variables on this pod and restart it.
 | download_illustrious | false | Downloads the shared models (ControlNets, upscaler, detector models) and copies the Illustrious detailer workflow. |
 | download_anima | false | Downloads the Anima text encoder and VAE plus the detector and upscale models, and copies the Anima keeper-filter detailer workflow. |
 | CIVITAI_CHECKPOINTS | unset | Comma-separated CivitAI model version IDs to download into models/checkpoints/. This is how you get the SDXL/Illustrious checkpoint itself. |
-| CIVITAI_DIFFUSION_MODELS | unset | Comma-separated CivitAI model version IDs to download into models/diffusion_models/. This is how you get an Anima model such as WAI-ANIMA (2983680); it needs civitai_token. |
+| CIVITAI_DIFFUSION_MODELS | unset | Comma-separated CivitAI model version IDs (or CivitAI URLs) to download into models/diffusion_models/. This is how you get an Anima model such as WAI-ANIMA (2983680); it needs civitai_token. |
+| CIVITAI_TEXT_ENCODERS | unset | The same, into models/text_encoders/. For an Anima finetune that ships its own text encoder; a CivitAI URL with fileId picks that non-primary file. Needs civitai_token. |
 | CIVITAI_LORAS | unset | Comma-separated CivitAI model version IDs to download into models/loras/. This is how you get your character/style LoRAs. |
 | civitai_token | unset | Your CivitAI API token. CIVITAI_TOKEN and CIVITAI_API_KEY are also accepted. |
 | HF_TOKEN | unset | Your Hugging Face token. Recommended: unauthenticated downloads get rate-limited on a fresh pod. |

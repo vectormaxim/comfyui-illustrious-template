@@ -28,9 +28,10 @@ FYI: this template is built for CUDA 13.0 and above.
 | Variable | Default | What it does |
 |---|---|---|
 | `download_illustrious` | false | Downloads the shared models (ControlNets, upscaler, detector models) and copies the workflow |
-| `download_anima` | false | Copies the Anima keeper-filter detailer workflow and downloads its text encoder (Qwen3 0.6B), VAE (Qwen-Image), detectors and upscaler. The Anima diffusion model itself comes from `CIVITAI_DIFFUSION_MODELS` |
+| `download_anima` | false | Copies the Anima keeper-filter detailer workflow and downloads the stock text encoder (Qwen3 0.6B), VAE (Qwen-Image), detectors and upscaler. The Anima diffusion model itself comes from `CIVITAI_DIFFUSION_MODELS` |
 | `CIVITAI_CHECKPOINTS` | empty | Comma-separated CivitAI version IDs, downloaded to `models/checkpoints`. This is how you get the SDXL/Illustrious checkpoint. |
-| `CIVITAI_DIFFUSION_MODELS` | empty | Comma-separated CivitAI version IDs, downloaded to `models/diffusion_models`. This is how you get an Anima model: `2983680` is WAI-ANIMA v1.0. Needs `civitai_token`. |
+| `CIVITAI_DIFFUSION_MODELS` | empty | Comma-separated CivitAI version IDs (or CivitAI URLs), downloaded to `models/diffusion_models`. This is how you get an Anima model: `2983680` is WAI-ANIMA v1.0. Needs `civitai_token`. |
+| `CIVITAI_TEXT_ENCODERS` | empty | Same, into `models/text_encoders`. For an Anima finetune that ships its own text encoder — see [Anima models that ship their own text encoder](#anima-models-that-ship-their-own-text-encoder). Needs `civitai_token`. |
 | `CIVITAI_LORAS` | empty | Comma-separated CivitAI version IDs, downloaded to `models/loras`. This is how you get your character/style LoRAs. |
 | `civitai_token` | empty | Your CivitAI API token. Also feeds Civicomfy (see below), so leave its in-app API Key field blank. `CIVITAI_TOKEN` and `CIVITAI_API_KEY` work too. |
 | `HF_TOKEN` | empty | Optional. Raises your Hugging Face rate limit, which makes a first boot less likely to stall. |
@@ -74,6 +75,36 @@ The rest of its settings live in your browser, not on the pod, so set them once 
 | Switch to Status tab after starting download | off | Jumps to the progress view on each download. |
 
 Downloads keep running in the background while you queue prompts; three run concurrently.
+
+### Anima models that ship their own text encoder
+
+Anima is three files — a diffusion model, a Qwen3-0.6B text encoder and the Qwen-Image VAE.
+`download_anima` fetches the stock encoder and the VAE; the diffusion model is yours to bring
+via `CIVITAI_DIFFUSION_MODELS`.
+
+Some Anima finetunes replace the encoder too. They upload a second file on the CivitAI version,
+typed **Text Encoder** and usually named `..._txt.safetensors`, and expect to run against it
+rather than `qwen_3_06b_base`. `CIVITAI_DIFFUSION_MODELS` will not bring it down: the downloader
+takes a version's **primary** file, which on a multi-file version is always the Model-type one.
+So you get the model, the `TEXT ENCODER` dropdown offers nothing but the stock encoder, and the
+pairing the finetune was trained with is silently missing.
+
+`CIVITAI_TEXT_ENCODERS` is that missing half. It takes version IDs like the other CivitAI
+variables, and also full CivitAI URLs — a URL is the only way to name a file that is not the
+primary one. For [One obsession_Anima](https://civitai.com/models/2695493) v4.0 (version
+`3301424`):
+
+    CIVITAI_DIFFUSION_MODELS=3301424
+    CIVITAI_TEXT_ENCODERS=https://civitai.com/api/download/models/3301424?fileId=3186759
+
+Both land on the volume, then open `Anima_Detailer_Filter` and pick
+`oneObsessionAnima_v40.safetensors` in `DIFFUSION MODEL` and
+`oneObsessionAnima_v40_txt.safetensors` in `TEXT ENCODER`. That version's VAE is the stock
+`qwen_image_vae`, so the VAE loader needs no change.
+
+For any other model, get the `fileId` from `https://civitai.com/api/v1/model-versions/<version id>`
+and take the `id` of the file whose `type` is `Text Encoder`. A version with no such file is a
+plain Anima finetune: leave `TEXT ENCODER` on `qwen_3_06b_base.safetensors`.
 
 ### Which workflow
 

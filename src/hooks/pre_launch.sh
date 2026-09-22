@@ -51,7 +51,8 @@ fi
 # on every pod restart -- it would have to be rewritten here every boot to stick.
 
 # ---------------------------------------------------------------------------
-# 2. CIVITAI_DIFFUSION_MODELS: CIVITAI_CHECKPOINTS, for diffusion-model-only files.
+# 2. CIVITAI_DIFFUSION_MODELS / CIVITAI_TEXT_ENCODERS: CIVITAI_CHECKPOINTS for
+#    the two model folders the runtime's own CivitAI loop cannot reach.
 #
 # The runtime's CivitAI loop (start.sh:663-668) downloads into exactly two
 # folders, models/checkpoints and models/loras. Anima checkpoints such as
@@ -59,51 +60,71 @@ fi
 # models/diffusion_models and never models/checkpoints, so a file fetched with
 # CIVITAI_CHECKPOINTS lands where the Anima workflow cannot see it.
 #
-# Same downloader, same token, different folder. download_with_aria.py asks for
-# type=Model, which for a multi-file version is the Model-type file (for
-# 2983680 that is waiANIMA_v10Base10.safetensors, not its bundled text encoder
-# or VAE), and it skips a file that is already complete, so a restart does not
-# re-download. resolve_civitai_env already ran at start.sh:662, so CIVITAI_TOKEN
-# holds the key whichever spelling the template set.
+# download_with_aria.py takes a version's *primary* file, which on a
+# multi-file version is the Model-type file and never its bundled text encoder
+# or VAE. That is the right default, but several Anima finetunes ship a
+# fine-tuned Qwen3-0.6B next to the model and are meant to be run against that
+# encoder instead of the stock qwen_3_06b_base -- One obsession_Anima ships one
+# for every version. Under the primary-file rule that encoder never lands, so
+# the pod has a model whose conditioner is missing and the CLIPLoader has only
+# the base encoder to offer. Hence CIVITAI_TEXT_ENCODERS.
+#
+# Both variables take a full CivitAI URL as well as a bare version ID, because
+# a URL carrying fileId is the only way to name a non-primary file (the
+# downloader's _select_version_file honours requested_file_id; a bare ID cannot
+# express one). The fileId is in the version's API listing, and civitai.com,
+# civitai.green and civitai.red are all accepted hosts. For One
+# obsession_Anima v4.0:
+#
+#   CIVITAI_DIFFUSION_MODELS=3301424
+#   CIVITAI_TEXT_ENCODERS=https://civitai.com/api/download/models/3301424?fileId=3186759
+#
+# Same downloader, same token, different folder, and it skips a file that is
+# already complete so a restart does not re-download. resolve_civitai_env
+# already ran at start.sh:662, so CIVITAI_TOKEN holds the key whichever
+# spelling the template set.
 #
 # Sequential and blocking, like the runtime loop it mirrors: ComfyUI launches
 # once the files are there. Never fatal: a failed ID warns and boot continues.
 # ---------------------------------------------------------------------------
-_civitai_diffusion_models() {
-    local ids="${CIVITAI_DIFFUSION_MODELS:-}" dest id
+_civitai_download_into() {
+    local var="$1" subdir="$2" label="$3" ids dest id
+    ids="${!var:-}"
     if [ -z "$ids" ] || [ "$ids" = "replace_with_ids" ]; then
-        echo "⏭️  Skipping CivitAI diffusion-model downloads (CIVITAI_DIFFUSION_MODELS not set)"
+        echo "⏭️  Skipping CivitAI $label downloads ($var not set)"
         return 0
     fi
     if [ -z "${CIVITAI_TOKEN:-}${civitai_token:-}" ]; then
-        echo "❌ CIVITAI_DIFFUSION_MODELS is set but there is no CivitAI token; skipping"
+        echo "❌ $var is set but there is no CivitAI token; skipping"
         declare -F report_warn >/dev/null \
-            && report_warn "CIVITAI_DIFFUSION_MODELS needs civitai_token (or CIVITAI_TOKEN) to download"
+            && report_warn "$var needs civitai_token (or CIVITAI_TOKEN) to download"
         return 0
     fi
 
-    dest="${PERSIST_ROOT:-/workspace/ComfyUI}/models/diffusion_models"
+    dest="${PERSIST_ROOT:-/workspace/ComfyUI}/models/$subdir"
     mkdir -p "$dest" || return 0
 
     local IFS=','
     for id in $ids; do
         id="${id//[[:space:]]/}"
         [ -n "$id" ] || continue
-        if ! [[ "$id" =~ ^[0-9]+$ ]]; then
-            echo "❌ CIVITAI_DIFFUSION_MODELS: '$id' is not a CivitAI version ID; skipping"
+        if ! [[ "$id" =~ ^[0-9]+$ ]] \
+            && ! [[ "$id" =~ ^https?://([a-z0-9-]+\.)*civitai\.(com|green|red)/ ]]; then
+            echo "❌ $var: '$id' is not a CivitAI version ID or CivitAI URL; skipping"
             declare -F report_warn >/dev/null \
-                && report_warn "CIVITAI_DIFFUSION_MODELS: '$id' is not a CivitAI version ID"
+                && report_warn "$var: '$id' is not a CivitAI version ID or CivitAI URL"
             continue
         fi
-        echo "🚀 CivitAI diffusion model $id -> $dest"
+        echo "🚀 CivitAI $label $id -> $dest"
         if ! download_with_aria.py -m "$id" -o "$dest"; then
-            echo "❌ CivitAI diffusion model $id failed to download"
+            echo "❌ CivitAI $label $id failed to download"
             declare -F report_warn >/dev/null \
-                && report_warn "CivitAI diffusion model $id failed to download"
+                && report_warn "CivitAI $label $id failed to download"
         fi
     done
 }
-_civitai_diffusion_models
+_civitai_download_into CIVITAI_DIFFUSION_MODELS diffusion_models "diffusion model"
+_civitai_download_into CIVITAI_TEXT_ENCODERS text_encoders "text encoder"
 
 # ---------------------------------------------------------------------------
 # 3. Make cg-image-filter's Mask Image Filter work on Linux.

@@ -3248,7 +3248,7 @@
           ]
         }
       ],
-      "title": "TEXT ENCODER (Qwen3 0.6B)",
+      "title": "TEXT ENCODER -- must match the model",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.32.0",
@@ -3318,7 +3318,7 @@
       ],
       "size": [
         340,
-        520
+        760
       ],
       "flags": {},
       "order": 48,
@@ -3328,7 +3328,7 @@
       "title": "READ ME -- Anima setup",
       "properties": {},
       "widgets_values": [
-        "ANIMA detailer + keeper filter (derived from Illustrious_Detailer_Filter).\n\nAnima is NOT SDXL: the model, text encoder and VAE are three files.\n\n1. DIFFUSION MODEL -> models/diffusion_models/\n   e.g. WAI-ANIMA (civitai version 2983680) or the official anima-base-v1.0.\n   Set CIVITAI_DIFFUSION_MODELS=2983680 (plus civitai_token) to have the pod\n   download WAI-ANIMA there. NOT CIVITAI_CHECKPOINTS: that lands in\n   models/checkpoints/, which this loader does not list.\n2. TEXT ENCODER qwen_3_06b_base -> models/text_encoders/  (download_anima fetches it)\n   CLIPLoader type stays 'stable_diffusion': ComfyUI detects Qwen3-0.6B by shape.\n3. VAE qwen_image_vae -> models/vae/  (download_anima fetches it)\n\nDifferences from the Illustrious version:\n- no clip skip (it would change which Qwen3 layer conditions the model)\n- no OpenPose ControlNet (SDXL ControlNets do not apply to Anima)\n- SDXL LoRAs do nothing; LoRA slots ship bypassed. Anima LoRAs only.\n- cfg 4 everywhere (base, detailers, upscale)\n\nPrompts: masterpiece, best quality, score_7 + Danbooru tags;\nnatural-language sentences work too."
+        "ANIMA detailer + keeper filter (derived from Illustrious_Detailer_Filter).\n\nAnima is NOT SDXL: the model, text encoder and VAE are three files.\n\n1. DIFFUSION MODEL -> models/diffusion_models/\n   e.g. WAI-ANIMA (civitai version 2983680) or the official anima-base-v1.0.\n   Set CIVITAI_DIFFUSION_MODELS=2983680 (plus civitai_token) to have the pod\n   download WAI-ANIMA there. NOT CIVITAI_CHECKPOINTS: that lands in\n   models/checkpoints/, which this loader does not list.\n2. TEXT ENCODER -> models/text_encoders/\n   qwen_3_06b_base (download_anima fetches it), UNLESS your model ships its\n   own -- see PAIRED TEXT ENCODER below. CLIPLoader type stays\n   'stable_diffusion': ComfyUI detects Qwen3-0.6B by shape.\n3. VAE qwen_image_vae -> models/vae/  (download_anima fetches it)\n\nPAIRED TEXT ENCODER\nSome Anima finetunes ship their own fine-tuned Qwen3-0.6B next to the model\n-- a second file on the CivitAI version, typically named '..._txt.safetensors'\nand typed 'Text Encoder' -- and are meant to run against that, not the stock\nqwen_3_06b_base. CIVITAI_DIFFUSION_MODELS only ever fetches a version's\nPRIMARY file, so a paired encoder never lands by itself and this loader has\nnothing but the base encoder to offer. Name it with CIVITAI_TEXT_ENCODERS,\nwhich takes version IDs and also fileId URLs (the only way to point at a\nnon-primary file). For One obsession_Anima v4.0 (version 3301424):\n\n  CIVITAI_DIFFUSION_MODELS=3301424\n  CIVITAI_TEXT_ENCODERS=https://civitai.com/api/download/models/3301424?fileId=3186759\n\nThen pick oneObsessionAnima_v40_txt.safetensors in TEXT ENCODER. Its VAE is\nthe stock qwen_image_vae, so leave the VAE loader alone. To find the fileId\nfor another model: civitai.com/api/v1/model-versions/<version id>, then the\n'id' of the file whose type is 'Text Encoder'.\n\nDifferences from the Illustrious version:\n- no clip skip (it would change which Qwen3 layer conditions the model)\n- no OpenPose ControlNet (SDXL ControlNets do not apply to Anima)\n- SDXL LoRAs do nothing; LoRA slots ship bypassed. Anima LoRAs only.\n- cfg 4 everywhere (base, detailers, upscale)\n\nPrompts: masterpiece, best quality, score_7 + Danbooru tags;\nnatural-language sentences work too."
       ],
       "color": "#432",
       "bgcolor": "#653"
