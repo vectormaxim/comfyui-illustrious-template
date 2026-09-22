@@ -54,41 +54,85 @@ fi
 # 2. CIVITAI_DIFFUSION_MODELS / CIVITAI_TEXT_ENCODERS: CIVITAI_CHECKPOINTS for
 #    the two model folders the runtime's own CivitAI loop cannot reach.
 #
-# The runtime's CivitAI loop (start.sh:663-668) downloads into exactly two
-# folders, models/checkpoints and models/loras. Anima checkpoints such as
-# WAI-ANIMA (version 2983680) are diffusion-model-only files: UNETLoader lists
-# models/diffusion_models and never models/checkpoints, so a file fetched with
-# CIVITAI_CHECKPOINTS lands where the Anima workflow cannot see it.
+# The runtime's CivitAI loop (start.sh:653, run_civitai_downloads) downloads
+# into exactly two folders, models/checkpoints and models/loras. Anima
+# checkpoints such as WAI-ANIMA (version 2983680) are diffusion-model-only
+# files: UNETLoader lists models/diffusion_models and never models/checkpoints,
+# so a file fetched with CIVITAI_CHECKPOINTS lands where the Anima workflow
+# cannot see it.
 #
-# download_with_aria.py takes a version's *primary* file, which on a
-# multi-file version is the Model-type file and never its bundled text encoder
-# or VAE. That is the right default, but several Anima finetunes ship a
-# fine-tuned Qwen3-0.6B next to the model and are meant to be run against that
-# encoder instead of the stock qwen_3_06b_base -- One obsession_Anima ships one
-# for every version. Under the primary-file rule that encoder never lands, so
-# the pod has a model whose conditioner is missing and the CLIPLoader has only
-# the base encoder to offer. Hence CIVITAI_TEXT_ENCODERS.
-#
-# Both variables take a full CivitAI URL as well as a bare version ID, because
-# a URL carrying fileId is the only way to name a non-primary file (the
-# downloader's _select_version_file honours requested_file_id; a bare ID cannot
-# express one). The fileId is in the version's API listing, and civitai.com,
-# civitai.green and civitai.red are all accepted hosts. For One
-# obsession_Anima v4.0:
+# A CivitAI version resolves to its *primary* file, which on a multi-file
+# version is the Model-type one. That is right for a plain Anima finetune, but
+# several of them ship their own fine-tuned Qwen3-0.6B beside the model (typed
+# "Text Encoder", usually named "..._txt.safetensors") and are meant to run
+# against that rather than the stock qwen_3_06b_base -- One obsession_Anima
+# ships one for every version. Under the primary-file rule that encoder never
+# lands: the pod gets a model whose conditioner is missing and the CLIPLoader
+# has nothing but the base encoder to offer. Hence CIVITAI_TEXT_ENCODERS, and
+# hence both variables take any identifier that can name a specific FILE, not
+# just a version -- an AIR with a file ID is the shell-friendliest:
 #
 #   CIVITAI_DIFFUSION_MODELS=3301424
-#   CIVITAI_TEXT_ENCODERS=https://civitai.com/api/download/models/3301424?fileId=3186759
+#   CIVITAI_TEXT_ENCODERS=civitai:2695493@3301424+3186759
 #
-# Same downloader, same token, different folder, and it skips a file that is
-# already complete so a restart does not re-download. resolve_civitai_env
-# already ran at start.sh:662, so CIVITAI_TOKEN holds the key whichever
-# spelling the template set.
+# WHICH DOWNLOADER, and why this is not one line. A pod carries TWO programs
+# called download_with_aria.py and they are not the same:
+#
+#   /usr/local/bin/download_with_aria.py   baked into the base image, older
+#                                          (Aug 13 on the current base tag).
+#                                          -m takes a bare version ID only and
+#                                          always resolves the primary file;
+#                                          handed a URL it pastes it into the
+#                                          metadata path and 404s.
+#   $CIVITAI_DOWNLOADER                    the runtime's vendored copy, from
+#                                          civitai_downloads.sh, sourced by
+#                                          start.sh:411 and so in scope here.
+#                                          Parses version IDs, model/version:N,
+#                                          CivitAI URLs and AIRs, and honours a
+#                                          file ID.
+#
+# PATH finds the base-image one, so a bare `download_with_aria.py` cannot fetch
+# a non-primary file no matter how the identifier is written. Prefer the
+# runtime copy; fall back to the base-image one for plain version IDs only, and
+# say so plainly rather than letting an unsupported identifier 404 into a
+# "download.bin" failure. Both were checked against the real pod (23fb4730f447,
+# 2026-09-22): the runtime copy resolved civitai:2695493@3301424+3186759 to
+# oneObsessionAnima_v40_txt.safetensors and verified its SHA-256.
+#
+# prepare_civitai_downloader only runs at boot when CIVITAI_CHECKPOINTS or
+# CIVITAI_LORAS is set, so call it here too -- a pod that sets only these two
+# variables would otherwise reach a downloader whose dependencies were never
+# installed. It short-circuits when they already are.
+#
+# Same token either way. It skips a file that is already complete, so a restart
+# does not re-download. resolve_civitai_env already ran at start.sh:412, so
+# CIVITAI_TOKEN holds the key whichever spelling the template set.
 #
 # Sequential and blocking, like the runtime loop it mirrors: ComfyUI launches
 # once the files are there. Never fatal: a failed ID warns and boot continues.
 # ---------------------------------------------------------------------------
+_civitai_warn_hook() {
+    declare -F report_warn >/dev/null && report_warn "$1"
+    return 0
+}
+
+# runtime | legacy | none -- see the table above.
+_civitai_downloader_kind() {
+    if [ -n "${CIVITAI_DOWNLOADER:-}" ] && [ -f "${CIVITAI_DOWNLOADER:-}" ] \
+        && declare -F prepare_civitai_downloader >/dev/null; then
+        echo runtime
+    elif command -v download_with_aria.py >/dev/null 2>&1; then
+        echo legacy
+    else
+        echo none
+    fi
+}
+
 _civitai_download_into() {
-    local var="$1" subdir="$2" label="$3" ids dest id
+    local var="$1" subdir="$2" label="$3"
+    local ids dest id kind prepared=""
+    local -a items=()
+
     ids="${!var:-}"
     if [ -z "$ids" ] || [ "$ids" = "replace_with_ids" ]; then
         echo "⏭️  Skipping CivitAI $label downloads ($var not set)"
@@ -96,31 +140,58 @@ _civitai_download_into() {
     fi
     if [ -z "${CIVITAI_TOKEN:-}${civitai_token:-}" ]; then
         echo "❌ $var is set but there is no CivitAI token; skipping"
-        declare -F report_warn >/dev/null \
-            && report_warn "$var needs civitai_token (or CIVITAI_TOKEN) to download"
+        _civitai_warn_hook "$var needs civitai_token (or CIVITAI_TOKEN) to download"
+        return 0
+    fi
+
+    kind="$(_civitai_downloader_kind)"
+    if [ "$kind" = none ]; then
+        echo "❌ $var is set but no CivitAI downloader is available; skipping"
+        _civitai_warn_hook "$var: no CivitAI downloader on this pod"
         return 0
     fi
 
     dest="${PERSIST_ROOT:-/workspace/ComfyUI}/models/$subdir"
     mkdir -p "$dest" || return 0
 
-    local IFS=','
-    for id in $ids; do
+    IFS=',' read -r -a items <<< "$ids"
+    for id in "${items[@]}"; do
         id="${id//[[:space:]]/}"
         [ -n "$id" ] || continue
+
         if ! [[ "$id" =~ ^[0-9]+$ ]] \
+            && ! [[ "$id" =~ ^(model|version):[0-9]+$ ]] \
+            && ! [[ "$id" =~ ^(urn:air:|civitai:) ]] \
             && ! [[ "$id" =~ ^https?://([a-z0-9-]+\.)*civitai\.(com|green|red)/ ]]; then
-            echo "❌ $var: '$id' is not a CivitAI version ID or CivitAI URL; skipping"
-            declare -F report_warn >/dev/null \
-                && report_warn "$var: '$id' is not a CivitAI version ID or CivitAI URL"
+            echo "❌ $var: '$id' is not a CivitAI version ID, AIR or CivitAI URL; skipping"
+            _civitai_warn_hook "$var: '$id' is not a CivitAI version ID, AIR or CivitAI URL"
             continue
         fi
-        echo "🚀 CivitAI $label $id -> $dest"
-        if ! download_with_aria.py -m "$id" -o "$dest"; then
-            echo "❌ CivitAI $label $id failed to download"
-            declare -F report_warn >/dev/null \
-                && report_warn "CivitAI $label $id failed to download"
+        if ! [[ "$id" =~ ^[0-9]+$ ]] && [ "$kind" != runtime ]; then
+            echo "❌ $var: '$id' needs the runtime CivitAI downloader, which this pod does not have"
+            echo "   (only the base image's older copy is here: it takes a bare version ID)"
+            _civitai_warn_hook "$var: '$id' needs the runtime CivitAI downloader; use a bare version ID"
+            continue
         fi
+
+        if [ "$kind" = runtime ] && [ -z "$prepared" ]; then
+            if prepare_civitai_downloader; then prepared=ok; else prepared=failed; fi
+        fi
+        if [ "$prepared" = failed ]; then
+            echo "❌ CivitAI $label $id: the runtime downloader is not usable; skipping"
+            _civitai_warn_hook "CivitAI $label $id skipped: runtime downloader unusable"
+            continue
+        fi
+
+        echo "🚀 CivitAI $label $id -> $dest"
+        if [ "$kind" = runtime ]; then
+            "${CIVITAI_PYTHON:-python3}" "$CIVITAI_DOWNLOADER" -m "$id" -o "$dest"
+        else
+            download_with_aria.py -m "$id" -o "$dest"
+        fi || {
+            echo "❌ CivitAI $label $id failed to download"
+            _civitai_warn_hook "CivitAI $label $id failed to download"
+        }
     done
 }
 _civitai_download_into CIVITAI_DIFFUSION_MODELS diffusion_models "diffusion model"

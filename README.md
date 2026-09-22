@@ -84,27 +84,37 @@ via `CIVITAI_DIFFUSION_MODELS`.
 
 Some Anima finetunes replace the encoder too. They upload a second file on the CivitAI version,
 typed **Text Encoder** and usually named `..._txt.safetensors`, and expect to run against it
-rather than `qwen_3_06b_base`. `CIVITAI_DIFFUSION_MODELS` will not bring it down: the downloader
-takes a version's **primary** file, which on a multi-file version is always the Model-type one.
-So you get the model, the `TEXT ENCODER` dropdown offers nothing but the stock encoder, and the
-pairing the finetune was trained with is silently missing.
+rather than `qwen_3_06b_base`. `CIVITAI_DIFFUSION_MODELS` will not bring it down: a version
+resolves to its **primary** file, which on a multi-file version is always the Model-type one. So
+you get the model, the `TEXT ENCODER` dropdown offers nothing but the stock encoder, and the
+pairing the finetune was trained with is silently missing — the run still completes, it just
+conditions on the wrong encoder.
 
-`CIVITAI_TEXT_ENCODERS` is that missing half. It takes version IDs like the other CivitAI
-variables, and also full CivitAI URLs — a URL is the only way to name a file that is not the
-primary one. For [One obsession_Anima](https://civitai.com/models/2695493) v4.0 (version
-`3301424`):
+`CIVITAI_TEXT_ENCODERS` is that missing half. Alongside plain version IDs it takes any identifier
+that names a specific *file*: an AIR (`civitai:<model>@<version>+<file>`) or a CivitAI URL with
+`fileId`. For [One obsession_Anima](https://civitai.com/models/2695493) v4.0:
 
     CIVITAI_DIFFUSION_MODELS=3301424
-    CIVITAI_TEXT_ENCODERS=https://civitai.com/api/download/models/3301424?fileId=3186759
+    CIVITAI_TEXT_ENCODERS=civitai:2695493@3301424+3186759
 
 Both land on the volume, then open `Anima_Detailer_Filter` and pick
 `oneObsessionAnima_v40.safetensors` in `DIFFUSION MODEL` and
 `oneObsessionAnima_v40_txt.safetensors` in `TEXT ENCODER`. That version's VAE is the stock
 `qwen_image_vae`, so the VAE loader needs no change.
 
-For any other model, get the `fileId` from `https://civitai.com/api/v1/model-versions/<version id>`
-and take the `id` of the file whose `type` is `Text Encoder`. A version with no such file is a
-plain Anima finetune: leave `TEXT ENCODER` on `qwen_3_06b_base.safetensors`.
+For another model, read `https://civitai.com/api/v1/model-versions/<version id>` and take the
+`id` of the file whose `type` is `Text Encoder`; the AIR is then
+`civitai:<modelId>@<version id>+<that id>`. A version with no such file is a plain Anima
+finetune — leave `TEXT ENCODER` on `qwen_3_06b_base.safetensors`.
+
+**A file ID needs the runtime's downloader.** A pod carries two programs called
+`download_with_aria.py`: the base image bakes in an older one that only understands a bare
+version ID, and the runtime vendors a newer one that parses URLs and AIRs. The hook prefers the
+runtime copy and falls back to the baked one for plain version IDs, so on an older `runtime_ref`
+a file-ID identifier is refused with a message rather than failing halfway. If you see
+`needs the runtime CivitAI downloader` in the boot log, the pod's `pins.json` `runtime_ref`
+predates that downloader — download the encoder by hand into
+`$NETWORK_VOLUME/ComfyUI/models/text_encoders/` instead.
 
 ### Which workflow
 
