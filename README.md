@@ -126,7 +126,7 @@ different sizes; the fourth adds a pick step:
 | `Illustrious_Detailer_Subgraphs` | 51 | **Start here.** Each detailer stage is one node built from subgraphs. No rgthree, so "Nodes 2.0" is safe. |
 | `Illustrious_Detailer_Pipeline_Ultimate` | 156 | The flat version. Same features, everything on one canvas. |
 | `Illustrious_Detailer_Pipeline` | 207 | The original reference build, kept deliberately flat, plus an XY-plot stage. |
-| `Illustrious_Detailer_Filter` | 61 | `Subgraphs` plus a **pick step**: generates a batch of 10, pops up a window, and only the images you pick go through the detailers. Then a **fix step**: paint over anything that should be redone. |
+| `Illustrious_Detailer_Filter` | 68 | `Subgraphs` plus a **pick step**: generates a batch of 10, pops up a window, and only the images you pick go through the detailers. Then a **fix step**: paint over anything that should be redone. |
 
 ### Driving the subgraph workflow
 
@@ -165,6 +165,10 @@ stage's own canvas, is the detector model and its `threshold`.
 - *Upscale* — un-bypass `upscale model` **and** `UPSCALE (Ultimate SD Upscale)`
   together (1.5x at denoise 0.2), then optionally the `POST-UPSCALE` stages.
 - *ControlNet* — un-bypass the four OpenPose nodes and load a reference image.
+  In `Illustrious_Detailer_Filter` a Depth branch sits below it (`Depth from
+  reference`, `Depth ControlNet`, `Apply Depth`, `depth preview`; T2I-Adapter
+  depth-zoe at strength 0.7, off at 80%) and reads the same reference image.
+  Pose and depth chain, so un-bypass either or both, plus the reference loader.
 - *LLM prompt helper* — needs `OPENROUTER_API_KEY` in the pod environment. It
   is deliberately not wired into the prompt chain: it prints Danbooru tags for
   you to copy into a Prompt box, so a missing key can never break a run.
@@ -176,6 +180,13 @@ crop previews inside each stage show before/after per detected region.
 
 One extra knob: `FACE LoRA` feeds only the face stages, through their own
 pipe. Set it if you want a style LoRA on faces alone.
+
+In `Illustrious_Detailer_Filter`, `EYES` has its own pipe too, prompted from
+`EYES prompt` rather than the merged scene prompt. An eye crop is a few dozen
+pixels upscaled to 512, and given the whole scene prompt at denoise 0.5 the
+sampler paints the scene into it: a tiny figure inside a glasses lens, extra
+glasses over an eye. Put only what belongs in the crop there (eye colour,
+glasses).
 
 ### Picking from a batch
 
