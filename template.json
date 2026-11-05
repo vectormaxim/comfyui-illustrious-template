@@ -6,13 +6,15 @@
     "download_illustrious": {
       "default": false,
       "folders": [
-        "Illustrious"
+        "Illustrious",
+        "LLM"
       ]
     },
     "download_anima": {
       "default": false,
       "folders": [
-        "Anima"
+        "Anima",
+        "LLM"
       ]
     }
   },

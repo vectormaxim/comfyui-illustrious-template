@@ -7440,7 +7440,7 @@
         "Node name for S&R": "OpenRouterSimple"
       },
       "widgets_values": [
-        "qwen/qwen3-vl-235b-a22b-instruct",
+        "qwen/qwen3.8-27b",
         "auto",
         180,
         0.7,

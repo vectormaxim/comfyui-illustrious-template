@@ -172,6 +172,11 @@ stage's own canvas, is the detector model and its `threshold`.
 - *LLM prompt helper* — needs `OPENROUTER_API_KEY` in the pod environment. It
   is deliberately not wired into the prompt chain: it prints Danbooru tags for
   you to copy into a Prompt box, so a missing key can never break a run.
+  Its model defaults to `qwen/qwen3.8-27b` (the newest open-weight Qwen vision
+  model on OpenRouter as of 2026-11); change it on the node's `model` field.
+  The same helper also ships on its own as `LLM/LLM_Prompt_Helper` (Illustrious
+  and Anima system prompts side by side, nothing bypassed), copied with either
+  `download_illustrious` or `download_anima`.
 
 **Outputs.** Seed control is `randomize`, so every run differs. Two images are
 saved: `00_base` (before any detailing) and `99_FINAL` (the end of the chain,
