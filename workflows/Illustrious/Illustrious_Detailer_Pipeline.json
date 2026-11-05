@@ -6144,7 +6144,7 @@
       "mode": 0,
       "inputs": [],
       "outputs": [],
-      "title": "\ud83d\udd16",
+      "title": "🔖",
       "properties": {},
       "widgets_values": [
         "2",
@@ -6272,7 +6272,7 @@
       "mode": 4,
       "inputs": [],
       "outputs": [],
-      "title": "\ud83d\udd16",
+      "title": "🔖",
       "properties": {},
       "widgets_values": [
         "3",
@@ -7620,7 +7620,7 @@
       "mode": 0,
       "inputs": [],
       "outputs": [],
-      "title": "\ud83d\udd16",
+      "title": "🔖",
       "properties": {},
       "widgets_values": [
         "1",
@@ -11116,10 +11116,10 @@
         "Node name for S&R": "OpenRouterSimple"
       },
       "widgets_values": [
-        "qwen/qwen3.8-27b",
+        "qwen/qwen3-vl-235b-a22b-instruct",
         "auto",
         180,
-        0.7,
+        0.25,
         4096,
         "text",
         false,
