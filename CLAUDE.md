@@ -11,6 +11,10 @@ there rather than restating it, because duplicated contracts drift.
 runtime_dir; print(runtime_dir())"` prints where, and `CONTRACTS.md` /
 `ARCHITECTURE.md` are readable there without cloning anything.
 
+Feature work for ishikawa (the Studio, Library, Workbench that launch pods from this template) is tracked
+in `~/ishikawa` as Forgejo issues, not here: run `/implement`, `/implement-spec` and `/triage` from that repo.
+Issues in this repo's own tracker, if any, are about the template itself.
+
 ---
 
 ## 1. Know which tier you are changing
