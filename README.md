@@ -137,7 +137,7 @@ different sizes; the fourth adds a pick step:
 - `LoRA 1 (all stages)` → your character LoRA, or bypass it with **Ctrl+B** if
   you do not want one. `LoRA 2` / `LoRA 3` are bypassed spares for stacking.
 
-**Write the prompt.** Five boxes, `Prompt 1`–`Prompt 5`, joined with `", "` in
+**Write the prompt.** Five boxes (`Quality and look`, `Character`, `Outfit`, `Pose and action`, `Scene and effects`; the older workflows still say `Prompt 1`–`Prompt 5`), joined with `", "` in
 order; empty ones are skipped, so use them as categories — quality, character,
 outfit, pose, scene. `Negative prompt` is a single box feeding base generation
 and every detailer. The joined result is shown in `Merged prompt`, which is

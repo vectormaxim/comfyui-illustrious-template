@@ -426,7 +426,7 @@
           ]
         }
       ],
-      "title": "Prompt 1",
+      "title": "Quality and look",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.32.0",
@@ -471,7 +471,7 @@
           ]
         }
       ],
-      "title": "Prompt 2",
+      "title": "Character",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.32.0",
@@ -516,7 +516,7 @@
           ]
         }
       ],
-      "title": "Prompt 3",
+      "title": "Outfit",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.32.0",
@@ -561,7 +561,7 @@
           ]
         }
       ],
-      "title": "Prompt 4",
+      "title": "Pose and action",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.32.0",
@@ -606,7 +606,7 @@
           ]
         }
       ],
-      "title": "Prompt 5",
+      "title": "Scene and effects",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.32.0",

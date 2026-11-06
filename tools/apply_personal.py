@@ -16,6 +16,11 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 
+# The Filter workflows name their prompt boxes by purpose; personal defaults
+# written against the old "Prompt N" titles keep working.
+BOX_NAMES = {"Quality and look": "Prompt 1", "Character": "Prompt 2", "Outfit": "Prompt 3",
+             "Pose and action": "Prompt 4", "Scene and effects": "Prompt 5"}
+
 
 def main() -> int:
     ap = argparse.ArgumentParser()
@@ -39,8 +44,9 @@ def main() -> int:
             wv[0] = cfg["loras"][title]
             n["mode"] = 0                      # a named LoRA is one you want on
             applied.append(f"lora:{title}")
-        elif n["type"] == "PrimitiveStringMultiline" and title in (cfg.get("prompts") or {}):
-            wv[0] = cfg["prompts"][title]; applied.append(title)
+        elif n["type"] == "PrimitiveStringMultiline" and (
+                key := next((k for k in (title, BOX_NAMES.get(title)) if k in (cfg.get("prompts") or {})), None)):
+            wv[0] = cfg["prompts"][key]; applied.append(title)
         elif n["type"] == "CLIPTextEncode" and title.startswith("MAIN NEGATIVE") and cfg.get("negative"):
             # only when the negative is still a plain widget; newer builds feed
             # it from a shared string box instead
