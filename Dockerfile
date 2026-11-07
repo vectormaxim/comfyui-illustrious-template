@@ -132,6 +132,21 @@ RUN python3 -c "import onnxruntime; p = onnxruntime.get_available_providers(); a
 # need one. Not a pip install, so it does not violate the ordering rule above.
 RUN cd /ComfyUI && python main.py --quick-test-for-ci --cpu
 
+# ishikawa's boot stream: a Jupyter server extension (websocket /ishikawa/boot on the Jupyter port, behind
+# Jupyter's token) that pushes the boot log, CivitAI download progress and an end message to the Studio. Files
+# are only copied (nothing is installed with pip, so the onnxruntime ordering rule above holds); the config enables it in
+# the venv's sys-prefix, where jupyter-server reads jupyter_server_config.d. An image without it answers 404
+# and ishikawa falls back to polling the log. Format: ishikawa tests/mocks/BOOT_STREAM.md.
+COPY src/ishikawa_boot /tmp/ishikawa_boot
+COPY src/jupyter_config/ishikawa_boot.json /tmp/ishikawa_boot.json
+RUN site=$(python3 -c "import sysconfig; print(sysconfig.get_paths()['purelib'])") \
+    && mv /tmp/ishikawa_boot "$site/ishikawa_boot" \
+    && cfg="$(python3 -c 'import sys; print(sys.prefix)')/etc/jupyter/jupyter_server_config.d" \
+    && mkdir -p "$cfg" \
+    && mv /tmp/ishikawa_boot.json "$cfg/ishikawa_boot.json" \
+    && python3 -c "import ishikawa_boot.handler, ishikawa_boot; print('ishikawa_boot extension OK')" \
+    && jupyter server extension list 2>&1 | grep -i ishikawa_boot
+
 COPY src/start_script.sh /start_script.sh
 RUN chmod +x /start_script.sh
 
