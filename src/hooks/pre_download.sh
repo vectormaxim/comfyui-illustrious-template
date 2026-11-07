@@ -79,3 +79,45 @@ except Exception:
 " 2>/dev/null)
 }
 _retry_missing_packs
+
+# ---------------------------------------------------------------------------
+# 3. Print progress lines for the CivitAI downloads.
+#
+# The runtime's CivitAI downloader (aria2c, vendor/civitai_downloader) prints one line when a
+# file starts and one when it ends, and nothing in between: a 7 GB checkpoint is silent for ~4
+# minutes, so ishikawa's Studio card cannot show a bar. aria2c writes the file's pieces in
+# place under a hidden staging name, `.civitai-<file id>-<key>.part`, in the model folder. With
+# --file-allocation=none and 8 splits its apparent size jumps to nearly the full size at once,
+# but its ALLOCATED size (st_blocks) grows with the bytes really written. This watcher prints
+# that, every few seconds, as
+#
+#     [civitai-progress] t=<epoch> file=.civitai-<file id>-<key>.part bytes=<allocated bytes>
+#
+# into the boot log, which ishikawa reads over Jupyter (app/bootlog.py). It touches nothing:
+# read-only stat calls, started detached (`( ... & )`, so a `wait` in start.sh cannot hold on to
+# it), and it ends when the staging files are gone (the downloads finished), after 15 minutes if none ever
+# appeared, or after an hour.
+# Hooks run on every boot, so a restart starts a new one; none is left behind.
+# ---------------------------------------------------------------------------
+_civitai_progress_watch() {
+    local every="${CIVITAI_PROGRESS_INTERVAL:-5}" deadline give_up f found seen=0 idle=0
+    deadline=$(( $(date +%s) + 3600 ))
+    give_up=$(( $(date +%s) + 900 ))   # no CivitAI download ever started (none was asked for): stop waiting
+    while [ "$(date +%s)" -lt "$deadline" ]; do
+        found=0
+        for f in "${PERSIST_ROOT}"/models/*/.civitai-*.part; do
+            [ -e "$f" ] || continue
+            found=1
+            echo "[civitai-progress] t=$(date +%s) file=$(basename "$f") bytes=$(( $(stat -c %b "$f") * $(stat -c %B "$f") ))"
+        done
+        if [ "$found" = 1 ]; then
+            seen=1; idle=0
+        elif [ "$seen" = 1 ]; then
+            idle=$(( idle + 1 ))
+            [ "$idle" -ge 2 ] && break
+        fi
+        [ "$seen" = 0 ] && [ "$(date +%s)" -ge "$give_up" ] && break
+        sleep "$every"
+    done
+}
+( _civitai_progress_watch & )
