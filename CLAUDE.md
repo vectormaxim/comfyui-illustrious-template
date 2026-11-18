@@ -91,6 +91,10 @@ Before publishing anything, run what CI would have: `tools/validate_node_types.p
 `tools/validate_models.py`, `bash -n` over `src/` and `tools/`, and a JSON parse of
 every `workflows/**`, `pins.json`, `template.json`, `src/models_registry.json`.
 
+A base-image bump (new ComfyUI) also regenerates ishikawa's `tests/fixtures/required_inputs.json`
+from the boot probe's `/object_info` (`tools/widget_order.py --required` there), keeping the boot-provisioned
+packs' entries the probe lacks.
+
 ## 4. Workflows are not in the image
 
 `src/start_script.sh` does `git reset --hard origin/master` on this repo at every
