@@ -1,0 +1,230 @@
+{
+ "1": {
+  "class_type": "SpreadsheetOutputList",
+  "_meta": {
+   "title": "PER-MODEL SETTINGS (model, cfg, steps, label)"
+  },
+  "inputs": {
+   "rows_and_cols": "",
+   "separator": ",",
+   "is_topdown": true,
+   "num_headers": 1,
+   "select_nth": -1,
+   "string_or_base64": "model,cfg,steps,label\nanima-aesthetic-v1.0.safetensors,4,30,aesthetic v1.0 (cfg 4 / 30)\nanima-turbo-v1.0.safetensors,1,10,turbo v1.0 (cfg 1 / 10)\nanima-turbo-v1.1.safetensors,1,10,turbo v1.1 (cfg 1 / 10)\nRAMTHRUSTS_Delicious_Mango.safetensors,4,30,Delicious Mango (cfg 4 / 30)\nNova3DCGAMV30.safetensors,4,30,Nova3DCG AMV30 (cfg 4 / 30)"
+  }
+ },
+ "2": {
+  "class_type": "ComfyNumberConvert",
+  "_meta": {
+   "title": "cfg per model"
+  },
+  "inputs": {
+   "value": [
+    "1",
+    4
+   ]
+  }
+ },
+ "3": {
+  "class_type": "ComfyNumberConvert",
+  "_meta": {
+   "title": "steps per model"
+  },
+  "inputs": {
+   "value": [
+    "1",
+    5
+   ]
+  }
+ },
+ "16": {
+  "class_type": "StringOutputList",
+  "_meta": {
+   "title": "MODEL FILES (same order as the table rows)"
+  },
+  "inputs": {
+   "separator": "\\n",
+   "values": "anima-aesthetic-v1.0.safetensors\nanima-turbo-v1.0.safetensors\nanima-turbo-v1.1.safetensors\nRAMTHRUSTS_Delicious_Mango.safetensors\nNova3DCGAMV30.safetensors"
+  }
+ },
+ "4": {
+  "class_type": "UNETLoader",
+  "_meta": {
+   "title": "DIFFUSION MODEL (one per row)"
+  },
+  "inputs": {
+   "unet_name": [
+    "16",
+    0
+   ],
+   "weight_dtype": "default"
+  }
+ },
+ "5": {
+  "class_type": "CLIPLoader",
+  "_meta": {
+   "title": "TEXT ENCODER -- must match the model"
+  },
+  "inputs": {
+   "clip_name": "qwen_3_06b_base.safetensors",
+   "type": "stable_diffusion",
+   "device": "default"
+  }
+ },
+ "6": {
+  "class_type": "VAELoader",
+  "_meta": {
+   "title": "VAE (Qwen-Image)"
+  },
+  "inputs": {
+   "vae_name": "qwen_image_vae.safetensors"
+  }
+ },
+ "7": {
+  "class_type": "PrimitiveStringMultiline",
+  "_meta": {
+   "title": "Prompt"
+  },
+  "inputs": {
+   "value": "masterpiece, best quality, score_7, 1girl, solo, short brown hair, smile, red jacket, white shirt, blue jeans, standing, city street, daytime"
+  }
+ },
+ "8": {
+  "class_type": "PrimitiveStringMultiline",
+  "_meta": {
+   "title": "Negative prompt"
+  },
+  "inputs": {
+   "value": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts"
+  }
+ },
+ "9": {
+  "class_type": "CLIPTextEncode",
+  "_meta": {
+   "title": "POSITIVE"
+  },
+  "inputs": {
+   "text": [
+    "7",
+    0
+   ],
+   "clip": [
+    "5",
+    0
+   ]
+  }
+ },
+ "10": {
+  "class_type": "CLIPTextEncode",
+  "_meta": {
+   "title": "NEGATIVE"
+  },
+  "inputs": {
+   "text": [
+    "8",
+    0
+   ],
+   "clip": [
+    "5",
+    0
+   ]
+  }
+ },
+ "11": {
+  "class_type": "EmptyLatentImage",
+  "_meta": {
+   "title": "Resolution"
+  },
+  "inputs": {
+   "width": 832,
+   "height": 1216,
+   "batch_size": 1
+  }
+ },
+ "12": {
+  "class_type": "KSampler",
+  "_meta": {
+   "title": "BASE SAMPLER"
+  },
+  "inputs": {
+   "seed": 100,
+   "steps": [
+    "3",
+    1
+   ],
+   "cfg": [
+    "2",
+    0
+   ],
+   "sampler_name": "euler_ancestral",
+   "scheduler": "normal",
+   "denoise": 1,
+   "model": [
+    "4",
+    0
+   ],
+   "positive": [
+    "9",
+    0
+   ],
+   "negative": [
+    "10",
+    0
+   ],
+   "latent_image": [
+    "11",
+    0
+   ]
+  }
+ },
+ "13": {
+  "class_type": "VAEDecode",
+  "_meta": {
+   "title": "decode"
+  },
+  "inputs": {
+   "samples": [
+    "12",
+    0
+   ],
+   "vae": [
+    "6",
+    0
+   ]
+  }
+ },
+ "14": {
+  "class_type": "XyzGridPlot",
+  "_meta": {
+   "title": "CHECKPOINT GRID"
+  },
+  "inputs": {
+   "images": [
+    "13",
+    0
+   ],
+   "gap": 0,
+   "font_size": 40,
+   "row_label_orientation": "horizontal",
+   "order": true,
+   "output_is_list": false,
+   "col_labels": [
+    "1",
+    6
+   ]
+  }
+ },
+ "15": {
+  "class_type": "SaveImage",
+  "_meta": {
+   "title": "Checkpoint grid"
+  },
+  "inputs": {
+   "filename_prefix": "Anima_checkpoint_compare",
+   "images": [
+    "14",
+    0
+   ]
+  }
+ }
+}
