@@ -56,7 +56,7 @@
 # re-reads the GitHub API every build; any pack moving invalidates the whole
 # loop below.
 
-ARG BASE_IMAGE=hearmeman/comfyui-base:cu130-comfy0.32.0-torch2.11.0
+ARG BASE_IMAGE=hearmeman/comfyui-base:cu130-comfy0.45.0-989d93d0-torch2.11.0
 FROM ${BASE_IMAGE}
 
 ADD https://api.github.com/repos/ltdrdata/ComfyUI-Impact-Pack/git/refs/heads/Main /pack-refs/ComfyUI-Impact-Pack.json
