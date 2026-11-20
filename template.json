@@ -16,6 +16,23 @@
         "Anima",
         "LLM"
       ]
+    },
+    "download_wan": {
+      "default": false,
+      "folders": [],
+      "extra_models": [
+        "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+        "wan_2.1_vae.safetensors",
+        "wan2.2_i2v_A14b_high_noise_lora_rank64_lightx2v_4step_1022.safetensors",
+        "wan2.2_i2v_A14b_low_noise_lora_rank64_lightx2v_4step_1022.safetensors",
+        "rife_v4.26.safetensors"
+      ]
+    },
+    "download_wan_experts": {
+      "default": false,
+      "folders": [
+        "Wan"
+      ]
     }
   },
   "auto_download": [

@@ -29,6 +29,8 @@ FYI: this template is built for CUDA 13.0 and above.
 |---|---|---|
 | `download_illustrious` | false | Downloads the shared models (ControlNets, upscaler, detector models) and copies the workflow |
 | `download_anima` | false | Copies the Anima keeper-filter detailer workflow and downloads the stock text encoder (Qwen3 0.6B), VAE (Qwen-Image), detectors and upscaler. The Anima diffusion model itself comes from `CIVITAI_DIFFUSION_MODELS` |
+| `download_wan` | false | Downloads what the Wan 2.2 image-to-video graph shares with any Wan 2.2 I2V A14B model: the umt5 text encoder, the Wan 2.1 VAE, the lightx2v 4-step LoRA pair (1022) and RIFE 4.26 for frame interpolation. Enough for a Wan merge from CivitAI |
+| `download_wan_experts` | false | Copies `Wan/Wan22_I2V` and downloads everything it names, including the two 14 GB fp8 experts (high and low noise). About 37 GB in all |
 | `CIVITAI_CHECKPOINTS` | empty | Comma-separated CivitAI version IDs, downloaded to `models/checkpoints`. This is how you get the SDXL/Illustrious checkpoint. |
 | `CIVITAI_DIFFUSION_MODELS` | empty | Comma-separated CivitAI version IDs (or CivitAI URLs), downloaded to `models/diffusion_models`. This is how you get an Anima model: `2983680` is WAI-ANIMA v1.0. Needs `civitai_token`. |
 | `CIVITAI_TEXT_ENCODERS` | empty | Same, into `models/text_encoders`. For an Anima finetune that ships its own text encoder — see [Anima models that ship their own text encoder](#anima-models-that-ship-their-own-text-encoder). Needs `civitai_token`. |
